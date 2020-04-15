@@ -1,0 +1,13 @@
+{
+    "editor.rulers": [76,],
+    "window.zoomLevel": 1,
+    "markdown-preview-enhanced.breakOnSingleNewLine": false,
+    "markdown-preview-enhanced.usePandocParser": true,
+    "[php]": {},
+    "python.testing.pytestEnabled": true,
+    "workbench.colorTheme": "Monokai",
+    "todo-tree.tree.showScanModeButton": false,
+    "todo-tree.highlights.enabled": false,
+    "vim.textwidth": 76,
+    "editor.lineNumbers": "relative"
+}
