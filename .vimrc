@@ -9,11 +9,11 @@ set number relativenumber
 set colorcolumn=76
 set textwidth=76
 
+" automatically detect file types (built-in plugin)
+filetype plugin on
+
 " lets have syntax coloring
 syntax enable
-
-" enable better file navigation (built-in plugin)
-filetype plugin on
 
 " search down into subfolders
 set path+=**
