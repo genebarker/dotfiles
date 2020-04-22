@@ -18,7 +18,7 @@ function hhset() {
 alias hhcd='cd $VENV'
 alias hht='$VENV/venv/bin/pytest -q'
 alias hhtv='$VENV/venv/bin/pytest -v'
-alias hhtc='$VENV/venv/bin/pytest --cov'
+alias hhtc='$VENV/venv/bin/pytest --cov=$FLASK_APP'
 alias hhrun='cd $VENV && $VENV/venv/bin/flask run'
 
 # Eugene's fav aliases
