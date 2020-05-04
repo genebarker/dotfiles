@@ -1,3 +1,6 @@
+# Enable VIM key bindings
+set -o vi
+
 # Eugene's fav aliases
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

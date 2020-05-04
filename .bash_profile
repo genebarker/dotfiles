@@ -7,6 +7,9 @@ export PATH
 PATH="/Library/PostgreSQL/12/bin:${PATH}"
 export PATH
 
+# Enable VIM key bindings
+set -o vi
+
 # Eugene's python helpers
 function hhset() {
     export VENV="/Users/eugene/workspace/$@"
