@@ -1,13 +1,41 @@
+"--------------------------------------------------------------------------
+" VIM settings from these blogposts and examples
+" https://dougblack.io/words/a-good-vimrc.html
+" https://github.com/JJGO/dotfiles/blob/master/vim/.vimrc
+" https://github.com/changemewtf/no_plugins
+"--------------------------------------------------------------------------
+
 " no need to support legacy vi nuances
 set nocompatible
 
+" enable plugins
+filetype plugin on
+
 " show line numbering
 set number relativenumber
+
+" function to toggle between regular / relative numbering
+function! ToggleNumber()
+    if(&relativenumber == 1)
+        set norelativenumber
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
 
 " set visual cue for the max width I like my text files
 " and the wrap for 'gq' command
 set colorcolumn=76
 set textwidth=76
+
+" tabs are always spaces and 4 spaces per
+set tabstop=4
+set softtabstop=4
+set expandtab
+
+" highlight current line
+set cursorline
 
 " always show status line at the bottom
 set laststatus=2
@@ -15,15 +43,18 @@ set laststatus=2
 " show command as it's keyed on status line 
 set showcmd
 
-" automatically detect file types (built-in plugin)
-filetype plugin on
-
 " lets have syntax coloring
+" with molokai color scheme
 syntax enable
+colorscheme molokai
+let g:molokai_original = 1
 
 " make sure can backspace behaves more reasonably
 " (i.e. allow before insertion point set with 'i')
 set backspace=indent,eol,start
+
+" don't enter Ex mode on 'Q'
+nmap Q <Nop>
 
 " enable mouse support
 set mouse+=a
@@ -44,3 +75,15 @@ set path+=**
 
 " display all matching files option
 set wildmenu
+
+" add custom commands
+command! CTags !ctags -R .
+
+" setup leader shortcuts
+let mapleader = ","
+nnoremap <leader>tn :call ToggleNumber()<CR>
+nnoremap <leader>nt :NERDTreeToggle<CR>
+nnoremap <leader>gg :GitGutterToggle<CR>
+
+" close NERDTree when opening a file
+let g:NERDTreeQuitOnOpen = 1
