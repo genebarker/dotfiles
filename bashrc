@@ -83,17 +83,3 @@ machine_name() {
 PROMPT_DIRTRIM=3
 PS1="\n${COLOR_BLUE}#${COLOR_DEFAULT} ${COLOR_CYAN}\\u${COLOR_DEFAULT} ${COLOR_GREEN}at${COLOR_DEFAULT} ${COLOR_MAGENTA}\$(machine_name)${COLOR_DEFAULT} ${COLOR_GREEN}in${COLOR_DEFAULT} ${COLOR_YELLOW}\w${COLOR_DEFAULT}\n\$(if [ \$? -ne 0 ]; then echo \"${COLOR_RED}!${COLOR_DEFAULT} \"; fi)${COLOR_BLUE}>${COLOR_DEFAULT} "
 PS2="${COLOR_BLUE}>${COLOR_DEFAULT} "
-
-# Flask project shortcuts
-function hhset() {
-    export VENV="$HOME/workspace/$@"
-    export FLASK_APP="$@"
-    export FLASK_ENV=development
-    cd $VENV
-    . venv/bin/activate
-}
-alias hhcd='cd $VENV'
-alias hht='$VENV/venv/bin/pytest -q'
-alias hhtv='$VENV/venv/bin/pytest -v'
-alias hhtc='$VENV/venv/bin/pytest --cov=$FLASK_APP'
-alias hhrun='cd $VENV && $VENV/venv/bin/flask run'
