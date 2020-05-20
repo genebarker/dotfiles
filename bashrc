@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
-# Enable VIM key bindings
+# enable VIM key bindings
 set -o vi
 
-# Set VIM as editor of choice
+# set VIM as editor of choice
 export EDITOR=vim
 
-# Set bash history options
+# set bash history options
 HISTSIZE=32768
 HISTFILE="$HOME/.bash_history"
 SAVEHIST=$HISTSIZE
 shopt -s histappend
 
-# Load shell dotfiles, use:
+# load shell dotfiles, use:
 # ~/.path to set $PATH for host
 # ~/.extra to customize for host
 for file in ~/.{path,extra}; do
