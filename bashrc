@@ -76,7 +76,7 @@ machine_name() {
     if [[ -f $HOME/.name ]]; then
         cat $HOME/.name
     else
-        hostname
+        hostname -f
     fi
 }
 
