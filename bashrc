@@ -63,8 +63,7 @@ alias grep="grep --color"
 
 # Flask project shortcuts
 function hhset() {
-    local home="$(cd ~ && pwd)"
-    export VENV="${home}/workspace/$@"
+    export VENV="$HOME/workspace/$@"
     export FLASK_APP="$@"
     export FLASK_ENV=development
     cd $VENV
