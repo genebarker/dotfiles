@@ -63,6 +63,7 @@ alias grep="grep --color"
 
 # set prompt - from anishathalye/dotfiles/bash/prompt.bash
 ATTRIBUTE_BOLD='\[\e[1m\]'
+ATTRIBUTE_REVERSE='\[\e[7m\]'
 ATTRIBUTE_RESET='\[\e[0m\]'
 COLOR_DEFAULT='\[\e[39m\]'
 COLOR_RED='\[\e[31m\]'
@@ -80,6 +81,20 @@ machine_name() {
     fi
 }
 
+# highlight the user name when logged in as root.
+if [[ "$(whoami)" == "root" ]]; then
+	userStyle="${ATTRIBUTE_REVERSE}${COLOR_CYAN}";
+else
+	userStyle="${COLOR_CYAN}";
+fi;
+
+# highlight the hostname when connected via SSH.
+if [[ "${SSH_TTY}" ]]; then
+	hostStyle="${ATTRIBUTE_BOLD}${COLOR_MAGENTA}";
+else
+	hostStyle="${COLOR_MAGENTA}";
+fi;
+
 PROMPT_DIRTRIM=3
-PS1="${COLOR_BLUE}#${COLOR_DEFAULT} ${COLOR_CYAN}\\u${COLOR_DEFAULT} ${COLOR_GREEN}at${COLOR_DEFAULT} ${COLOR_MAGENTA}\$(machine_name)${COLOR_DEFAULT} ${COLOR_GREEN}in${COLOR_DEFAULT} ${COLOR_YELLOW}\w${COLOR_DEFAULT}\n\$(if [ \$? -ne 0 ]; then echo \"${COLOR_RED}!${COLOR_DEFAULT} \"; fi)${COLOR_BLUE}>${COLOR_DEFAULT} "
+PS1="${COLOR_BLUE}#${COLOR_DEFAULT} ${userStyle}\\u${COLOR_DEFAULT}${ATTRIBUTE_RESET} ${COLOR_GREEN}at${COLOR_DEFAULT} ${hostStyle}\$(machine_name)${ATTRIBUTE_RESET}${COLOR_DEFAULT} ${COLOR_GREEN}in${COLOR_DEFAULT} ${COLOR_YELLOW}\w${COLOR_DEFAULT}\n\$(if [ \$? -ne 0 ]; then echo \"${COLOR_RED}!${COLOR_DEFAULT} \"; fi)${COLOR_BLUE}>${COLOR_DEFAULT} "
 PS2="${COLOR_BLUE}>${COLOR_DEFAULT} "
