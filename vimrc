@@ -81,9 +81,23 @@ command! CTags !ctags -R .
 
 " setup leader shortcuts
 let mapleader = ","
+
+" toggle between buffers
+nnoremap <leader><leader> <c-^>
+
+" plugin shortcuts
 nnoremap <leader>tn :call ToggleNumber()<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>gg :GitGutterToggle<CR>
+nnoremap <leader>gd :ALEGoToDefinition<CR>
+nnoremap <leader>fr :ALEFindReferences<CR>
 
 " close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1
+
+" set ALE linters
+let g:ale_linters = { 'python': ['pyls', 'flake8', 'mypy', 'pylint']}
+
+" load all plugins then their helptags
+packloadall
+silent! helptags ALL
