@@ -20,13 +20,6 @@ for file in ~/.{path,extra}; do
 done;
 unset file;
 
-# adjust command flags for OS
-if [[ "$OSTYPE" == "darwin"* ]]; then # macOS
-    ls_colorflag="-G"
-else # linux
-    ls_colorflag="--color"
-fi
-
 # allow aliases to be sudo'ed
 alias sudo='sudo '
 
@@ -43,6 +36,11 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # ls shortcuts
+if [[ "$OSTYPE" == "darwin"* ]]; then # macOS
+    ls_colorflag="-G"
+else # linux
+    ls_colorflag="--color"
+fi
 alias ls="ls ${ls_colorflag}"
 alias ll="ls -l ${ls_colorflag}"
 alias l="ls -la ${ls_colorflag}"
