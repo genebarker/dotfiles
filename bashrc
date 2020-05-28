@@ -49,9 +49,12 @@ alias l="ls -la ${ls_colorflag}"
 alias g="git"
 alias gs="git status"
 alias gl="git log -10 --oneline"
-alias ga="git commit --amend"
 alias gd="git diff"
 alias gds="git diff --stat"
+alias gc="git commit"
+alias ga="git commit --amend"
+alias gps="git push"
+alias gpl="git pull"
 
 # vim shortcuts
 alias v="vim"
