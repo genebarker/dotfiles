@@ -1,4 +1,4 @@
-"--------------------------------------------------------------------------
+
 " VIM settings from these blogposts and examples
 " https://dougblack.io/words/a-good-vimrc.html
 " https://github.com/JJGO/dotfiles/blob/master/vim/.vimrc
@@ -89,6 +89,7 @@ nnoremap <leader><leader> <c-^>
 nnoremap <leader>tn :call ToggleNumber()<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>gg :GitGutterToggle<CR>
+nnoremap <leader>at :ALEToggle<CR>
 nnoremap <leader>gd :ALEGoToDefinition<CR>
 nnoremap <leader>fr :ALEFindReferences<CR>
 
