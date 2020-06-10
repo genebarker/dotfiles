@@ -104,5 +104,7 @@ let g:NERDTreeQuitOnOpen = 1
 let g:ale_linters = { 'python': ['pyls', 'flake8', 'mypy', 'pylint']}
 
 " load all plugins then their helptags
-packloadall
+if has('packloadall')
+    packloadall
+endif
 silent! helptags ALL
