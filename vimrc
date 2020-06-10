@@ -49,6 +49,11 @@ syntax enable
 colorscheme molokai
 let g:molokai_original = 1
 
+" open new split pane on right/bottom
+" (feels more natural)
+set splitright
+set splitbelow
+
 " make sure can backspace behaves more reasonably
 " (i.e. allow before insertion point set with 'i')
 set backspace=indent,eol,start
