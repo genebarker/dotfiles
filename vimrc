@@ -80,7 +80,7 @@ set wildmenu
 command! CTags !ctags -R .
 
 " setup leader shortcuts
-let mapleader = ","
+let mapleader = " "
 
 " toggle between buffers
 nnoremap <leader><leader> <c-^>
@@ -92,6 +92,10 @@ nnoremap <leader>gg :GitGutterToggle<CR>
 nnoremap <leader>at :ALEToggle<CR>
 nnoremap <leader>gd :ALEGoToDefinition<CR>
 nnoremap <leader>fr :ALEFindReferences<CR>
+
+" python shortcuts
+nnoremap <leader>pt :!pytest %<CR>
+nnoremap <leader>Pt :!pytest<CR>
 
 " close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1
