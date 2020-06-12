@@ -24,6 +24,21 @@ function! ToggleNumber()
     endif
 endfunc
 
+" function to toggle spell checking
+function! ToggleSpellCheck()
+    set spell! spelllang=en_us
+    if &spell
+        " use project dictionary if available
+        if filereadable("spellfile.utf-8.add")
+            " initialize if necessary
+            if !filereadable("spellfile.utf-8.add.spl")
+                mkspell spellfile.utf-8.add
+            endif
+            set spellfile=spellfile.utf-8.add
+        endif
+    endif
+endfunc
+
 " set visual cue for the max width I like my text files
 " and the wrap for 'gq' command
 set colorcolumn=76
@@ -92,6 +107,7 @@ nnoremap <leader><leader> <c-^>
 
 " plugin shortcuts
 nnoremap <leader>tn :call ToggleNumber()<CR>
+nnoremap <leader>ts :call ToggleSpellCheck()<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>gg :GitGutterToggle<CR>
 nnoremap <leader>at :ALEToggle<CR>
