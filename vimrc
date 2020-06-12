@@ -110,7 +110,7 @@ nnoremap <leader>tn :call ToggleNumber()<CR>
 nnoremap <leader>ts :call ToggleSpellCheck()<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>gg :GitGutterToggle<CR>
-nnoremap <leader>at :ALEToggle<CR>
+nnoremap <leader>ta :ALEToggle<CR>
 nnoremap <leader>gd :ALEGoToDefinition<CR>
 nnoremap <leader>fr :ALEFindReferences<CR>
 
