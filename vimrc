@@ -1,8 +1,9 @@
-
+"--------------------------------------------------------------------------
 " VIM settings from these blogposts and examples
 " https://dougblack.io/words/a-good-vimrc.html
 " https://github.com/JJGO/dotfiles/blob/master/vim/.vimrc
 " https://github.com/changemewtf/no_plugins
+" https://thoughtbot.com/blog/opt-in-project-specific-vim-spell-checking-and-word-completion
 "--------------------------------------------------------------------------
 
 " no need to support legacy vi nuances
@@ -24,20 +25,27 @@ function! ToggleNumber()
     endif
 endfunc
 
-" function to toggle spell checking
-function! ToggleSpellCheck()
-    set spell! spelllang=en_us
-    if &spell
-        " use project dictionary if available
-        if filereadable("spellfile.utf-8.add")
-            " initialize if necessary
-            if !filereadable("spellfile.utf-8.add.spl")
-                mkspell spellfile.utf-8.add
-            endif
-            set spellfile=spellfile.utf-8.add
-        endif
+" turn spell check on for text files and git messages 
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.txt set filetype=text
+autocmd FileType markdown setlocal spell
+autocmd FileType gitcommit setlocal spell
+autocmd FileType text setlocal spell
+
+" use US english dictionary
+set spelllang=en_us
+
+" use project dictionary if available
+if filereadable("spellfile.utf-8.add")
+    " initialize if necessary
+    if !filereadable("spellfile.utf-8.add.spl")
+        mkspell spellfile.utf-8.add
     endif
-endfunc
+    set spellfile=spellfile.utf-8.add
+endif
+
+" autocomplete with dictionary words when spell check on
+set complete+=kspell
 
 " set visual cue for the max width I like my text files
 " and the wrap for 'gq' command
@@ -107,7 +115,7 @@ nnoremap <leader><leader> <c-^>
 
 " plugin shortcuts
 nnoremap <leader>tn :call ToggleNumber()<CR>
-nnoremap <leader>ts :call ToggleSpellCheck()<CR>
+nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>gg :GitGutterToggle<CR>
 nnoremap <leader>ta :ALEToggle<CR>
