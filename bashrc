@@ -54,10 +54,8 @@ alias gds="git diff --stat"
 alias gc="git commit"
 alias gca="git commit -a"
 alias ga="git commit --amend"
-alias gps="git push"
-alias gpsm="git push origin master"
-alias gpl="git pull"
-alias gplm="git pull origin master"
+alias gps="git push origin master"
+alias gpl="git pull origin master"
 
 # vim shortcuts
 alias v="vim"
