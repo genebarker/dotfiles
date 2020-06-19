@@ -124,7 +124,7 @@ nnoremap <leader>fr :ALEFindReferences<CR>
 
 " python shortcuts
 nnoremap <leader>pt :!pytest %<CR>
-nnoremap <leader>Pt :!pytest<CR>
+nnoremap <leader>pT :!pytest<CR>
 
 " close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1
