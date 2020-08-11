@@ -113,6 +113,12 @@ let mapleader = " "
 " toggle between buffers
 nnoremap <leader><leader> <c-^>
 
+" window shortcuts
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+
 " plugin shortcuts
 nnoremap <leader>tn :call ToggleNumber()<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
