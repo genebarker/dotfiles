@@ -25,6 +25,9 @@ function! ToggleNumber()
     endif
 endfunc
 
+" show tabs and non-breakable spaces
+set listchars=tab:>>,space:.,eol:$
+
 " turn spell check on for text files and git messages 
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.txt set filetype=text
@@ -127,6 +130,7 @@ nnoremap <leader>gg :GitGutterToggle<CR>
 nnoremap <leader>ta :ALEToggle<CR>
 nnoremap <leader>gd :ALEGoToDefinition<CR>
 nnoremap <leader>fr :ALEFindReferences<CR>
+nnoremap <leader>tw :set list!<CR>
 
 " python shortcuts
 nnoremap <leader>pt :!pytest %<CR>
