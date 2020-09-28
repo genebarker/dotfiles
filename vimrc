@@ -12,6 +12,11 @@ set nocompatible
 " enable plugins
 filetype plugin on
 
+" no swap files, use undo files instead
+set noswapfile
+set undodir=~/.vim/undodir
+set undofile
+
 " show line numbering
 set number relativenumber
 
@@ -55,10 +60,17 @@ set complete+=kspell
 set colorcolumn=76
 set textwidth=76
 
+" show one line per line
+set nowrap
+
 " tabs are always spaces and 4 spaces per
 set tabstop=4
 set softtabstop=4
+set shiftwidth=4
 set expandtab
+
+" guess indent level
+set smartindent
 
 " highlight current line
 set cursorline
