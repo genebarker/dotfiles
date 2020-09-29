@@ -1,1 +1,4 @@
+.*
+!.gitignore
 doc/tags
+test/
