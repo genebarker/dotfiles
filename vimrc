@@ -138,6 +138,7 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>tn :call ToggleNumber()<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
+nnoremap <leader>ut :UndotreeToggle<CR>
 nnoremap <leader>gg :GitGutterToggle<CR>
 nnoremap <leader>ta :ALEToggle<CR>
 nnoremap <leader>gd :ALEGoToDefinition<CR>
