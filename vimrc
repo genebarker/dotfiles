@@ -145,7 +145,8 @@ nnoremap <leader>gd :ALEGoToDefinition<CR>
 nnoremap <leader>fr :ALEFindReferences<CR>
 nnoremap <leader>tw :set list!<CR>
 
-" python shortcuts
+" testing shortcuts
+nnoremap <leader>bt :!bats %<CR>
 nnoremap <leader>pt :!pytest %<CR>
 nnoremap <leader>pT :!pytest<CR>
 
