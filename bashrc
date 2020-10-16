@@ -7,6 +7,7 @@ set -o vi
 export EDITOR=vim
 
 # set bash history options
+HISTCONTROL=ignorespace
 HISTSIZE=32768
 HISTFILE="$HOME/.bash_history"
 SAVEHIST=$HISTSIZE
