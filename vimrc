@@ -33,7 +33,7 @@ endfunc
 " show tabs and non-breakable spaces
 set listchars=tab:>>,space:.,eol:$
 
-" turn spell check on for text files and git messages 
+" turn spell check on for text files and git messages
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.txt set filetype=text
 autocmd FileType markdown setlocal spell
@@ -78,7 +78,7 @@ set cursorline
 " always show status line at the bottom
 set laststatus=2
 
-" show command as it's keyed on status line 
+" show command as it's keyed on status line
 set showcmd
 
 " lets have syntax coloring

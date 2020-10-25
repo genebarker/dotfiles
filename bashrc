@@ -88,16 +88,16 @@ machine_name() {
 
 # highlight the user name when logged in as root.
 if [[ "$(whoami)" == "root" ]]; then
-	userStyle="${ATTRIBUTE_REVERSE}${COLOR_CYAN}";
+    userStyle="${ATTRIBUTE_REVERSE}${COLOR_CYAN}";
 else
-	userStyle="${COLOR_CYAN}";
+    userStyle="${COLOR_CYAN}";
 fi;
 
 # highlight the hostname when connected via SSH.
 if [[ "${SSH_TTY}" ]]; then
-	hostStyle="ssh->${ATTRIBUTE_BOLD}${COLOR_MAGENTA}";
+    hostStyle="ssh->${ATTRIBUTE_BOLD}${COLOR_MAGENTA}";
 else
-	hostStyle="${COLOR_MAGENTA}";
+    hostStyle="${COLOR_MAGENTA}";
 fi;
 
 PROMPT_DIRTRIM=3
