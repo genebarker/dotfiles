@@ -146,9 +146,17 @@ nnoremap <leader>fr :ALEFindReferences<CR>
 nnoremap <leader>tw :set list!<CR>
 
 " testing shortcuts
-nnoremap <leader>bt :!bats %<CR>
+function! TestThisFile()
+    if(&filetype ==# 'python')
+        !pytest %
+    elseif(&filetype ==# 'bats')
+        !%
+    endif
+endfunc
+
 nnoremap <leader>pt :!pytest %<CR>
 nnoremap <leader>pT :!pytest<CR>
+nnoremap <leader>tt :call TestThisFile()<CR>
 
 " close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1
