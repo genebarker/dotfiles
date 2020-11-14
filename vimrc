@@ -9,7 +9,24 @@
 " no need to support legacy vi nuances
 set nocompatible
 
-" enable plugins
+" load plugins using vim-plug
+call plug#begin('~/.vim/plugged')
+
+" enhance GUI
+Plug 'tpope/vim-sensible'           " initialize VIM with better defaults
+Plug 'tomasr/molokai'               " use molokai colorscheme
+Plug 'airblade/vim-gitgutter'       " show changed lines
+Plug 'dense-analysis/ale'           " add a linting engine
+Plug 'vim-airline/vim-airline'      " use enhanced status line
+Plug 'scrooloose/nerdtree'          " add a file explorer
+" extend VIM moves
+Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
+" extend syntax support
+Plug 'aliou/bats.vim'               " BATS test files
+
+call plug#end()
+
+" load filetype-specific plugin files
 filetype plugin on
 
 " no swap files, use undo files instead
@@ -138,7 +155,6 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>tn :call ToggleNumber()<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
-nnoremap <leader>ut :UndotreeToggle<CR>
 nnoremap <leader>gg :GitGutterToggle<CR>
 nnoremap <leader>ta :ALEToggle<CR>
 nnoremap <leader>gd :ALEGoToDefinition<CR>

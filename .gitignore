@@ -1,3 +1,4 @@
+vim/plugged/
 vim/spell/
 vim/undodir/*
 !vim/undodir/README.txt
