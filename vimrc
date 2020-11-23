@@ -49,7 +49,7 @@ function! ToggleNumber()
 endfunc
 
 " show tabs and non-breakable spaces
-set listchars=tab:>>,space:.,eol:$
+set listchars=tab:>-,trail:~,eol:$
 
 " turn spell check on for text files and git messages
 autocmd BufRead,BufNewFile *.md set filetype=markdown
