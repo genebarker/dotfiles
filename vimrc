@@ -165,8 +165,10 @@ nnoremap <leader>tw :set list!<CR>
 " testing shortcuts
 function! TestThisFile()
     if(&filetype ==# 'python')
+        write
         !pytest %
     elseif(&filetype ==# 'bats')
+        write
         !%
     endif
 endfunc
