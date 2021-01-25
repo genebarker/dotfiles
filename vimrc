@@ -20,6 +20,7 @@ Plug 'dense-analysis/ale'           " add a linting engine
 Plug 'vim-airline/vim-airline'      " use enhanced status line
 Plug 'scrooloose/nerdtree'          " add a file explorer
 " extend VIM moves
+Plug 'ervandew/supertab'            " use tab key for insert completion
 Plug 'tpope/vim-commentary'         " comment stuff out fast
 Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
 " extend syntax support
