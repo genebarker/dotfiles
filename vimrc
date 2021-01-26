@@ -28,6 +28,9 @@ Plug 'aliou/bats.vim'               " BATS test files
 
 call plug#end()
 
+" don't use plugin's key mappings
+let g:gitgutter_map_keys = 0
+
 " load filetype-specific plugin files
 filetype plugin on
 
