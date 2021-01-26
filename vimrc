@@ -31,9 +31,6 @@ call plug#end()
 " don't use plugin's key mappings
 let g:gitgutter_map_keys = 0
 
-" load filetype-specific plugin files
-filetype plugin on
-
 " no swap files, use undo files instead
 set noswapfile
 set undodir=~/.vim/undodir
