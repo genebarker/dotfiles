@@ -23,7 +23,7 @@ Plug 'scrooloose/nerdtree'          " add a file explorer
 Plug 'ervandew/supertab'            " use tab key for insert completion
 Plug 'tpope/vim-commentary'         " comment stuff out fast
 Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
-Plug 'godlygeek/tabular'            " helper to vertically align text
+Plug 'junegunn/vim-easy-align'      " helper to vertically align text
 " extend syntax support
 Plug 'aliou/bats.vim'               " BATS test files
 
@@ -164,8 +164,17 @@ nnoremap <leader>gd :ALEGoToDefinition<CR>
 nnoremap <leader>fr :ALEFindReferences<CR>
 nnoremap <leader>tw :set list!<CR>
 
-" align pipe char's (markdown table)
-nnoremap <leader>ap :Tabular /\|<CR>
+function! AlignMarkdownTable()
+    normal! {jj
+    silent! s/\s\{2,}/ /g
+    silent! s/\-\{2,}/-/g
+    execute "normal vip:EasyAlign *|\<CR>"
+    normal! {jj
+    silent! s/\s/-/g
+    silent! s/\-|\-/ | /g
+    normal! $
+endfunc
+nnoremap <leader>at :call AlignMarkdownTable()<CR>
 
 " testing shortcuts
 function! TestThisFile()
