@@ -26,6 +26,8 @@ Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
 Plug 'junegunn/vim-easy-align'      " helper to vertically align text
 " extend syntax support
 Plug 'aliou/bats.vim'               " BATS test files
+" miscellaneous
+Plug 'junegunn/vader.vim'           " add vimscript testing framework
 
 call plug#end()
 
@@ -184,6 +186,9 @@ function! TestThisFile()
     elseif(&filetype ==# 'bats')
         write
         !%
+    elseif(&filetype ==# 'vader')
+        write
+        Vader %
     endif
 endfunc
 

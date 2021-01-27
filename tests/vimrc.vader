@@ -1,0 +1,6 @@
+Do (Insert HELLO):
+  ihello\<Esc>
+  gUiw
+
+Expect (HELLO text):
+  HELLO
