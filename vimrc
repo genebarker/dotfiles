@@ -130,8 +130,9 @@ set mouse+=a
 set ignorecase
 set smartcase
 
-" enable searching as you type
+" enable searching as you type and highlight the matches
 set incsearch
+set hlsearch
 
 " allow buffer to be hidden
 set hidden
