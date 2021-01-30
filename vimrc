@@ -23,6 +23,7 @@ Plug 'scrooloose/nerdtree'          " add a file explorer
 Plug 'ervandew/supertab'            " use tab key for insert completion
 Plug 'tpope/vim-commentary'         " comment stuff out fast
 Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
+Plug 'easymotion/vim-easymotion'    " extend VIM motions
 Plug 'junegunn/vim-easy-align'      " helper to vertically align text
 " extend syntax support
 Plug 'aliou/bats.vim'               " BATS test files
