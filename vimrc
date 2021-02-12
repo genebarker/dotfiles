@@ -149,8 +149,9 @@ command! CTags !ctags -R .
 " setup leader shortcuts
 let mapleader = " "
 
-" toggle between buffers
-nnoremap <leader><leader> <c-^>
+" buffer shortucs
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprevious<CR>
 
 " window shortcuts
 nnoremap <leader>h :wincmd h<CR>
