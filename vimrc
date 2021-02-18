@@ -153,6 +153,9 @@ let mapleader = " "
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
 
+" clear current search highlighting
+nnoremap <CR> :noh<CR>
+
 " window shortcuts
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
