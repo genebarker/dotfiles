@@ -1,0 +1,24 @@
+"---------------------------------------------------------------------------
+" eclipse Vrapper plugin settings
+"---------------------------------------------------------------------------
+
+" enable searching as you type and highlight the matches
+set incsearch
+set hlsearch
+
+" clear current search highlighting
+nnoremap <CR> :noh<CR>
+
+" buffer shortcuts
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprevious<CR>
+
+" eclipse editor shortcuts
+eclipseaction showhover org.eclipse.jdt.ui.edit.text.java.correction.assist.proposals
+nnoremap gh :showhover<CR>
+
+eclipseaction findrefs org.eclipse.jdt.ui.edit.text.java.search.references.in.workspace
+nnoremap <SPACE>fr :findrefs<CR>
+
+eclipseaction testthis org.eclipse.debug.ui.commands.RunLast
+nnoremap <SPACE>tt :w<SPACE>|<SPACE>testthis<CR>
