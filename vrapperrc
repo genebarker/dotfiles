@@ -13,6 +13,9 @@ nnoremap <CR> :noh<CR>
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
 
+" toggle show whitespace
+nnoremap <SPACE>tw :set list!<CR>
+
 " eclipse editor shortcuts
 eclipseaction showhover org.eclipse.jdt.ui.edit.text.java.correction.assist.proposals
 nnoremap gh :showhover<CR>
