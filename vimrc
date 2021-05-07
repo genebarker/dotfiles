@@ -30,6 +30,8 @@ Plug 'airblade/vim-gitgutter'       " show changed lines
 Plug 'dense-analysis/ale'           " add a linting engine
 Plug 'vim-airline/vim-airline'      " use enhanced status line
 Plug 'scrooloose/nerdtree'          " add a file explorer
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'             " add a fuzzy file finder
 " extend VIM moves
 Plug 'ervandew/supertab'            " use tab key for insert completion
 Plug 'tpope/vim-commentary'         " comment stuff out fast
@@ -174,6 +176,15 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
 " plugin shortcuts
+function! FuzzySearch()
+    if (isdirectory('.git'))
+        :GFiles
+    else
+        :Files
+    endif
+endfunc
+nnoremap <C-f> :call FuzzySearch()<CR>
+nnoremap <C-g> :Buffers<CR>
 nnoremap <leader>tn :call ToggleNumber()<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
