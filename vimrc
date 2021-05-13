@@ -192,6 +192,8 @@ nnoremap <leader>gg :GitGutterToggle<CR>
 nnoremap <leader>ta :ALEToggle<CR>
 nnoremap <leader>gd :ALEGoToDefinition<CR>
 nnoremap <leader>fr :ALEFindReferences<CR>
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nnoremap <leader>tw :set list!<CR>
 
 function! AlignMarkdownTable()
