@@ -36,6 +36,7 @@ Plug 'junegunn/fzf.vim'             " add a fuzzy file finder
 Plug 'ervandew/supertab'            " use tab key for insert completion
 Plug 'tpope/vim-commentary'         " comment stuff out fast
 Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
+Plug 'PeterRincker/vim-argumentative' " argument swapper
 Plug 'easymotion/vim-easymotion'    " extend VIM motions
 Plug 'junegunn/vim-easy-align'      " helper to vertically align text
 " extend syntax support
