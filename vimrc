@@ -30,8 +30,8 @@ Plug 'airblade/vim-gitgutter'       " show changed lines
 Plug 'dense-analysis/ale'           " add a linting engine
 Plug 'vim-airline/vim-airline'      " use enhanced status line
 Plug 'scrooloose/nerdtree'          " add a file explorer
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'             " add a fuzzy file finder
+Plug 'junegunn/fzf'                 " add a fuzzy file finder
+Plug 'junegunn/fzf.vim'
 " extend VIM moves
 Plug 'ervandew/supertab'            " use tab key for insert completion
 Plug 'tpope/vim-commentary'         " comment stuff out fast
