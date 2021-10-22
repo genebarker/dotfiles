@@ -1,4 +1,4 @@
-
+"--------------------------------------------------------------------------
 " VIM settings from these blogposts and examples
 " https://dougblack.io/words/a-good-vimrc.html
 " https://github.com/JJGO/dotfiles/blob/master/vim/.vimrc
