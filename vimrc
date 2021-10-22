@@ -1,4 +1,4 @@
-"--------------------------------------------------------------------------
+
 " VIM settings from these blogposts and examples
 " https://dougblack.io/words/a-good-vimrc.html
 " https://github.com/JJGO/dotfiles/blob/master/vim/.vimrc
@@ -27,13 +27,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'           " initialize VIM with better defaults
 Plug 'tomasr/molokai'               " use molokai colorscheme
 Plug 'airblade/vim-gitgutter'       " show changed lines
-Plug 'dense-analysis/ale'           " add a linting engine
 Plug 'vim-airline/vim-airline'      " use enhanced status line
 Plug 'scrooloose/nerdtree'          " add a file explorer
 Plug 'junegunn/fzf'                 " add a fuzzy file finder
 Plug 'junegunn/fzf.vim'
 " extend VIM moves
-Plug 'ervandew/supertab'            " use tab key for insert completion
 Plug 'tpope/vim-commentary'         " comment stuff out fast
 Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
 Plug 'PeterRincker/vim-argumentative' " argument swapper
@@ -41,8 +39,6 @@ Plug 'easymotion/vim-easymotion'    " extend VIM motions
 Plug 'junegunn/vim-easy-align'      " helper to vertically align text
 " extend syntax support
 Plug 'aliou/bats.vim'               " BATS test files
-" miscellaneous
-Plug 'junegunn/vader.vim'           " add vimscript testing framework
 
 call plug#end()
 
@@ -190,11 +186,6 @@ nnoremap <leader>tn :call ToggleNumber()<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>gg :GitGutterToggle<CR>
-nnoremap <leader>ta :ALEToggle<CR>
-nnoremap <leader>gd :ALEGoToDefinition<CR>
-nnoremap <leader>fr :ALEFindReferences<CR>
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nnoremap <leader>tw :set list!<CR>
 
 function! AlignMarkdownTable()
@@ -229,9 +220,6 @@ nnoremap <leader>tt :call TestThisFile()<CR>
 
 " close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1
-
-" set ALE linters
-let g:ale_linters = { 'python': ['pyls', 'flake8', 'mypy', 'pylint']}
 
 " load all plugins then their helptags
 if has('packloadall')
