@@ -32,6 +32,7 @@ Plug 'scrooloose/nerdtree'          " add a file explorer
 Plug 'junegunn/fzf'                 " add a fuzzy file finder
 Plug 'junegunn/fzf.vim'
 " extend VIM moves
+Plug 'tpope/vim-capslock'           " add software caps lock
 Plug 'tpope/vim-commentary'         " comment stuff out fast
 Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
 Plug 'PeterRincker/vim-argumentative' " argument swapper
