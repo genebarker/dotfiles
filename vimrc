@@ -209,9 +209,6 @@ function! TestThisFile()
     elseif(&filetype ==# 'bats')
         write
         !%
-    elseif(&filetype ==# 'vader')
-        write
-        Vader %
     endif
 endfunc
 
