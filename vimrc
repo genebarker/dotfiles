@@ -38,8 +38,11 @@ Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
 Plug 'PeterRincker/vim-argumentative' " argument swapper
 Plug 'easymotion/vim-easymotion'    " extend VIM motions
 Plug 'junegunn/vim-easy-align'      " helper to vertically align text
-" extend syntax support
+" extend language support
 Plug 'aliou/bats.vim'               " BATS test files
+if has('python3')
+    Plug 'davidhalter/jedi-vim'     " Python goto def & auto completion
+endif
 
 call plug#end()
 
