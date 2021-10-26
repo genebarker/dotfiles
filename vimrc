@@ -25,7 +25,8 @@ call plug#begin('~/.vim/plugged')
 
 " enhance GUI
 Plug 'tpope/vim-sensible'           " initialize VIM with better defaults
-Plug 'tomasr/molokai'               " use molokai colorscheme
+" Plug 'tomasr/molokai'               " use molokai colorscheme
+Plug 'morhetz/gruvbox'              " use gruvbox colorscheme
 Plug 'airblade/vim-gitgutter'       " show changed lines
 Plug 'vim-airline/vim-airline'      " use enhanced status line
 Plug 'scrooloose/nerdtree'          " add a file explorer
@@ -122,9 +123,12 @@ set laststatus=2
 set showcmd
 
 " lets have syntax coloring
-" with molokai color scheme
 syntax enable
-colorscheme molokai
+
+" with a great color scheme
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
+set background=dark
 
 " open new split pane on right/bottom
 " (feels more natural)
@@ -165,7 +169,7 @@ command! CTags !ctags -R .
 " setup leader shortcuts
 let mapleader = " "
 
-" buffer shortucs
+" buffer shortcuts
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
 
