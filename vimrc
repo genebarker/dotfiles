@@ -125,7 +125,6 @@ set showcmd
 " with molokai color scheme
 syntax enable
 colorscheme molokai
-let g:molokai_original = 1
 
 " open new split pane on right/bottom
 " (feels more natural)
