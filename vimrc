@@ -179,6 +179,9 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
+" reload VIM config
+nnoremap <leader>rv :source $MYVIMRC<CR>
+
 " plugin shortcuts
 function! FuzzySearch()
     if (isdirectory('.git'))
