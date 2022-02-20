@@ -36,7 +36,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-capslock'           " add software caps lock
 Plug 'tpope/vim-commentary'         " comment stuff out fast
 Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
-Plug 'PeterRincker/vim-argumentative' " argument swapper
+Plug 'vim-scripts/argtextobj.vim'   " change & delete arguments fast
+Plug 'tommcdo/vim-exchange'         " swap vim selections fast
 Plug 'easymotion/vim-easymotion'    " extend VIM motions
 Plug 'junegunn/vim-easy-align'      " helper to vertically align text
 " extend language support
