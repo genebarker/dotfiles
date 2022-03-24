@@ -164,9 +164,6 @@ set path+=**
 " display all matching files option
 set wildmenu
 
-" add custom commands
-command! CTags !ctags -R .
-
 " setup leader shortcuts
 let mapleader = " "
 
