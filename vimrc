@@ -161,6 +161,9 @@ set hidden
 " search down into subfolders
 set path+=**
 
+" include markdown files in file search
+set suffixesadd=.md
+
 " display all matching files option
 set wildmenu
 
