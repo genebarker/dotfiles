@@ -214,6 +214,17 @@ function! AlignMarkdownTable()
 endfunc
 nnoremap <leader>at :call AlignMarkdownTable()<CR>
 
+" notes shortcuts
+function! NewNote()
+    let l:z_timestamp = strftime("%Y-%m-%d-%H%M")
+    execute "e " . l:z_timestamp . '.md'
+    call append(0, l:z_timestamp . ' ')
+    normal! k$
+    startinsert!
+endfunc
+
+nnoremap <leader>nn :call NewNote()<CR>
+
 " testing shortcuts
 function! TestThisFile()
     if(&filetype ==# 'python')
