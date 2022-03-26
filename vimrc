@@ -222,8 +222,12 @@ function! NewNote()
     normal! k$
     startinsert!
 endfunc
+function! NextNoteReference()
+    call search('\[\[\d', 'e')
+endfunc
 
 nnoremap <leader>nn :call NewNote()<CR>
+nnoremap <leader>nr :call NextNoteReference()<CR>
 
 " testing shortcuts
 function! TestThisFile()
