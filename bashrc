@@ -8,6 +8,7 @@ export EDITOR=vim
 
 # set bash history options
 HISTCONTROL=ignorespace
+HISTTIMEFORMAT="%Y-%m-%d %T "
 HISTSIZE=32768
 HISTFILE="$HOME/.bash_history"
 SAVEHIST=$HISTSIZE
