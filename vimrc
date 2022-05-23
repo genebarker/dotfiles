@@ -101,6 +101,9 @@ set complete+=kspell
 set colorcolumn=76
 set textwidth=76
 
+" use one space between sentences
+set nojoinspaces
+
 " show one line per line
 set nowrap
 
@@ -225,6 +228,8 @@ function! NextNoteReference()
     call search('\[\[\d', 'e')
 endfunc
 
+nnoremap <leader>sc :! . ~/notes/cards<CR>
+nnoremap <leader>st :! . ~/notes/tags<CR>
 nnoremap <leader>nn :call NewNote()<CR>
 nnoremap <leader>nr :call NextNoteReference()<CR>
 
