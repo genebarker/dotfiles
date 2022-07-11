@@ -9,9 +9,9 @@ set hlsearch
 " clear current search highlighting
 nnoremap <CR> :noh<CR>
 
-" buffer shortcuts
-nnoremap <C-n> :bnext<CR>
-nnoremap <C-p> :bprevious<CR>
+" perform quick search
+eclipseuiaction quicksearch org.eclipse.text.quicksearch.commands.quicksearchCommand
+nnoremap <SPACE>qs :quicksearch<CR>
 
 " toggle show whitespace
 nnoremap <SPACE>tw :set list!<CR>

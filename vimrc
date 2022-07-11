@@ -196,7 +196,7 @@ function! FuzzySearch()
         :Files
     endif
 endfunc
-nnoremap <C-p> :call FuzzySearch()<CR>
+nnoremap <leader>fs :call FuzzySearch()<CR>
 nnoremap <leader>tn :call ToggleNumber()<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
