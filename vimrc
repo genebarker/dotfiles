@@ -186,7 +186,7 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
 " reload VIM config
-nnoremap <leader>rv :source $MYVIMRC<CR>
+nnoremap <leader>rc :source $MYVIMRC<CR>
 
 " plugin shortcuts
 function! FuzzySearch()
