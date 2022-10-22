@@ -1,0 +1,42 @@
+" add fav plugins supported by ideavim
+Plug 'preservim/nerdtree'           " add a file explorer
+Plug 'tpope/vim-commentary'         " comment stuff out fast
+Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
+Plug 'vim-scripts/argtextobj.vim'   " change & delete arguments fast
+Plug 'tommcdo/vim-exchange'         " swap vim selections fast
+
+" use relative line numbers
+set number
+set relativenumber
+
+" show vim mode in status bar
+set showmode
+
+" show command as it's keyed on status line
+set showcmd
+
+" enable searching as you type and highlight the matches
+set incsearch
+set hlsearch
+
+" when lowercase used do case-insensitive search
+" (if it contains any capital letters, case-sensitive)
+set ignorecase
+set smartcase
+
+" setup leader shortcuts
+let mapleader = " "
+
+" clear current search highlighting
+nnoremap <CR> :noh<CR>
+
+nnoremap <leader>nt :NERDTreeToggle<CR>
+
+" fuzzy find file
+map <leader>fs <Action>(GotoFile)
+
+" toggle whitespace
+map <leader>tw <Action>(EditorToggleShowWhitespaces)
+
+" reload VIM config
+nnoremap <leader>rc :source "~/.ideavimrc"<CR>
