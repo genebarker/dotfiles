@@ -25,6 +25,9 @@ unset file;
 # allow aliases to be sudo'ed
 alias sudo='sudo '
 
+# switch quickly to super user
+alias ssu='sudo su -'
+
 # show path
 alias path='echo -e ${PATH//:/\\n}'
 
