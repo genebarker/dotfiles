@@ -1,0 +1,174 @@
+#!/bin/bash
+
+# exit script immediately on non-zero status
+set -e
+
+VERSION="1.0.0-SNAPSHOT"
+
+DOTFILE_FOLDER="$HOME/dotfiles"
+BASE_DOTFILES=( vimrc ideavimrc vrapperrc tmux.conf )
+MACOS_DOTFILES=( bash_profile )
+LINUX_DOTFILES=( bashrc )
+
+SCRIPT_FILENAME="$(basename ${BASH_SOURCE})"
+
+HELP=$(cat << EOF
+NAME
+    ${SCRIPT_FILENAME} - a dotfile bootstrapper
+
+SYNOPSIS
+    ${SCRIPT_FILENAME} [-bhp]
+
+DESCRIPTION
+    Bootstrap local dotfiles (${DOTFILE_FOLDER}).
+
+OPTIONS
+    -b  Bootstrap dotfiles
+    -h  Display this help
+    -p  Pull the latest dotfiles
+EOF
+)
+
+BOOTSTRAP=OFF
+PULL_REPO=OFF
+
+run_main() {
+    display_script_header
+    parse_script_options $@
+
+    verify_running_in_bash
+    verify_dotfile_folder_exists
+    if [ $PULL_REPO = ON ]
+    then
+        pull_latest_dotfiles
+    fi
+    verify_bootstrap_selected
+
+    link_dotfiles
+}
+
+display_script_header() {
+    echo "${SCRIPT_FILENAME} for Bash"
+    echo "Version ${VERSION} - MIT License"
+    echo
+}
+
+parse_script_options()
+{
+    echo ".. parsing script options"
+    while getopts ':bhp' opt
+    do
+        case "$opt" in
+            b)
+                BOOTSTRAP=ON
+                ;;
+            p)
+                PULL_REPO=ON
+                ;;
+            h)
+                show_help
+                exit 0
+                ;;
+            :)
+                show_error "Option requires an argument."
+                exit 1
+                ;;
+            ?)
+                show_error "Invalid command option."
+                exit 1
+                ;;
+        esac
+    done
+
+    # remove getopts parms from parameter list
+    shift $((OPTIND-1))
+}
+
+show_help()
+{
+    echo
+    echo "${HELP}"
+}
+
+show_error()
+{
+    local message=$1
+    echo
+    echo "ERROR: $1"
+}
+
+verify_running_in_bash()
+{
+    if [[ $SHELL =~ .*/bash$ ]]
+    then
+        echo ".. verified running in bash ($SHELL)"
+    else
+        show_error "Script must be run in a bash shell."
+        exit 1
+    fi
+}
+
+verify_dotfile_folder_exists()
+{
+    if [ -d "$DOTFILE_FOLDER" ]
+    then
+        echo ".. found dotfile folder ($DOTFILE_FOLDER)"
+    else
+        show_error "Dotfile folder ($DOTFILE_FOLDER) not found."
+        exit 1
+    fi
+}
+
+pull_latest_dotfiles()
+{
+    echo ".. pulling latest dotfiles"
+    cd "$DOTFILE_FOLDER"
+    git pull origin master
+    echo ".. latest dotfiles pulled"
+}
+
+verify_bootstrap_selected()
+{
+    if [ $BOOTSTRAP = OFF ]
+    then
+        echo
+        echo "Exiting since bootstrap option not used."
+        exit 0
+    fi
+}
+
+link_dotfiles() {
+    echo ".. linking dotfiles"
+    process_dotfile_list ${BASE_DOTFILES[@]}
+    if [ "$(uname)" == "Darwin" ]
+    then
+        process_dotfile_list ${MACOS_DOTFILES[@]}
+    else
+        process_dotfile_list ${LINUX_DOTFILES[@]}
+    fi
+    echo ".. dotfiles linked"
+}
+
+process_dotfile_list() {
+    local FILE_LIST=( "$@" )
+    for file in ${FILE_LIST[@]} ; do
+        source_file="$DOTFILE_FOLDER/$file"
+        target_file="$HOME/.$file"
+        link_file $source_file $target_file
+    done;
+}
+
+link_file() {
+    local source_filename=$1
+    local target_filename=$2
+    if [ "$MSYSTEM" == "MINGW64" ] ; then
+        # copy in since symbolic links on windows is painful
+        cp $source_filename $target_filename
+        echo ".. copied $source_filename to $target_filename"
+        return
+    fi
+    ln -sf $source_filename $target_filename
+    echo ".. created link $target_filename -> $source_filename"
+}
+
+run_main $@
