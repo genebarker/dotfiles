@@ -22,6 +22,11 @@ for file in ~/.{path,extra}; do
 done;
 unset file;
 
+# refresh dotfile links on Windows
+if [ "$MSYSTEM" == "MINGW64" ] ; then
+    $HOME/dotfiles/bsdots -b
+fi
+
 # allow aliases to be sudo'ed
 alias sudo='sudo '
 
