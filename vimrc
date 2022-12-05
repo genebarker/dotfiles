@@ -56,6 +56,7 @@ let g:gitgutter_map_keys = 0
 " no swap files, use undo files instead
 set noswapfile
 set undodir=~/.vim/undodir
+call mkdir(&undodir, "p")
 set undofile
 
 " show line numbering
