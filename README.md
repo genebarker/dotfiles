@@ -12,5 +12,5 @@ etc.).
 ## How it Works
 
 The script creates symbolic links to the dotfiles in the repo. EXCEPT on Git
-Bash, it copies the dotfiles into the $HOME, and refreshes them on each
+Bash, it copies the dotfiles into the `$HOME`, and refreshes them on each
 launch (because symbolic link support on windows is yucky).
