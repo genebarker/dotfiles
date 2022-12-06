@@ -25,6 +25,7 @@ unset file;
 # refresh dotfile links on Windows
 if [ "$MSYSTEM" == "MINGW64" ] ; then
     $HOME/dotfiles/bsdots -b
+    cd ~
 fi
 
 # allow aliases to be sudo'ed
