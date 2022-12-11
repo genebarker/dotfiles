@@ -30,8 +30,7 @@ Plug 'morhetz/gruvbox'              " use gruvbox colorscheme
 Plug 'airblade/vim-gitgutter'       " show changed lines
 Plug 'vim-airline/vim-airline'      " use enhanced status line
 Plug 'scrooloose/nerdtree'          " add a file explorer
-Plug 'junegunn/fzf'                 " add a fuzzy file finder
-Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'           " add a fuzzy file finder
 " extend VIM moves
 Plug 'tpope/vim-capslock'           " add software caps lock
 Plug 'tpope/vim-commentary'         " comment stuff out fast
@@ -173,10 +172,6 @@ set wildmenu
 " setup leader shortcuts
 let mapleader = " "
 
-" buffer shortcuts
-nnoremap <C-n> :bnext<CR>
-nnoremap <C-p> :bprevious<CR>
-
 " clear current search highlighting
 nnoremap <CR> :noh<CR>
 
@@ -190,14 +185,6 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>rc :source $MYVIMRC<CR>
 
 " plugin shortcuts
-function! FuzzySearch()
-    if (isdirectory('.git'))
-        :GFiles
-    else
-        :Files
-    endif
-endfunc
-nnoremap <leader>fs :call FuzzySearch()<CR>
 nnoremap <leader>tn :call ToggleNumber()<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
