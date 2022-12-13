@@ -69,7 +69,7 @@ alias gps="git push origin master"
 alias gpl="git pull origin master"
 
 # bat alias for debian
-if [ -f /ect/debian_version ]
+if [ -f /etc/debian_version ]
 then
     alias bat="batcat"
 fi
