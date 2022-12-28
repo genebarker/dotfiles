@@ -25,7 +25,7 @@ call plug#begin('~/.vim/plugged')
 
 " enhance GUI
 Plug 'tpope/vim-sensible'           " initialize VIM with better defaults
-Plug 'tomasr/molokai'               " use molokai colorscheme
+Plug 'joshdick/onedark.vim'         " use onedark theme
 Plug 'airblade/vim-gitgutter'       " show changed lines
 Plug 'vim-airline/vim-airline'      " use enhanced status line
 Plug 'scrooloose/nerdtree'          " add a file explorer
@@ -128,7 +128,7 @@ set showcmd
 syntax enable
 
 " with a great color scheme
-colorscheme molokai
+colorscheme onedark
 
 " open new split pane on right/bottom
 " (feels more natural)
