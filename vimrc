@@ -37,6 +37,9 @@ Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
 Plug 'vim-scripts/argtextobj.vim'   " change & delete arguments fast
 Plug 'tommcdo/vim-exchange'         " swap vim selections fast
 Plug 'junegunn/vim-easy-align'      " helper to vertically align text
+" support writing
+Plug 'junegunn/goyo.vim'            " add distraction-free writing mode
+Plug 'junegunn/limelight.vim'       " highlight focus area
 " extend language support
 Plug 'aliou/bats.vim'               " BATS test files
 if has('python3')
@@ -50,6 +53,10 @@ map <C-a> <Nop>
 
 " don't use plugin's key mappings
 let g:gitgutter_map_keys = 0
+
+" use goyo & limelight together
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 " no swap files, use undo files instead
 set noswapfile
@@ -128,6 +135,7 @@ set showcmd
 syntax enable
 
 " with a great color scheme
+let g:limelight_conceal_ctermfg = 'DarkGray' " needed to support this scheme
 colorscheme onedark
 
 " open new split pane on right/bottom
