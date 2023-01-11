@@ -64,6 +64,9 @@ set undodir=~/.vim/undodir
 call mkdir(&undodir, "p")
 set undofile
 
+" use system clipboard for copy & paste
+set clipboard=unnamed
+
 " show line numbering
 set number relativenumber
 
