@@ -61,7 +61,9 @@ autocmd! User GoyoLeave Limelight!
 " no swap files, use undo files instead
 set noswapfile
 set undodir=~/.vim/undodir
-call mkdir(&undodir, "p")
+if !isdirectory(&undodir)
+    call mkdir(&undodir, "p")
+endif
 set undofile
 
 " use system clipboard for copy & paste
