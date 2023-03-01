@@ -37,6 +37,9 @@ alias ssu='sudo su -'
 # show path
 alias path='echo -e ${PATH//:/\\n}'
 
+# clear screen
+alias c='clear'
+
 # protect accidental overwrites
 alias cp='cp -i'
 alias mv='mv -i'
