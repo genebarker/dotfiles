@@ -81,7 +81,11 @@ fi
 alias v="vim"
 
 # grep shortcuts
-alias grep="grep --color"
+if [[ "$OSTYPE" == "darwin"* ]]; then # macOS
+    alias G="ggrep -E --color"
+else # linux
+    alias G="grep -E --color"
+fi
 
 # set prompt - from anishathalye/dotfiles/bash/prompt.bash
 ATTRIBUTE_BOLD='\[\e[1m\]'
