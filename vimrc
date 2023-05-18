@@ -40,6 +40,7 @@ Plug 'junegunn/vim-easy-align'      " helper to vertically align text
 " support writing
 Plug 'junegunn/goyo.vim'            " add distraction-free writing mode
 Plug 'junegunn/limelight.vim'       " highlight focus area
+Plug 'preservim/vim-pencil'         " better wrapping for writing
 " extend language support
 Plug 'aliou/bats.vim'               " BATS test files
 if has('python3')
@@ -57,6 +58,16 @@ let g:gitgutter_map_keys = 0
 " use goyo & limelight together
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+" show vim-pencil mode in status line
+let g:airline_section_x = '%{PencilMode()}'
+
+" turn on vim-pencil for text files
+augroup pencil
+    autocmd!
+    autocmd FileType markdown,mkd call pencil#init()
+    autocmd FileType text         call pencil#init()
+augroup END
 
 " no swap files, use undo files instead
 set noswapfile
