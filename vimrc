@@ -222,11 +222,12 @@ function! NewNote()
     startinsert!
 endfunc
 function! NextNoteReference()
-    call search('\[\[\d', 'e')
+    call search('\[\[\w', 'e')
 endfunc
 
-nnoremap <leader>sc :! . ~/notes/cards<CR>
-nnoremap <leader>st :! . ~/notes/tags<CR>
+nnoremap <leader>sc :! ~/zbox/zzcards.sh<CR>
+nnoremap <leader>st :! ~/zbox/zztags.sh<CR>
+nnoremap <leader>sT :! ~/zbox/zztopics.sh<CR>
 nnoremap <leader>nn :call NewNote()<CR>
 nnoremap <leader>nr :call NextNoteReference()<CR>
 
