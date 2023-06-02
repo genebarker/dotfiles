@@ -207,6 +207,7 @@ nnoremap <leader>rc :source $MYVIMRC<CR>
 
 " plugin shortcuts
 nnoremap <leader>tn :call ToggleNumber()<CR>
+nnoremap <leader>tp :TogglePencil<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>gg :GitGutterToggle<CR>
