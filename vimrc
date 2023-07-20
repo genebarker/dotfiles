@@ -42,10 +42,8 @@ Plug 'junegunn/goyo.vim'            " add distraction-free writing mode
 Plug 'junegunn/limelight.vim'       " highlight focus area
 Plug 'preservim/vim-pencil'         " better wrapping for writing
 " extend language support
-Plug 'aliou/bats.vim'               " BATS test files
-if has('python3')
-    Plug 'davidhalter/jedi-vim'     " Python goto def & auto completion
-endif
+Plug 'dense-analysis/ale'           " linting and LSP support
+Plug 'aliou/bats.vim'               " grok BATS test files
 
 call plug#end()
 
@@ -68,6 +66,11 @@ augroup pencil
     autocmd FileType markdown,mkd call pencil#init()
     autocmd FileType text         call pencil#init()
 augroup END
+
+" configure ALE plugin
+let g:ale_linters = { 'python' : ['pylsp'] }
+let g:ale_fixers = { 'python': ['black'] }
+let g:ale_fix_on_save = 1
 
 " no swap files, use undo files instead
 set noswapfile
