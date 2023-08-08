@@ -42,7 +42,9 @@ Plug 'junegunn/goyo.vim'            " add distraction-free writing mode
 Plug 'junegunn/limelight.vim'       " highlight focus area
 Plug 'preservim/vim-pencil'         " better wrapping for writing
 " extend language support
-Plug 'dense-analysis/ale'           " linting and LSP support
+if v:version >= 800
+    Plug 'dense-analysis/ale'       " linting and LSP support
+endif
 Plug 'aliou/bats.vim'               " grok BATS test files
 
 call plug#end()
