@@ -9,9 +9,13 @@ set hlsearch
 " clear current search highlighting
 nnoremap <CR> :noh<CR>
 
-" perform quick search
-eclipseuiaction quicksearch org.eclipse.text.quicksearch.commands.quicksearchCommand
-nnoremap <SPACE>qs :quicksearch<CR>
+" fast buffer switching
+nnoremap <Tab> :bn<CR>
+nnoremap <S-Tab> :bp<CR>
+
+" perform resource search
+eclipseuiaction resourcesearch org.eclipse.ui.navigate.openResource
+nnoremap <C-P> :resourcesearch<CR>
 
 " toggle show whitespace
 nnoremap <SPACE>tw :set list!<CR>
