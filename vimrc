@@ -203,6 +203,8 @@ let mapleader = " "
 nnoremap <CR> :noh<CR>
 
 " buffer shortcuts
+nnoremap <Tab> :bn<CR>
+nnoremap <S-Tab> :bp<CR>
 nnoremap <leader>b :ls<CR>:b<Space>
 
 " window shortcuts
