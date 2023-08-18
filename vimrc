@@ -239,9 +239,14 @@ nnoremap <leader>at :call AlignMarkdownTable()<CR>
 " notes shortcuts
 function! NewNote()
     let l:z_timestamp = strftime("%Y-%m-%d-%H%M")
-    execute "e " . l:z_timestamp . '.md'
-    call append(0, l:z_timestamp . ' ')
-    normal! k$
+    execute "e " . '~/zbox/' . l:z_timestamp . '-new-note.md'
+    let l:z_buf = bufnr('%')
+    call appendbufline(l:z_buf, 0, '#Tag1 #Tag2')
+    call appendbufline(l:z_buf, 1, '')
+    call appendbufline(l:z_buf, 2, '# Some Title')
+    call appendbufline(l:z_buf, 3, '')
+    call appendbufline(l:z_buf, 4, 'Some text.')
+    normal! kdd
     startinsert!
 endfunc
 function! NextNoteReference()
