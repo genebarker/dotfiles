@@ -13,6 +13,12 @@ nnoremap <CR> :noh<CR>
 nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
 
+" window shortcuts
+nnoremap <SPACE>h :wincmd h<CR>
+nnoremap <SPACE>j :wincmd j<CR>
+nnoremap <SPACE>k :wincmd k<CR>
+nnoremap <SPACE>l :wincmd l<CR>
+
 " perform resource search
 eclipseuiaction resourcesearch org.eclipse.ui.navigate.openResource
 nnoremap <C-P> :resourcesearch<CR>
