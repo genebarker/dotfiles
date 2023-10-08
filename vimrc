@@ -30,6 +30,7 @@ Plug 'airblade/vim-gitgutter'       " show changed lines
 Plug 'vim-airline/vim-airline'      " use enhanced status line
 Plug 'scrooloose/nerdtree'          " add a file explorer
 Plug 'ctrlpvim/ctrlp.vim'           " add a fuzzy file finder
+Plug 'mbbill/undotree'              " see undo history & branches
 " extend VIM moves
 Plug 'tpope/vim-capslock'           " add software caps lock
 Plug 'tpope/vim-commentary'         " comment stuff out fast
@@ -220,6 +221,7 @@ nnoremap <leader>rc :source $MYVIMRC<CR>
 nnoremap <leader>tn :call ToggleNumber()<CR>
 nnoremap <leader>tp :TogglePencil<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
+nnoremap <leader>tu :UndotreeToggle<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>gg :GitGutterToggle<CR>
 nnoremap <leader>tw :set list!<CR>
