@@ -30,6 +30,7 @@ Plug 'airblade/vim-gitgutter'       " show changed lines
 Plug 'vim-airline/vim-airline'      " use enhanced status line
 Plug 'scrooloose/nerdtree'          " add a file explorer
 Plug 'ctrlpvim/ctrlp.vim'           " add a fuzzy file finder
+Plug 'mileszs/ack.vim'              " add better grep & quickfix
 Plug 'mbbill/undotree'              " see undo history & branches
 " extend VIM moves
 Plug 'tpope/vim-capslock'           " add software caps lock
