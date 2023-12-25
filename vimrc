@@ -131,6 +131,15 @@ set complete+=kspell
 set colorcolumn=76
 set textwidth=76
 
+" function to toggle text width to enable / disable hard wrapping
+function! ToggleHardWrap()
+    if(&textwidth == 0)
+        set textwidth=76
+    else
+        set textwidth=0
+    endif
+endfunc
+
 " use one space between sentences
 set nojoinspaces
 
@@ -219,6 +228,7 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>rc :source $MYVIMRC<CR>
 
 " plugin shortcuts
+nnoremap <leader>th :call ToggleHardWrap()<CR>
 nnoremap <leader>tn :call ToggleNumber()<CR>
 nnoremap <leader>tp :TogglePencil<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
