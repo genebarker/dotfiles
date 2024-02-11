@@ -27,6 +27,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'           " initialize VIM with better defaults
 Plug 'joshdick/onedark.vim'         " use onedark theme
 Plug 'airblade/vim-gitgutter'       " show changed lines
+Plug 'tpope/vim-fugitive'           " add direct git access
 Plug 'vim-airline/vim-airline'      " use enhanced status line
 Plug 'scrooloose/nerdtree'          " add a file explorer
 Plug 'ctrlpvim/ctrlp.vim'           " add a fuzzy file finder
