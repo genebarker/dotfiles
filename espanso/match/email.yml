@@ -1,0 +1,5 @@
+matches:
+  - trigger: ";wgene"
+    replace: >
+              Sorry, you have the wrong Gene. Please remove my address from
+              your records.
