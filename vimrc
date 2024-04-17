@@ -39,7 +39,6 @@ Plug 'tpope/vim-commentary'         " comment stuff out fast
 Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
 Plug 'vim-scripts/argtextobj.vim'   " change & delete arguments fast
 Plug 'tommcdo/vim-exchange'         " swap vim selections fast
-Plug 'junegunn/vim-easy-align'      " helper to vertically align text
 " support writing
 Plug 'junegunn/goyo.vim'            " add distraction-free writing mode
 Plug 'junegunn/limelight.vim'       " highlight focus area
@@ -235,20 +234,7 @@ nnoremap <leader>tp :TogglePencil<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>tu :UndotreeToggle<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
-nnoremap <leader>gg :GitGutterToggle<CR>
 nnoremap <leader>tw :set list!<CR>
-
-function! AlignMarkdownTable()
-    normal! {jj
-    silent! s/\s\{2,}/ /g
-    silent! s/\-\{2,}/-/g
-    execute "normal vip:EasyAlign *|\<CR>"
-    normal! {jj
-    silent! s/\s/-/g
-    silent! s/\-|\-/ | /g
-    normal! $
-endfunc
-nnoremap <leader>at :call AlignMarkdownTable()<CR>
 
 " notes shortcuts
 function! NewNote()
