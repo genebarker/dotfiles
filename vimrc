@@ -55,10 +55,6 @@ map <C-a> <Nop>
 " don't use plugin's key mappings
 let g:gitgutter_map_keys = 0
 
-" use goyo & limelight together
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
 " show vim-pencil mode in status line
 let g:airline_section_x = '%{PencilMode()}'
 
