@@ -40,8 +40,6 @@ Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
 Plug 'vim-scripts/argtextobj.vim'   " change & delete arguments fast
 Plug 'tommcdo/vim-exchange'         " swap vim selections fast
 " support writing
-Plug 'junegunn/goyo.vim'            " add distraction-free writing mode
-Plug 'junegunn/limelight.vim'       " highlight focus area
 Plug 'preservim/vim-pencil'         " better wrapping for writing
 " extend language support
 if v:version >= 800
