@@ -41,11 +41,12 @@ Plug 'vim-scripts/argtextobj.vim'   " change & delete arguments fast
 Plug 'tommcdo/vim-exchange'         " swap vim selections fast
 " support writing
 Plug 'preservim/vim-pencil'         " better wrapping for writing
-" extend language support
+" extend programming support
 if v:version >= 800
     Plug 'dense-analysis/ale'       " linting and LSP support
 endif
 Plug 'aliou/bats.vim'               " grok BATS test files
+Plug 'vim-test/vim-test'            " fast testing
 
 call plug#end()
 
@@ -229,6 +230,8 @@ nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>tu :UndotreeToggle<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>tw :set list!<CR>
+nnoremap <leader>tt :TestFile<CR>
+nnoremap <leader>ta :TestSuite<CR>
 
 " notes shortcuts
 function! NewNote()
@@ -252,21 +255,6 @@ nnoremap <leader>st :! ~/zbox/zztags.sh<CR>
 nnoremap <leader>sT :! ~/zbox/zztopics.sh<CR>
 nnoremap <leader>nn :call NewNote()<CR>
 nnoremap <leader>nr :call NextNoteReference()<CR>
-
-" testing shortcuts
-function! TestThisFile()
-    if(&filetype ==# 'python')
-        write
-        !pytest %
-    elseif(&filetype ==# 'bats')
-        write
-        !%
-    endif
-endfunc
-
-nnoremap <leader>pt :!pytest %<CR>
-nnoremap <leader>pT :!pytest<CR>
-nnoremap <leader>tt :call TestThisFile()<CR>
 
 " close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1
