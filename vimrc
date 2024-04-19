@@ -69,6 +69,9 @@ let g:ale_fixers = { 'python': ['black'] }
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 
+" use nice split window when running tests
+let test#strategy = "vimterminal"
+
 " no swap files, use undo files instead
 set noswapfile
 set undodir=~/.vim/undodir
