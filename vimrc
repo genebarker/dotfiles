@@ -50,9 +50,6 @@ Plug 'vim-test/vim-test'            " fast testing
 
 call plug#end()
 
-" reserve ctrl-a for tmux
-map <C-a> <Nop>
-
 " don't use plugin's key mappings
 let g:gitgutter_map_keys = 0
 
