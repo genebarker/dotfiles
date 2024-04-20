@@ -130,8 +130,10 @@ set textwidth=76
 function! ToggleHardWrap()
     if(&textwidth == 0)
         set textwidth=76
+        echom "set textwidth=76 (hard wrap ON)"
     else
         set textwidth=0
+        echom "set textwidth=0 (hard wrap OFF)"
     endif
 endfunc
 
