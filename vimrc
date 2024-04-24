@@ -232,6 +232,12 @@ nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>tu :UndotreeToggle<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>tw :set list!<CR>
+
+" programming shortcuts
+nnoremap gd :ALEGoToDefinition<CR>
+nnoremap gR :ALERename<CR>
+nnoremap <leader>ne :ALENextWrap<CR>
+nnoremap <leader>fr :ALEFindReferences<CR>
 nnoremap <leader>tt :w \| :TestFile<CR>
 nnoremap <leader>ta :w \| :TestSuite<CR>
 
