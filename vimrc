@@ -232,8 +232,8 @@ nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>tu :UndotreeToggle<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>tw :set list!<CR>
-nnoremap <leader>tt :TestFile<CR>
-nnoremap <leader>ta :TestSuite<CR>
+nnoremap <leader>tt :w \| :TestFile<CR>
+nnoremap <leader>ta :w \| :TestSuite<CR>
 
 " notes shortcuts
 function! NewNote()
