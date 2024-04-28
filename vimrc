@@ -33,6 +33,7 @@ Plug 'scrooloose/nerdtree'          " add a file explorer
 Plug 'ctrlpvim/ctrlp.vim'           " add a fuzzy file finder
 Plug 'mileszs/ack.vim'              " add better grep & quickfix
 Plug 'mbbill/undotree'              " see undo history & branches
+Plug 'christoomey/vim-tmux-navigator' " add smart pane switching VIM & tmux
 " extend VIM moves
 Plug 'tpope/vim-capslock'           " add software caps lock
 Plug 'tpope/vim-commentary'         " comment stuff out fast
