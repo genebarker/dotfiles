@@ -166,7 +166,6 @@ set showcmd
 syntax enable
 
 " with a great color scheme
-let g:limelight_conceal_ctermfg = 'DarkGray' " needed to support this scheme
 colorscheme onedark
 
 " open new split pane on right/bottom
