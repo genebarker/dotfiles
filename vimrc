@@ -239,7 +239,7 @@ nnoremap <leader>th :call ToggleHardWrap()<CR>
 nnoremap <leader>tn :call ToggleNumber()<CR>
 nnoremap <leader>tp :TogglePencil<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
-nnoremap <leader>tu :UndotreeToggle<CR>
+nnoremap <leader>ut :UndotreeToggle<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>tw :set list!<CR>
 
