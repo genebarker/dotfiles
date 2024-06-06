@@ -25,10 +25,12 @@ call plug#begin('~/.vim/plugged')
 
 " enhance GUI
 Plug 'tpope/vim-sensible'           " initialize VIM with better defaults
-Plug 'joshdick/onedark.vim'         " use onedark theme
+Plug 'morhetz/gruvbox'              " use gruvbox theme
+Plug 'joshdick/onedark.vim'         " use onedark theme on lesser terminals
 Plug 'airblade/vim-gitgutter'       " show changed lines
 Plug 'tpope/vim-fugitive'           " add direct git access
 Plug 'vim-airline/vim-airline'      " use enhanced status line
+Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'          " add a file explorer
 Plug 'ctrlpvim/ctrlp.vim'           " add a fuzzy file finder
 Plug 'mileszs/ack.vim'              " add better grep & quickfix
@@ -125,7 +127,7 @@ set complete+=kspell
 " set visual cue for the max width I like my text files
 " and the wrap for 'gq' command
 set colorcolumn=76
-set textwidth=76
+set textwidth=0
 
 " function to toggle text width to enable / disable hard wrapping
 function! ToggleHardWrap()
@@ -166,7 +168,13 @@ set showcmd
 syntax enable
 
 " with a great color scheme
-colorscheme onedark
+if has("termguicolors")
+    set termguicolors
+    set background=dark
+    colorscheme gruvbox
+else
+    colorscheme onedark
+endif
 
 " open new split pane on right/bottom
 " (feels more natural)
