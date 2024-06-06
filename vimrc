@@ -127,16 +127,18 @@ set complete+=kspell
 " set visual cue for the max width I like my text files
 " and the wrap for 'gq' command
 set colorcolumn=76
-set textwidth=0
+
+" turn on hard wrapping for text files
+autocmd FileType text,markdown,mkd setlocal textwidth=76
 
 " function to toggle text width to enable / disable hard wrapping
 function! ToggleHardWrap()
-    if(&textwidth == 0)
-        set textwidth=76
-        echom "set textwidth=76 (hard wrap ON)"
+    if(&l:textwidth == 0)
+        setlocal textwidth=76
+        echom "setlocal textwidth=76 (hard wrap ON)"
     else
-        set textwidth=0
-        echom "set textwidth=0 (hard wrap OFF)"
+        setlocal textwidth=0
+        echom "setlocal textwidth=0 (hard wrap OFF)"
     endif
 endfunc
 
