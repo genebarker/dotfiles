@@ -42,6 +42,7 @@ Plug 'tpope/vim-commentary'         " comment stuff out fast
 Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
 Plug 'vim-scripts/argtextobj.vim'   " change & delete arguments fast
 Plug 'tommcdo/vim-exchange'         " swap vim selections fast
+Plug 'tpope/vim-repeat'             " add repeat support to extended moves
 " support writing
 Plug 'preservim/vim-pencil'         " better wrapping for writing
 " extend programming support
