@@ -41,6 +41,7 @@ Plug 'tpope/vim-capslock'           " add software caps lock
 Plug 'tpope/vim-commentary'         " comment stuff out fast
 Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
 Plug 'vim-scripts/argtextobj.vim'   " change & delete arguments fast
+Plug 'michaeljsmith/vim-indent-object' " change & delete indented text fast
 Plug 'tommcdo/vim-exchange'         " swap vim selections fast
 Plug 'tpope/vim-repeat'             " add repeat support to extended moves
 " support writing
