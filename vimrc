@@ -90,16 +90,6 @@ set clipboard=unnamed
 " show line numbering
 set number relativenumber
 
-" function to toggle between regular / relative numbering
-function! ToggleNumber()
-    if(&relativenumber == 1)
-        set norelativenumber
-        set number
-    else
-        set relativenumber
-    endif
-endfunc
-
 " show tabs and non-breakable spaces
 set listchars=tab:>-,trail:~,eol:$
 
@@ -237,7 +227,6 @@ nnoremap <leader>rc :source $MYVIMRC<CR>
 
 " plugin shortcuts
 nnoremap <leader>th :call ToggleHardWrap()<CR>
-nnoremap <leader>tn :call ToggleNumber()<CR>
 nnoremap <leader>tp :TogglePencil<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>ut :UndotreeToggle<CR>
