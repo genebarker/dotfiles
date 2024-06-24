@@ -50,7 +50,6 @@ Plug 'preservim/vim-pencil'         " better wrapping for writing
 if v:version >= 800
     Plug 'dense-analysis/ale'       " linting and LSP support
 endif
-Plug 'aliou/bats.vim'               " grok BATS test files
 Plug 'vim-test/vim-test'            " fast testing
 
 call plug#end()
