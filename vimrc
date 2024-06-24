@@ -54,7 +54,7 @@ Plug 'vim-test/vim-test'            " fast testing
 
 call plug#end()
 
-" don't use plugin's key mappings
+" don't use gitgutter's key mappings
 let g:gitgutter_map_keys = 0
 
 " show vim-pencil mode in status line
