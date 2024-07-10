@@ -48,9 +48,12 @@ Plug 'tpope/vim-repeat'             " add repeat support to extended moves
 Plug 'preservim/vim-pencil'         " better wrapping for writing
 " extend programming support
 if v:version >= 800
-    Plug 'dense-analysis/ale'       " linting and LSP support
+    Plug 'dense-analysis/ale'       " add linting and LSP support
 endif
-Plug 'vim-test/vim-test'            " fast testing
+Plug 'vim-test/vim-test'            " add fast testing support
+if has('python3') 
+    Plug 'madox2/vim-ai'            " add AI support
+endif
 
 call plug#end()
 
