@@ -40,6 +40,7 @@ Plug 'christoomey/vim-tmux-navigator' " add smart pane switching VIM & tmux
 Plug 'tpope/vim-capslock'           " add software caps lock
 Plug 'tpope/vim-commentary'         " comment stuff out fast
 Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
+Plug 'godlygeek/tabular'            " align columns of text
 Plug 'vim-scripts/argtextobj.vim'   " change & delete arguments fast
 Plug 'michaeljsmith/vim-indent-object' " change & delete indented text fast
 Plug 'tommcdo/vim-exchange'         " swap vim selections fast
@@ -51,7 +52,7 @@ if v:version >= 800
     Plug 'dense-analysis/ale'       " add linting and LSP support
 endif
 Plug 'vim-test/vim-test'            " add fast testing support
-if has('python3') 
+if has('python3')
     Plug 'madox2/vim-ai'            " add AI support
 endif
 
@@ -229,6 +230,7 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>rc :source $MYVIMRC<CR>
 
 " plugin shortcuts
+nnoremap <leader>at :Tabularize /<Bar><CR>
 nnoremap <leader>th :call ToggleHardWrap()<CR>
 nnoremap <leader>tp :TogglePencil<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
