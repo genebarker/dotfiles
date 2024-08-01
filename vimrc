@@ -41,6 +41,7 @@ Plug 'tpope/vim-capslock'           " add software caps lock
 Plug 'tpope/vim-commentary'         " comment stuff out fast
 Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
 Plug 'godlygeek/tabular'            " align columns of text
+Plug 'genebarker/vim-tidytable'     " align markdown pipe tables fast
 Plug 'vim-scripts/argtextobj.vim'   " change & delete arguments fast
 Plug 'michaeljsmith/vim-indent-object' " change & delete indented text fast
 Plug 'tommcdo/vim-exchange'         " swap vim selections fast
@@ -51,6 +52,7 @@ Plug 'preservim/vim-pencil'         " better wrapping for writing
 if v:version >= 800
     Plug 'dense-analysis/ale'       " add linting and LSP support
 endif
+Plug 'junegunn/vader.vim'           " add vimscript testing support
 Plug 'vim-test/vim-test'            " add fast testing support
 if has('python3')
     Plug 'madox2/vim-ai'            " add AI support
@@ -230,101 +232,13 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>rc :source $MYVIMRC<CR>
 
 " plugin shortcuts
-nnoremap <leader>at :call TidyGithubMarkdownTable()<CR>
+nnoremap <leader>at :TidyMarkdownTable<CR>
 nnoremap <leader>th :call ToggleHardWrap()<CR>
 nnoremap <leader>tp :TogglePencil<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>ut :UndotreeToggle<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>tw :set list!<CR>
-
-function! TidyGithubMarkdownTable()
-    if !(VerifyHasAlignmentFunction() && VerifyInsideMarkdownTable()) 
-        return 0
-    endif
-    call MinimizeSeperatorLine()
-    call AlignMarkdownTableColumns()
-    call TidyMarkdownTableHeader()
-endfunc
-
-function! VerifyHasAlignmentFunction()
-    if exists(':Tabularize')
-        return 1
-    endif
-    echo 'error: missing required plugin godlygeek/tabular'
-    return 0
-endfunc
-
-function! VerifyInsideMarkdownTable()
-    let p = '^.*|'
-    if getline('.') =~# p && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-        return 1
-    endif
-    echo 'error: must be inside a markdown table'
-    return 0
-endfunc
-
-function! MinimizeSeperatorLine()
-    let start_line_no = GetStartLineNoOfTable()
-    let end_line_no = GetEndLineNoOfTable()
-    let seperator_line = getline(start_line_no + 1)
-    if seperator_line !~ '^.*-\{3\}'
-        " not a seperator for a markdown table
-        return
-    endif
-    let minimized_line = substitute(seperator_line, '-\{4,\}', '---', 'g')
-    call setline(start_line_no + 1, minimized_line)
-endfunc
-
-function! GetStartLineNoOfTable()
-    let lineNo = line('.')
-    while getline(lineNo - 1) =~# '^.*|'
-        let lineNo -= 1
-    endwhile
-    return lineNo
-endfunc
-
-function! GetEndLineNoOfTable()
-    let lineNo = line('.')
-    while getline(lineNo + 1) =~# '^.*|'
-        let lineNo += 1
-    endwhile
-    return lineNo
-endfunc
-
-function! AlignMarkdownTableColumns()
-    Tabularize /|/l1
-endfunc
-
-function! TidyMarkdownTableHeader()
-    let start_line_no = GetStartLineNoOfTable()
-    let end_line_no = GetEndLineNoOfTable()
-    let seperator_line = getline(start_line_no + 1)
-    if seperator_line !~ '^.*-\{3\}'
-        echo 'info: no markdown table header to tidy'
-        return
-    endif
-    let max_line_length = strlen(getline(start_line_no))
-    if end_line_no > (start_line_no + 1)
-        let table = getline(start_line_no + 2, end_line_no)
-        for line in table
-            if strlen(line) > max_line_length
-                let max_line_length = strlen(line)
-            endif
-        endfor
-    endif
-    " replace undashed spaces with dashes
-    let tidy_seperator = substitute(seperator_line, ' ', '-', 'g')
-    " pad pipes with a space
-    let tidy_seperator = substitute(tidy_seperator, '-|-', ' | ', 'g')
-    " truncate to max line length
-    let tidy_seperator = strpart(tidy_seperator, 0, max_line_length)
-    " pad to max line length
-    while strlen(tidy_seperator) < max_line_length
-        let tidy_seperator .= '-' 
-    endwhile
-    call setline(start_line_no + 1, tidy_seperator)
-endfunc
 
 " programming shortcuts
 nnoremap gd :ALEGoToDefinition<CR>
