@@ -82,6 +82,10 @@ let g:ale_completion_enabled = 1
 " use nice split window when running tests
 let test#strategy = "vimterminal"
 
+" configure vim-ai plugin to not delete the chat buffer
+" (let me manage it)
+let g:vim_ai_chat = { 'ui' : { 'scratch_buffer_keep_open' : 1 }}
+
 " no swap files, use undo files instead
 set noswapfile
 set undodir=~/.vim/undodir
@@ -232,6 +236,7 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>rc :source $MYVIMRC<CR>
 
 " plugin shortcuts
+nnoremap <leader>ac :AIChat<CR>
 nnoremap <leader>at :TidyMarkdownTable<CR>
 nnoremap <leader>th :call ToggleHardWrap()<CR>
 nnoremap <leader>tp :TogglePencil<CR>
