@@ -82,9 +82,17 @@ let g:ale_completion_enabled = 1
 " use nice split window when running tests
 let test#strategy = "vimterminal"
 
-" configure vim-ai plugin to not delete the chat buffer
-" (let me manage it)
-let g:vim_ai_chat = { 'ui' : { 'scratch_buffer_keep_open' : 1 }}
+" configure vim-ai plugin to:
+" - not delete the chat buffer (let me manage it)
+" - break lines automatically
+" - use my fav text width
+let g:vim_ai_chat = {
+\   'ui' : {
+\       'paste_mode': 0,
+\       'scratch_buffer_keep_open' : 1,
+\   },
+\}
+autocmd FileType aichat setlocal textwidth=76
 
 " no swap files, use undo files instead
 set noswapfile
