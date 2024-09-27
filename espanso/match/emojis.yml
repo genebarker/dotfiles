@@ -21,3 +21,5 @@ matches:
     replace: "\U0001F600"
   - trigger: ";eyes"
     replace: "\U0001F440"
+  - trigger: ";water"
+    replace: "\U0001F4A7"
