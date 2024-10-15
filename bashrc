@@ -61,6 +61,7 @@ alias l="ls -la ${ls_colorflag}"
 
 # git shortcuts
 alias g="git"
+alias gg="lazygit"
 alias gs="git status"
 alias gl="git log -10 --oneline"
 alias gd="git diff"
