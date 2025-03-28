@@ -69,9 +69,12 @@ let g:airline_section_x = '%{PencilMode()}'
 " turn on vim-pencil for text files
 augroup pencil
     autocmd!
-    autocmd FileType markdown,mkd call pencil#init()
-    autocmd FileType text         call pencil#init()
+    autocmd FileType markdown,text call pencil#init()
 augroup END
+
+" enable markdown folding and default to all open
+let g:markdown_folding = 1
+autocmd FileType markdown,text setlocal foldlevel=99
 
 " configure ALE plugin
 let g:ale_linters = { 'python' : ['pylsp'] }
