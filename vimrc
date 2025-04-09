@@ -54,9 +54,6 @@ if v:version >= 800
 endif
 Plug 'junegunn/vader.vim'           " add vimscript testing support
 Plug 'vim-test/vim-test'            " add fast testing support
-if has('python3')
-    Plug 'madox2/vim-ai'            " add AI support
-endif
 
 call plug#end()
 
