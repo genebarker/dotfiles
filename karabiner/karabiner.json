@@ -1,0 +1,281 @@
+{
+    "profiles": [
+        {
+            "complex_modifications": {
+                "parameters": {
+                    "basic.to_delayed_action_delay_milliseconds": 180,
+                    "basic.to_if_held_down_threshold_milliseconds": 180
+                },
+                "rules": [
+                    {
+                        "description": "Caps-Lock to Escape and Hyper",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "escape" }] },
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "key_code": "escape"
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": ["left_command", "left_control", "left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Hyper-C to open ChatGPT (i = dvorak c)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "i",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'ChatGPT'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Hyper-F to open Finder (y = dvorak f)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "y",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"Finder\" to activate'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Hyper-G to open Google Chrome (u = dvorak g)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "u",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Google Chrome'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Hyper-M to open Music (m = dvorak m)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Music'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Hyper-R to open Remote Desktop (o = dvorak r)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "o",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Microsoft Remote Desktop'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Hyper-S to open Safari (semicolon = dvorak s)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "semicolon",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Safari'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Hyper-T to open Things (k = dvorak t)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Things3'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Hyper-W to open Warp (comma = dvorak w)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "comma",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Warp'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "GASC Home Row Mods",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "a",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "a" }] },
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "key_code": "a"
+                                    }
+                                ],
+                                "to_if_held_down": [{ "key_code": "left_command" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "s" }] },
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "key_code": "s"
+                                    }
+                                ],
+                                "to_if_held_down": [{ "key_code": "left_option" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "d" }] },
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "key_code": "d"
+                                    }
+                                ],
+                                "to_if_held_down": [{ "key_code": "left_shift" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "f" }] },
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "key_code": "f"
+                                    }
+                                ],
+                                "to_if_held_down": [{ "key_code": "left_control" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "semicolon",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "semicolon" }] },
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "key_code": "semicolon"
+                                    }
+                                ],
+                                "to_if_held_down": [{ "key_code": "right_command" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "l" }] },
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "key_code": "l"
+                                    }
+                                ],
+                                "to_if_held_down": [{ "key_code": "right_option" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "k" }] },
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "key_code": "k"
+                                    }
+                                ],
+                                "to_if_held_down": [{ "key_code": "right_shift" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "j" }] },
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "key_code": "j"
+                                    }
+                                ],
+                                "to_if_held_down": [{ "key_code": "right_control" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "fn_function_keys": [
+                {
+                    "from": { "key_code": "f1" },
+                    "to": [{ "apple_vendor_keyboard_key_code": "brightness_down" }]
+                },
+                {
+                    "from": { "key_code": "f2" },
+                    "to": [{ "apple_vendor_keyboard_key_code": "brightness_up" }]
+                }
+            ],
+            "name": "Default profile",
+            "selected": true,
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+        }
+    ]
+}
