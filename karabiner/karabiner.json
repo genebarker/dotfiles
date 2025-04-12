@@ -72,6 +72,19 @@
                         ]
                     },
                     {
+                        "description": "Hyper-H to open next Cheatsheet (j = dvorak h)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
+                                },
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/cycle_cheatsheet.sh" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Hyper-M to open Music (m = dvorak m)",
                         "manipulators": [
                             {
