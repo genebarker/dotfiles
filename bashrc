@@ -112,6 +112,27 @@ machine_name() {
     fi
 }
 
+parse_git_branch() {
+  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+      return
+  fi
+
+  local branch count display
+
+  branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null)
+
+  # Count all changes: staged, modified, deleted, untracked
+  count=$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')
+
+  if [ "$count" -gt 0 ]; then
+    display=" ±${count}"
+  else
+    display=""
+  fi
+
+  echo " (${branch}${display})"
+}
+
 # highlight the user name when logged in as root.
 if [[ "$(whoami)" == "root" ]]; then
     userStyle="${ATTRIBUTE_REVERSE}${COLOR_CYAN}";
@@ -127,5 +148,5 @@ else
 fi;
 
 PROMPT_DIRTRIM=3
-PS1="${COLOR_BLUE}#${COLOR_DEFAULT} ${userStyle}\\u${COLOR_DEFAULT}${ATTRIBUTE_RESET} ${COLOR_GREEN}at${COLOR_DEFAULT} ${hostStyle}$(machine_name)${ATTRIBUTE_RESET}${COLOR_DEFAULT} ${COLOR_GREEN}in${COLOR_DEFAULT} ${COLOR_YELLOW}\w${COLOR_DEFAULT}\n\$(if [ \$? -ne 0 ]; then echo \"${COLOR_RED}!${COLOR_DEFAULT} \"; fi)${COLOR_BLUE}>${COLOR_DEFAULT} "
+PS1="${COLOR_BLUE}#${COLOR_DEFAULT} ${userStyle}\\u${COLOR_DEFAULT}${ATTRIBUTE_RESET} ${COLOR_GREEN}at${COLOR_DEFAULT} ${hostStyle}$(machine_name)${ATTRIBUTE_RESET}${COLOR_DEFAULT} ${COLOR_GREEN}in${COLOR_DEFAULT} ${COLOR_YELLOW}\w${COLOR_GREEN}\$(parse_git_branch)${COLOR_DEFAULT}\n\$(if [ \$? -ne 0 ]; then echo \"${COLOR_RED}!${COLOR_DEFAULT} \"; fi)${COLOR_BLUE}>${COLOR_DEFAULT} ${ATTRIBUTE_RESET}"
 PS2="${COLOR_BLUE}>${COLOR_DEFAULT} "
