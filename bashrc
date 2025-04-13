@@ -112,6 +112,13 @@ machine_name() {
     fi
 }
 
+is_ssh_session() {
+  [[ -n "$SSH_TTY" ]] && return 0
+  [[ -n "$SSH_CONNECTION" ]] && return 0
+  ps -o comm= -p "$(ps -o ppid= -p $$)" | grep -Eq 'sshd' && return 0
+  return 1
+}
+
 parse_git_branch() {
   if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
       return
@@ -141,8 +148,8 @@ else
 fi;
 
 # highlight the hostname when connected via SSH.
-if [[ "${SSH_TTY}" ]]; then
-    hostStyle="ssh->${ATTRIBUTE_BOLD}${COLOR_MAGENTA}";
+if is_ssh_session; then
+    hostStyle="[ssh] ${ATTRIBUTE_BOLD}${COLOR_MAGENTA}";
 else
     hostStyle="${COLOR_MAGENTA}";
 fi;
