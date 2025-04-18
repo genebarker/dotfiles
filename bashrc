@@ -115,7 +115,15 @@ machine_name() {
 is_ssh_session() {
   [[ -n "$SSH_TTY" ]] && return 0
   [[ -n "$SSH_CONNECTION" ]] && return 0
-  ps -o comm= -p "$(ps -o ppid= -p $$)" | grep -Eq 'sshd' && return 0
+
+  local parent
+  parent=$(ps -o ppid= -p "$$")
+  parent=${parent//[!0-9]/}  # Strip anything that's not a digit
+
+  if [ -n "$parent" ] && ps -o comm= -p "$parent" 2>/dev/null | grep -q 'sshd'; then
+    return 0
+  fi
+
   return 1
 }
 
