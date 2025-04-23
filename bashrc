@@ -116,6 +116,11 @@ is_ssh_session() {
   [[ -n "$SSH_TTY" ]] && return 0
   [[ -n "$SSH_CONNECTION" ]] && return 0
 
+  if [[ $(uname) == MINGW* ]]; then
+      # no further checks needed
+      return 1
+  fi
+
   local parent
   parent=$(ps -o ppid= -p "$$")
   parent=${parent//[!0-9]/}  # Strip anything that's not a digit
@@ -163,5 +168,5 @@ else
 fi;
 
 PROMPT_DIRTRIM=3
-PS1="${COLOR_BLUE}#${COLOR_DEFAULT} ${userStyle}\\u${COLOR_DEFAULT}${ATTRIBUTE_RESET} ${COLOR_GREEN}at${COLOR_DEFAULT} ${hostStyle}$(machine_name)${ATTRIBUTE_RESET}${COLOR_DEFAULT} ${COLOR_GREEN}in${COLOR_DEFAULT} ${COLOR_YELLOW}\w${COLOR_GREEN}\$(parse_git_branch)${COLOR_DEFAULT}\n\$(if [ \$? -ne 0 ]; then echo \"${COLOR_RED}!${COLOR_DEFAULT} \"; fi)${COLOR_BLUE}>${COLOR_DEFAULT} ${ATTRIBUTE_RESET}"
+PS1="${COLOR_BLUE}#${COLOR_DEFAULT} ${userStyle}\u${COLOR_DEFAULT}${ATTRIBUTE_RESET} ${COLOR_GREEN}at${COLOR_DEFAULT} ${hostStyle}$(machine_name)${ATTRIBUTE_RESET}${COLOR_DEFAULT} ${COLOR_GREEN}in${COLOR_DEFAULT} ${COLOR_YELLOW}\w${COLOR_GREEN}$(parse_git_branch)${COLOR_DEFAULT}\n\$(if [ \$? -ne 0 ]; then echo \"${COLOR_RED}!${COLOR_DEFAULT} \"; fi)${COLOR_BLUE}>${COLOR_DEFAULT} ${ATTRIBUTE_RESET}"
 PS2="${COLOR_BLUE}>${COLOR_DEFAULT} "
