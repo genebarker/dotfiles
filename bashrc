@@ -117,7 +117,7 @@ is_ssh_session() {
   [[ -n "$SSH_CONNECTION" ]] && return 0
 
   if [[ $(uname) == MINGW* ]]; then
-      # no further checks needed
+      # no further checks needed in git bash
       return 1
   fi
 
@@ -153,20 +153,24 @@ parse_git_branch() {
   echo " (${branch}${display})"
 }
 
-# highlight the user name when logged in as root.
-if [[ "$(whoami)" == "root" ]]; then
-    userStyle="${ATTRIBUTE_REVERSE}${COLOR_CYAN}";
-else
-    userStyle="${COLOR_CYAN}";
-fi;
+update_prompt() {
+    # highlight the user name when logged in as root.
+    if [[ "$(whoami)" == "root" ]]; then
+        userStyle="${ATTRIBUTE_REVERSE}${COLOR_CYAN}";
+    else
+        userStyle="${COLOR_CYAN}";
+    fi;
 
-# highlight the hostname when connected via SSH.
-if is_ssh_session; then
-    hostStyle="[ssh] ${ATTRIBUTE_BOLD}${COLOR_MAGENTA}";
-else
-    hostStyle="${COLOR_MAGENTA}";
-fi;
+    # highlight the hostname when connected via SSH.
+    if is_ssh_session; then
+        hostStyle="[ssh] ${ATTRIBUTE_BOLD}${COLOR_MAGENTA}";
+    else
+        hostStyle="${COLOR_MAGENTA}";
+    fi;
+
+    PS1="${COLOR_BLUE}#${COLOR_DEFAULT} ${userStyle}\u${COLOR_DEFAULT}${ATTRIBUTE_RESET} ${COLOR_GREEN}at${COLOR_DEFAULT} ${hostStyle}$(machine_name)${ATTRIBUTE_RESET}${COLOR_DEFAULT} ${COLOR_GREEN}in${COLOR_DEFAULT} ${COLOR_YELLOW}\w${COLOR_GREEN}$(parse_git_branch)${COLOR_DEFAULT}\n\$(if [ \$? -ne 0 ]; then echo \"${COLOR_RED}!${COLOR_DEFAULT} \"; fi)${COLOR_BLUE}>${COLOR_DEFAULT} ${ATTRIBUTE_RESET}"
+    PS2="${COLOR_BLUE}>${COLOR_DEFAULT} "
+}
 
 PROMPT_DIRTRIM=3
-PS1="${COLOR_BLUE}#${COLOR_DEFAULT} ${userStyle}\u${COLOR_DEFAULT}${ATTRIBUTE_RESET} ${COLOR_GREEN}at${COLOR_DEFAULT} ${hostStyle}$(machine_name)${ATTRIBUTE_RESET}${COLOR_DEFAULT} ${COLOR_GREEN}in${COLOR_DEFAULT} ${COLOR_YELLOW}\w${COLOR_GREEN}$(parse_git_branch)${COLOR_DEFAULT}\n\$(if [ \$? -ne 0 ]; then echo \"${COLOR_RED}!${COLOR_DEFAULT} \"; fi)${COLOR_BLUE}>${COLOR_DEFAULT} ${ATTRIBUTE_RESET}"
-PS2="${COLOR_BLUE}>${COLOR_DEFAULT} "
+PROMPT_COMMAND="update_prompt"
