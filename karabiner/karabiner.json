@@ -124,6 +124,19 @@
                         ]
                     },
                     {
+                        "description": "Hyper-P 'Ping' to open Messages (r = dvorak p)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "r",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
+                                },
+                                "to": [{ "shell_command": "open -a Messages" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Hyper-R to open Remote Desktop (o = dvorak r)",
                         "manipulators": [
                             {
