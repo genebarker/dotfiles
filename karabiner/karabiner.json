@@ -72,14 +72,14 @@
                         ]
                     },
                     {
-                        "description": "Hyper-G to open Google Chrome (u = dvorak g)",
+                        "description": "Hyper-G to open GMail (u = dvorak g)",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "u",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
                                 },
-                                "to": [{ "shell_command": "open -a 'Google Chrome'" }],
+                                "to": [{ "shell_command": "open ~/Applications/WebCatalog\\ Apps/Gmail.app" }],
                                 "type": "basic"
                             }
                         ]
@@ -158,6 +158,19 @@
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Things3'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Hyper-V to open Google Voice (. = dvorak v)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "period",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
+                                },
+                                "to": [{ "shell_command": "open ~/Applications/WebCatalog\\ Apps/Google\\ Voice.app" }],
                                 "type": "basic"
                             }
                         ]
