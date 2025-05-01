@@ -92,7 +92,7 @@
                                     "key_code": "j",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
                                 },
-                                "to": [{ "shell_command": "~/dotfiles/karabiner/cycle_cheatsheet.sh" }],
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/cycle-cheatsheet.sh" }],
                                 "type": "basic"
                             }
                         ]
