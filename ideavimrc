@@ -24,6 +24,9 @@ set hlsearch
 set ignorecase
 set smartcase
 
+" use system clipboard for copy & paste
+set clipboard=unnamed
+
 " setup leader shortcuts
 let mapleader = " "
 
