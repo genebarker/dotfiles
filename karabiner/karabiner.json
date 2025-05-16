@@ -8,6 +8,32 @@
                 },
                 "rules": [
                     {
+                        "description": "Cmd-W to close Window inside a RDP session (, = dvorak w)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.rdc\\.macos$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "comma",
+                                    "modifiers": { "mandatory": ["left_command"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f4",
+                                        "modifiers": ["left_alt"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Caps-Lock to Escape and Hyper",
                         "manipulators": [
                             {
@@ -216,7 +242,12 @@
                                         "key_code": "a"
                                     }
                                 ],
-                                "to_if_held_down": [{ "key_code": "left_command" }],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "left_command",
+                                        "lazy": true
+                                    }
+                                ],
                                 "type": "basic"
                             },
                             {
@@ -276,7 +307,12 @@
                                         "key_code": "semicolon"
                                     }
                                 ],
-                                "to_if_held_down": [{ "key_code": "right_command" }],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "right_command",
+                                        "lazy": true
+                                    }
+                                ],
                                 "type": "basic"
                             },
                             {
