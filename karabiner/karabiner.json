@@ -105,7 +105,7 @@
                                     "key_code": "u",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
                                 },
-                                "to": [{ "shell_command": "open ~/Applications/WebCatalog\\ Apps/Gmail.app" }],
+                                "to": [{ "shell_command": "open ~/Applications/Gmail.app" }],
                                 "type": "basic"
                             }
                         ]
@@ -124,14 +124,14 @@
                         ]
                     },
                     {
-                        "description": "Hyper-K to open Kindle (v = dvorak k)",
+                        "description": "Hyper-K to open Google Calendar (v = dvorak k)",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "v",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
                                 },
-                                "to": [{ "shell_command": "open -a 'Amazon Kindle'" }],
+                                "to": [{ "shell_command": "open -a ~/Applications/Calendar.app" }],
                                 "type": "basic"
                             }
                         ]
@@ -209,7 +209,7 @@
                                     "key_code": "period",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
                                 },
-                                "to": [{ "shell_command": "open ~/Applications/WebCatalog\\ Apps/Google\\ Voice.app" }],
+                                "to": [{ "shell_command": "open ~/Applications/Voice.app" }],
                                 "type": "basic"
                             }
                         ]
