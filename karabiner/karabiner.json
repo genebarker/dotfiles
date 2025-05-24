@@ -228,6 +228,19 @@
                         ]
                     },
                     {
+                        "description": "Hyper-Z to open ZK Terminal (/ = dvorak z)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "slash",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Terminal'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "GASC Home Row Mods",
                         "manipulators": [
                             {
