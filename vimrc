@@ -269,27 +269,11 @@ nnoremap <leader>fr :ALEFindReferences<CR>
 nnoremap <leader>tt :w \| :TestFile<CR>
 nnoremap <leader>ta :w \| :TestSuite<CR>
 
-" notes shortcuts
-function! NewNote()
-    let l:z_timestamp = strftime("%Y-%m-%d-%H%M")
-    execute "e " . '~/zbox/' . l:z_timestamp . '-new-note.md'
-    let l:z_buf = bufnr('%')
-    call appendbufline(l:z_buf, 0, '#Tag1 #Tag2')
-    call appendbufline(l:z_buf, 1, '')
-    call appendbufline(l:z_buf, 2, '# Some Title')
-    call appendbufline(l:z_buf, 3, '')
-    call appendbufline(l:z_buf, 4, 'Some text.')
-    normal! kdd
-    startinsert!
-endfunc
+" Zettelkasten shortcuts
 function! NextNoteReference()
     call search('\[\[\w', 'e')
 endfunc
 
-nnoremap <leader>sc :! ~/zbox/zzcards.sh<CR>
-nnoremap <leader>st :! ~/zbox/zztags.sh<CR>
-nnoremap <leader>sT :! ~/zbox/zztopics.sh<CR>
-nnoremap <leader>nn :call NewNote()<CR>
 nnoremap <leader>nr :call NextNoteReference()<CR>
 
 " close NERDTree when opening a file
