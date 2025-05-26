@@ -270,11 +270,75 @@ nnoremap <leader>tt :w \| :TestFile<CR>
 nnoremap <leader>ta :w \| :TestSuite<CR>
 
 " Zettelkasten shortcuts
-function! NextNoteReference()
-    call search('\[\[\w', 'e')
-endfunc
+function! JournalJumpToVerse(ref)
+    let l:matches = matchlist(a:ref, '\v([A-Z][a-z]{2}) (\d+):(\d+)')
+    if len(l:matches) < 4
+        echo "Failed to parse reference: " . a:ref
+        return
+    endif
 
-nnoremap <leader>nr :call NextNoteReference()<CR>
+    let l:book = l:matches[1]
+    let l:chapter = l:matches[2]
+    let l:verse = l:matches[3]
+
+    let l:book_lc = tolower(l:book)
+    let l:path = 'bible/kjv/' . l:book_lc . '/' . l:chapter . '.md'
+
+    if filereadable(l:path)
+        execute 'edit ' . fnameescape(l:path)
+        silent! execute '/' . '^\s*' . l:verse . '\.'
+        normal! zz
+    else
+        echo "File not found: " . l:path
+    endif
+endfunction
+
+function! JournalSmartGotoFile()
+    let l:line = getline('.')
+    let l:col = col('.') - 1
+
+    " slice the line from cursor to end
+    let l:tail = strpart(l:line, l:col)
+
+    " look for valid Bible reference at start of tail
+    let l:ref = matchstr(l:tail, '\v^([A-Z][a-z]{2}) (\d+):(\d+)')
+
+    if !empty(l:ref)
+        call JournalJumpToVerse(l:ref)
+        return
+    endif
+
+    " fallback
+    execute 'normal! gf'
+endfunction
+
+function! JournalJumpNextReference()
+    " match a Bible reference like: Exo 18:17 or wiki link
+    let l:pattern = '\v([A-Z][a-z]{2} \d+:\d+)|(\[\[[^]]+\]\])'
+    " let l:pattern = '\v<[A-Z][a-z]{2} \d+:\d+>'
+
+    " search with wrap
+    if search(l:pattern) == 0
+        echo "No Bible or wiki link reference found."
+        return
+    endif
+
+    " get current line and match position
+    let l:line = getline('.')
+    let l:col = col('.')
+
+    " check if this is a wiki link
+    if l:line[l:col - 1] == '[' && l:line[l:col] == '['
+        " advance cursor to 1st char of link
+        let l:pos = match(l:line, '\[\[[^]]\+\]\]', l:col - 1)
+        if l:pos >= 0
+            call cursor(line('.'), l:pos + 3)
+        endif
+    endif
+endfunction
+
+nnoremap gf :call JournalSmartGotoFile()<CR>
+nnoremap <leader>nr :call JournalJumpNextReference()<CR>
 
 " close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1
