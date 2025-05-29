@@ -266,6 +266,16 @@ nnoremap <leader>fr :ALEFindReferences<CR>
 nnoremap <leader>tt :w \| :TestFile<CR>
 nnoremap <leader>ta :w \| :TestSuite<CR>
 
+" look & feel shortcuts
+function! ToggleBackground()
+  if &background ==# 'dark'
+    set background=light
+  else
+    set background=dark
+  endif
+endfunction
+nnoremap <Leader>tb :call ToggleBackground()<CR>
+
 " Zettelkasten shortcuts
 function! JournalJumpToVerse(ref)
     let l:matches = matchlist(a:ref, '\v([A-Z][a-z]{2}) (\d+):(\d+)')
