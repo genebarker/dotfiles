@@ -90,6 +90,9 @@ else # linux
     alias GR="grep -rE --color"
 fi
 
+# Zettelkasten shortcuts
+alias z="cd ~/zk && vim index.md"
+
 # set prompt - from anishathalye/dotfiles/bash/prompt.bash
 ATTRIBUTE_BOLD='\[\e[1m\]'
 ATTRIBUTE_REVERSE='\[\e[7m\]'
