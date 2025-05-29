@@ -26,7 +26,6 @@ call plug#begin('~/.vim/plugged')
 " enhance GUI
 Plug 'tpope/vim-sensible'           " initialize VIM with better defaults
 Plug 'NLKNguyen/papercolor-theme'   " add PaperColor theme
-Plug 'morhetz/gruvbox'              " add gruvbox theme
 Plug 'airblade/vim-gitgutter'       " show changed lines
 Plug 'tpope/vim-fugitive'           " add direct git access
 Plug 'vim-airline/vim-airline'      " use enhanced status line
@@ -183,12 +182,10 @@ syntax enable
 
 " with a great color scheme
 set background=dark
-if $TERM_PROGRAM ==# 'Apple_Terminal'
-    " for writing
-    colorscheme gruvbox
-elseif $TERM ==# 'xterm-256color' || $TERM ==# 'tmux-256color'
-    " for coding
-    set termguicolors
+if $TERM ==# 'xterm-256color' || $TERM ==# 'tmux-256color'
+    if $TERM_PROGRAM !=# 'Apple_Terminal'
+        set termguicolors
+    endif
     colorscheme PaperColor
 else
     " for limited terminals
