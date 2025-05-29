@@ -238,6 +238,8 @@ nnoremap <CR> :noh<CR>
 nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
 nnoremap <leader>b :ls<CR>:b<Space>
+" keep only the current buffer open
+command! BOnly execute '%bd|e#|bd#'
 
 " window shortcuts
 nnoremap <leader>h :wincmd h<CR>
