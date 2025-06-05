@@ -34,6 +34,256 @@
                         ]
                     },
                     {
+                        "description": "Tab to Super when held",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "tab" },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "super",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "super",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "tab" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Super-[ to Decrease Window size (- = dvorak [)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "hyphen" },
+                                "to": [{ "shell_command": "open -g rectangle://execute-action?name=smaller" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Super-] to Increase Window size (= = dvorak ])",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "equal_sign" },
+                                "to": [{ "shell_command": "open -g rectangle://execute-action?name=larger" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Super-B to go Back to prev Desktop (n = dvorak b)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "n" },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow",
+                                        "modifiers": ["control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Super-F to go Forward to next Desktop (y = dvorak f)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "y" },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Super-H to Snap Window left (j = dvorak h)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "j" },
+                                "to": [{ "shell_command": "open -g rectangle://execute-action?name=left-half" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Super-L to Snap Window right (p = dvorak l)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "p" },
+                                "to": [{ "shell_command": "open -g rectangle://execute-action?name=right-half" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Super-/ to Snap Window 2/3 ([ = dvorak /)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "open_bracket" },
+                                "to": [{ "shell_command": "open -g rectangle://execute-action?name=last-two-thirds" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Super-C to Center Window (i = dvorak c)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "i" },
+                                "to": [{ "shell_command": "open -g rectangle://execute-action?name=center" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Super-M to almost Maximize Window (m = dvorak m)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "m" },
+                                "to": [{ "shell_command": "open -g rectangle://execute-action?name=almost-maximize" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Super-R to Restore Window size (o = dvorak r)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "o" },
+                                "to": [{ "shell_command": "open -g rectangle://execute-action?name=restore" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Super-S to minimize (Silence) other Windows (; = dvorak s)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "semicolon" },
+                                "to": [
+                                    {
+                                        "key_code": "j",
+                                        "modifiers": ["left_command", "left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Super-Z to Zoom Window (/ = dvorak z)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "slash" },
+                                "to": [
+                                    {
+                                        "key_code": "y",
+                                        "modifiers": ["left_control", "left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Caps-Lock to Escape and Hyper",
                         "manipulators": [
                             {
@@ -55,6 +305,19 @@
                                         "modifiers": ["left_command", "left_control", "left_option"]
                                     }
                                 ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Hyper-[-] for Leader Key F12 (' = dvorak -)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "quote",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
+                                },
+                                "to": [{ "key_code": "f12" }],
                                 "type": "basic"
                             }
                         ]
