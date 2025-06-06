@@ -13,8 +13,6 @@ matches:
     replace: "\u2705" # ✅
   - trigger: ";strong"
     replace: "💪"
-  - trigger: ";cool"
-    replace: "😎"
   - trigger: ";ok"
     replace: "👍"
   - trigger: ";oy"
