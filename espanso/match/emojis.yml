@@ -1,25 +1,31 @@
 matches:
   - trigger: ";love"
-    replace: "\u2764\uFE0f"
+    replace: "\u2764\uFE0f" # ❤️
   - trigger: ";lol"
     replace: "😂"
   - trigger: ";fire"
-    replace: "\U0001F525"
+    replace: "\U0001F525" # 🔥
   - trigger: ";100"
-    replace: "\U0001F4AF"
+    replace: "\U0001F4AF" # 💯
   - trigger: ";rocket"
-    replace: "\U0001F680"
+    replace: "\U0001F680" # 🚀
   - trigger: ";done"
-    replace: "\u2705"
+    replace: "\u2705" # ✅
   - trigger: ";strong"
     replace: "💪"
   - trigger: ";cool"
     replace: "😎"
   - trigger: ";ok"
     replace: "👍"
+  - trigger: ";oy"
+    replace: "\U0001F44A"  # 👊
   - trigger: ";happy"
-    replace: "\U0001F600"
+    replace: "\U0001F600" # 😀
   - trigger: ";eyes"
-    replace: "\U0001F440"
+    replace: "\U0001F440" # 👀
   - trigger: ";water"
-    replace: "\U0001F4A7"
+    replace: "\U0001F4A7" # 💧
+  - trigger: ";hm"
+    replace: "\U0001F60F" # 😏
+  - trigger: ";ball"
+    replace: "\U0001F3BE" # 🎾
