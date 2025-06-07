@@ -240,7 +240,7 @@
                         ]
                     },
                     {
-                        "description": "Super-S to minimize (Silence) other Windows (; = dvorak s)",
+                        "description": "Super-S to Silence (minimize) other Windows (; = dvorak s)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -284,222 +284,299 @@
                         ]
                     },
                     {
-                        "description": "Caps-Lock to Escape and Hyper",
+                        "description": "Caps Lock to Esc when tapped, Warp when held",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "escape" }] },
-                                "to_if_alone": [
+                                "from": { "key_code": "caps_lock" },
+                                "to": [
                                     {
-                                        "halt": true,
-                                        "key_code": "escape"
+                                        "set_variable": {
+                                            "name": "warp",
+                                            "value": 1
+                                        }
                                     }
                                 ],
-                                "to_if_held_down": [
+                                "to_after_key_up": [
                                     {
-                                        "key_code": "left_shift",
-                                        "lazy": true,
-                                        "modifiers": ["left_command", "left_control", "left_option"]
+                                        "set_variable": {
+                                            "name": "warp",
+                                            "value": 0
+                                        }
                                     }
                                 ],
+                                "to_if_alone": [{ "key_code": "escape" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Hyper-[-] for Leader Key F12 (' = dvorak -)",
+                        "description": "Warp-[-] for Leader Key F12 (' = dvorak -)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "quote",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
-                                },
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "quote" },
                                 "to": [{ "key_code": "f12" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Hyper-C to open ChatGPT (i = dvorak c)",
+                        "description": "Warp-B to open Books (n = dvorak b)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "i",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
-                                },
-                                "to": [{ "shell_command": "open -a 'ChatGPT'" }],
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "n" },
+                                "to": [{ "shell_command": "open -a 'Amazon Kindle'" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Hyper-D to toggle Dictionary and WordWeb (h = dvorak d)",
+                        "description": "Warp-C to open ChatGPT (i = dvorak c)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "h",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
-                                },
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "i" },
+                                "to": [{ "shell_command": "open -a ChatGPT" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Warp-D to toggle Dictionary and WordWeb (h = dvorak d)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "h" },
                                 "to": [{ "shell_command": "~/dotfiles/karabiner/toggle-dictionary.sh" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Hyper-F to open Finder (y = dvorak f)",
+                        "description": "Warp-F to open Finder (y = dvorak f)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "y",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
-                                },
-                                "to": [{ "shell_command": "osascript -e 'tell application \"Finder\" to activate'" }],
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "y" },
+                                "to": [{ "shell_command": "open -a Finder" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Hyper-G to open GMail (u = dvorak g)",
+                        "description": "Warp-G to open GMail (u = dvorak g)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "u",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
-                                },
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "u" },
                                 "to": [{ "shell_command": "open ~/Applications/Gmail.app" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Hyper-H to open next Cheatsheet (j = dvorak h)",
+                        "description": "Warp-H to open next Cheatsheet (j = dvorak h)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
-                                },
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "j" },
                                 "to": [{ "shell_command": "~/dotfiles/karabiner/cycle-cheatsheet.sh" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Hyper-K to open Google Calendar (v = dvorak k)",
+                        "description": "Warp-K to open Google Kalena (v = dvorak k)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "v",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
-                                },
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "v" },
                                 "to": [{ "shell_command": "open -a ~/Applications/Calendar.app" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Hyper-M to open Music (m = dvorak m)",
+                        "description": "Warp-M to open Music (m = dvorak m)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "m",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
-                                },
-                                "to": [{ "shell_command": "open -a 'Music'" }],
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "m" },
+                                "to": [{ "shell_command": "open -a Music" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Hyper-P 'Ping' to open Messages (r = dvorak p)",
+                        "description": "Warp-P to Ping Messages (r = dvorak p)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "r",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
-                                },
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "r" },
                                 "to": [{ "shell_command": "open -a Messages" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Hyper-R to open Remote Desktop (o = dvorak r)",
+                        "description": "Warp-R to open Remote Desktop (o = dvorak r)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "o",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
-                                },
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "o" },
                                 "to": [{ "shell_command": "open -a 'Windows App'" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Hyper-S to open Safari (semicolon = dvorak s)",
+                        "description": "Warp-S to open Safari (semicolon = dvorak s)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "semicolon",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
-                                },
-                                "to": [{ "shell_command": "open -a 'Safari'" }],
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "semicolon" },
+                                "to": [{ "shell_command": "open -a Safari" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Hyper-T to open Things (k = dvorak t)",
+                        "description": "Warp-T to open Things (k = dvorak t)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
-                                },
-                                "to": [{ "shell_command": "open -a 'Things3'" }],
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "k" },
+                                "to": [{ "shell_command": "open -a Things3" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Hyper-V to open Google Voice (. = dvorak v)",
+                        "description": "Warp-V to open Google Voice (. = dvorak v)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "period",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
-                                },
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "period" },
                                 "to": [{ "shell_command": "open ~/Applications/Voice.app" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Hyper-W to open Warp (comma = dvorak w)",
+                        "description": "Warp-W to open Warp (comma = dvorak w)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "comma",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
-                                },
-                                "to": [{ "shell_command": "open -a 'Warp'" }],
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "comma" },
+                                "to": [{ "shell_command": "open -a Warp" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Hyper-Z to open ZK Terminal (/ = dvorak z)",
+                        "description": "Warp-Z to open ZK Terminal (/ = dvorak z)",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "slash",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_alt", "left_shift"] }
-                                },
-                                "to": [{ "shell_command": "open -a 'Terminal'" }],
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "slash" },
+                                "to": [{ "shell_command": "open -a Terminal" }],
                                 "type": "basic"
                             }
                         ]
