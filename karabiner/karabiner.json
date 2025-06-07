@@ -34,7 +34,7 @@
                         ]
                     },
                     {
-                        "description": "Tab to Super when held",
+                        "description": "Tab to Tab when tapped, Super when held",
                         "manipulators": [
                             {
                                 "from": { "key_code": "tab" },
