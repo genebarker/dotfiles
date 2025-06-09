@@ -28,7 +28,7 @@ done
 #---
 # Close known apps not caught by above checks
 #---
-STRAGGLERS=("e-Sword X" "WordWeb Pro")
+STRAGGLERS=("e-Sword X" "Windows App" "WordWeb Pro")
 
 for APP in "${STRAGGLERS[@]}"; do
   if pgrep -x "$APP" > /dev/null; then
