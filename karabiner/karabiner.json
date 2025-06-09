@@ -780,6 +780,23 @@
                         ]
                     },
                     {
+                        "description": "Warp-7 to open e-Sword",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "7" },
+                                "to": [{ "shell_command": "open -a 'e-Sword X'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Warp-B to open Books (n = dvorak b)",
                         "manipulators": [
                             {
