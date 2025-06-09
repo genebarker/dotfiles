@@ -513,6 +513,23 @@
                         ]
                     },
                     {
+                        "description": "Super-0 to Close All Apps",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "0" },
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/close-all-apps.sh" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Super-[ to Decrease Window size (- = dvorak [)",
                         "manipulators": [
                             {
