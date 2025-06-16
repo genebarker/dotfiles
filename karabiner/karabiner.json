@@ -49,15 +49,10 @@
                                         "value": 1
                                     }
                                 ],
-                                "from": { "key_code": "z" },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "ghost",
-                                            "value": 1
-                                        }
-                                    }
-                                ],
+                                "from": {
+                                    "key_code": "z",
+                                    "modifiers": { "optional": ["any"] }
+                                },
                                 "to_after_key_up": [
                                     {
                                         "set_variable": {
@@ -66,7 +61,22 @@
                                         }
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "z" }],
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "z" }] },
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "key_code": "z"
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "lazy": true,
+                                        "set_variable": {
+                                            "name": "ghost",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
                                 "type": "basic"
                             },
                             {
@@ -82,15 +92,10 @@
                                         "value": 1
                                     }
                                 ],
-                                "from": { "key_code": "slash" },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "ghost",
-                                            "value": 1
-                                        }
-                                    }
-                                ],
+                                "from": {
+                                    "key_code": "slash",
+                                    "modifiers": { "optional": ["any"] }
+                                },
                                 "to_after_key_up": [
                                     {
                                         "set_variable": {
@@ -99,7 +104,22 @@
                                         }
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "slash" }],
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "slash" }] },
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "key_code": "slash"
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "lazy": true,
+                                        "set_variable": {
+                                            "name": "ghost",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
@@ -404,7 +424,7 @@
                         ]
                     },
                     {
-                        "description": "Ghost-P to Paste with No Formatting (r = dvorak p)",
+                        "description": "Ghost-P to Paste with Maccy (r = dvorak p)",
                         "manipulators": [
                             {
                                 "conditions": [
