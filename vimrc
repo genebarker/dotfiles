@@ -323,8 +323,7 @@ endfunction
 
 function! JournalJumpNextReference()
     " match a Bible reference like: Exo 18:17 or wiki link
-    let l:pattern = '\v([A-Z][a-z]{2} \d+:\d+)|(\[\[[^]]+\]\])'
-    " let l:pattern = '\v<[A-Z][a-z]{2} \d+:\d+>'
+    let l:pattern = '\v((\d?[A-Z][a-zA-Z]{1,2}) \d+:\d+)|(\[\[[^]]+\]\])'
 
     " search with wrap
     if search(l:pattern) == 0
