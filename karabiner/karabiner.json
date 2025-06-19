@@ -8,6 +8,36 @@
                 },
                 "rules": [
                     {
+                        "description": "On Escape, also Clear the Warp, Super, and Ghost states",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "escape" },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "ghost",
+                                            "value": 0
+                                        }
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "warp",
+                                            "value": 0
+                                        }
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "super",
+                                            "value": 0
+                                        }
+                                    },
+                                    { "key_code": "escape" }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Cmd-W to close Window inside a RDP session (, = dvorak w)",
                         "manipulators": [
                             {
