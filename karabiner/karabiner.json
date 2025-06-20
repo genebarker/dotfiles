@@ -16,7 +16,7 @@
                                     {
                                         "set_variable": {
                                             "name": "ghost",
-                                            "value": 0
+                                            "value": true
                                         }
                                     },
                                     {
@@ -83,30 +83,16 @@
                                     "key_code": "z",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to_after_key_up": [
+                                "to": [
                                     {
                                         "set_variable": {
+                                            "key_up_value": false,
                                             "name": "ghost",
-                                            "value": 0
+                                            "value": true
                                         }
                                     }
                                 ],
-                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "z" }] },
-                                "to_if_alone": [
-                                    {
-                                        "halt": true,
-                                        "key_code": "z"
-                                    }
-                                ],
-                                "to_if_held_down": [
-                                    {
-                                        "lazy": true,
-                                        "set_variable": {
-                                            "name": "ghost",
-                                            "value": 1
-                                        }
-                                    }
-                                ],
+                                "to_if_alone": [{ "key_code": "z" }],
                                 "type": "basic"
                             },
                             {
@@ -126,30 +112,16 @@
                                     "key_code": "slash",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to_after_key_up": [
+                                "to": [
                                     {
                                         "set_variable": {
+                                            "key_up_value": false,
                                             "name": "ghost",
-                                            "value": 0
+                                            "value": true
                                         }
                                     }
                                 ],
-                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "slash" }] },
-                                "to_if_alone": [
-                                    {
-                                        "halt": true,
-                                        "key_code": "slash"
-                                    }
-                                ],
-                                "to_if_held_down": [
-                                    {
-                                        "lazy": true,
-                                        "set_variable": {
-                                            "name": "ghost",
-                                            "value": 1
-                                        }
-                                    }
-                                ],
+                                "to_if_alone": [{ "key_code": "slash" }],
                                 "type": "basic"
                             }
                         ]
@@ -162,7 +134,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "8" },
@@ -179,7 +151,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "3" },
@@ -201,7 +173,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "open_bracket" },
@@ -223,7 +195,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "hyphen" },
@@ -240,7 +212,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "equal_sign" },
@@ -262,7 +234,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "description": "Ghost-W move to Next Word",
@@ -280,7 +252,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "description": "Ghost-E move to End of Word",
@@ -298,7 +270,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "description": "Ghost-B move to Beginning of Word",
@@ -316,7 +288,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "description": "Ghost-0 move to Start of Line",
@@ -334,7 +306,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "description": "Ghost-4 ($) move to End of Line",
@@ -357,7 +329,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "f" },
@@ -369,7 +341,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "h" },
@@ -386,7 +358,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "u" },
@@ -408,7 +380,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "j" },
@@ -420,7 +392,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "c" },
@@ -432,7 +404,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "v" },
@@ -444,7 +416,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "p" },
@@ -461,7 +433,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "r" },
@@ -483,7 +455,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "k" },
@@ -505,7 +477,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "period" },
@@ -527,7 +499,7 @@
                                     {
                                         "name": "ghost",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "b" },
