@@ -16,7 +16,7 @@
                                     {
                                         "set_variable": {
                                             "name": "ghost",
-                                            "value": true
+                                            "value": false
                                         }
                                     },
                                     {
@@ -28,7 +28,7 @@
                                     {
                                         "set_variable": {
                                             "name": "super",
-                                            "value": 0
+                                            "value": false
                                         }
                                     },
                                     { "key_code": "escape" }
@@ -76,7 +76,7 @@
                                     {
                                         "name": "super",
                                         "type": "variable_unless",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": {
@@ -105,7 +105,7 @@
                                     {
                                         "name": "super",
                                         "type": "variable_unless",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": {
@@ -516,16 +516,9 @@
                                 "to": [
                                     {
                                         "set_variable": {
+                                            "key_up_value": false,
                                             "name": "super",
-                                            "value": 1
-                                        }
-                                    }
-                                ],
-                                "to_after_key_up": [
-                                    {
-                                        "set_variable": {
-                                            "name": "super",
-                                            "value": 0
+                                            "value": true
                                         }
                                     }
                                 ],
@@ -542,7 +535,7 @@
                                     {
                                         "name": "super",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "0" },
@@ -559,7 +552,7 @@
                                     {
                                         "name": "super",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "hyphen" },
@@ -576,7 +569,7 @@
                                     {
                                         "name": "super",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "equal_sign" },
@@ -593,7 +586,7 @@
                                     {
                                         "name": "super",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "n" },
@@ -615,7 +608,7 @@
                                     {
                                         "name": "super",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "y" },
@@ -637,7 +630,7 @@
                                     {
                                         "name": "super",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "j" },
@@ -654,7 +647,7 @@
                                     {
                                         "name": "super",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "p" },
@@ -671,7 +664,7 @@
                                     {
                                         "name": "super",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "open_bracket" },
@@ -688,7 +681,7 @@
                                     {
                                         "name": "super",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "i" },
@@ -705,7 +698,7 @@
                                     {
                                         "name": "super",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "m" },
@@ -722,7 +715,7 @@
                                     {
                                         "name": "super",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "o" },
@@ -739,7 +732,7 @@
                                     {
                                         "name": "super",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "semicolon" },
@@ -761,7 +754,7 @@
                                     {
                                         "name": "super",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "value": true
                                     }
                                 ],
                                 "from": { "key_code": "slash" },
