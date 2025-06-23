@@ -25,7 +25,10 @@ call plug#begin('~/.vim/plugged')
 
 " enhance GUI
 Plug 'tpope/vim-sensible'           " initialize VIM with better defaults
-Plug 'NLKNguyen/papercolor-theme'   " add PaperColor theme
+Plug 'sjl/badwolf'                  " use favorite colorschemes
+Plug 'nanotech/jellybeans.vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'junegunn/seoul256.vim'
 Plug 'airblade/vim-gitgutter'       " show changed lines
 Plug 'tpope/vim-fugitive'           " add direct git access
 Plug 'vim-airline/vim-airline'      " use enhanced status line
@@ -180,13 +183,37 @@ set showcmd
 " lets have syntax coloring
 syntax enable
 
-" with a great color scheme
-set background=dark
+" select favorite colorschemes
+" (and their customizations)
+let g:my_themes = ['badwolf', 'jellybeans', 'PaperColor', 'seoul256']
+let g:current_theme_index = 0
+let g:seoul256_background = 234
+
+" apply customization on scheme change
+function! CustomizeScheme()
+    if g:colors_name ==# 'badwolf'
+        hi! link SpellBad ErrorMsg
+        hi! link SpellRare WarningMsg
+        hi! link SpellLocal SignColumn
+    endif
+endfunction
+autocmd ColorScheme * call CustomizeScheme()
+
+" make sure syntax highlighting reset
+" on scheme change
+function! DeepChangeScheme(scheme)
+    hi clear
+    syntax reset
+    execute 'colorscheme ' . a:scheme
+endfunction
+
+" set initial colorscheme
 if $TERM ==# 'xterm-256color' || $TERM ==# 'tmux-256color'
     if $TERM_PROGRAM !=# 'Apple_Terminal'
         set termguicolors
     endif
-    colorscheme PaperColor
+    set background=dark
+    colorscheme badwolf
 else
     " for limited terminals
     colorscheme desert
@@ -269,6 +296,15 @@ nnoremap <leader>tt :w \| :TestFile<CR>
 nnoremap <leader>ta :w \| :TestSuite<CR>
 
 " look & feel shortcuts
+function! GotoNextColorscheme()
+  let g:current_theme_index = (g:current_theme_index + 1) % len(g:my_themes)
+  let l:theme = g:my_themes[g:current_theme_index]
+  call DeepChangeScheme(l:theme)
+  redraw | echo ":colorscheme " . g:colors_name
+endfunction
+command! NextColorscheme call GotoNextColorscheme()
+nnoremap <Leader>nc :NextColorscheme<CR>
+
 function! ToggleBackground()
   if &background ==# 'dark'
     set background=light
