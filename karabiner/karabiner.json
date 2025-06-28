@@ -805,6 +805,45 @@
                         ]
                     },
                     {
+                        "description": "Warp-/ to Search Mac ([ = dvorak /)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "open_bracket" },
+                                "to": [
+                                    {
+                                        "key_code": "spacebar",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Warp-6 (^) to toggle Karabiner Elements and its Event Viewer",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "6" },
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/toggle-karabiner.sh" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Warp-7 to open e-Sword",
                         "manipulators": [
                             {
@@ -817,6 +856,23 @@
                                 ],
                                 "from": { "key_code": "7" },
                                 "to": [{ "shell_command": "open -a 'e-Sword X'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Warp-8 to open Music, to take Flow State to Warp Factor 8",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "8" },
+                                "to": [{ "shell_command": "open -a Music" }],
                                 "type": "basic"
                             }
                         ]
@@ -890,7 +946,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-G to open GMail (u = dvorak g)",
+                        "description": "Warp-G to open GitHub (u = dvorak g)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -901,7 +957,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "u" },
-                                "to": [{ "shell_command": "open ~/Applications/Gmail.app" }],
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/open-rsvd-safari-window.sh github.com/genebarker" }],
                                 "type": "basic"
                             }
                         ]
@@ -935,13 +991,13 @@
                                     }
                                 ],
                                 "from": { "key_code": "v" },
-                                "to": [{ "shell_command": "open -a ~/Applications/Calendar.app" }],
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/open-rsvd-safari-window.sh calendar.google.com" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Warp-M to open Music (m = dvorak m)",
+                        "description": "Warp-M to open Google Mail",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -952,7 +1008,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "m" },
-                                "to": [{ "shell_command": "open -a Music" }],
+                                "to": [{ "shell_command": "open ~/Applications/Gmail.app" }],
                                 "type": "basic"
                             }
                         ]
@@ -1003,7 +1059,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "semicolon" },
-                                "to": [{ "shell_command": "open -a Safari" }],
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/open-non-rsvd-safari-window.sh" }],
                                 "type": "basic"
                             }
                         ]
@@ -1026,6 +1082,23 @@
                         ]
                     },
                     {
+                        "description": "Warp-U to open UTM (f = dvorak u)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "f" },
+                                "to": [{ "shell_command": "open -a UTM" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Warp-V to open Google Voice (. = dvorak v)",
                         "manipulators": [
                             {
@@ -1037,7 +1110,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "period" },
-                                "to": [{ "shell_command": "open ~/Applications/Voice.app" }],
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/open-rsvd-safari-window.sh voice.google.com" }],
                                 "type": "basic"
                             }
                         ]
@@ -1055,6 +1128,23 @@
                                 ],
                                 "from": { "key_code": "comma" },
                                 "to": [{ "shell_command": "open -a Warp" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Warp-Y to open YouTube (t = dvorak y)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "t" },
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/open-rsvd-safari-window.sh youtube.com" }],
                                 "type": "basic"
                             }
                         ]
