@@ -878,6 +878,23 @@
                         ]
                     },
                     {
+                        "description": "Warp-9 to dial out with Google Voice",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "9" },
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/open-rsvd-safari-window.sh voice.google.com" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Warp-B to open Books (n = dvorak b)",
                         "manipulators": [
                             {
@@ -1099,7 +1116,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-V to open Google Voice (. = dvorak v)",
+                        "description": "Warp-V to open VSCode (. = dvorak v)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1110,7 +1127,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "period" },
-                                "to": [{ "shell_command": "~/dotfiles/karabiner/open-rsvd-safari-window.sh voice.google.com" }],
+                                "to": [{ "shell_command": "open -a 'Visual Studio Code'" }],
                                 "type": "basic"
                             }
                         ]
