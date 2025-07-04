@@ -2,7 +2,7 @@
 
 CHEAT_DIR="$HOME/fileboxes/filed/cheatsheets"
 CHEAT_FILES=("$CHEAT_DIR"/*)
-INDEX_FILE="$HOME/.cheatsheet_index.txt"
+INDEX_FILE="$HOME/.config/cheatsheet.index"
 TOTAL=${#CHEAT_FILES[@]}
 [[ $TOTAL -eq 0 ]] && exit 0
 
