@@ -1025,7 +1025,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "r" },
-                                "to": [{ "shell_command": "~/dotfiles/karabiner/toggle-messaging.sh" }],
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/cycle-messaging.sh" }],
                                 "type": "basic"
                             }
                         ]
