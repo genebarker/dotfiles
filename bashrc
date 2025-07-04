@@ -69,8 +69,13 @@ alias gds="git diff --stat"
 alias gc="git commit"
 alias gca="git commit -a"
 alias ga="git commit --amend"
-alias gps='git push origin "$(git symbolic-ref --short HEAD)"'
-alias gpl='git pull origin "$(git symbolic-ref --short HEAD)"'
+gps() {
+  git push origin "$(git symbolic-ref --short HEAD)"
+}
+
+gpl() {
+  git pull origin "$(git symbolic-ref --short HEAD)"
+}
 
 # bat alias for debian
 if [ -f /etc/debian_version ]
