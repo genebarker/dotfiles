@@ -92,7 +92,13 @@
                                         }
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "z" }],
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "z" }] },
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "key_code": "z"
+                                    }
+                                ],
                                 "type": "basic"
                             },
                             {
@@ -121,7 +127,13 @@
                                         }
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "slash" }],
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "slash" }] },
+                                "to_if_alone": [
+                                    {
+                                        "halt": true,
+                                        "key_code": "slash"
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
@@ -227,7 +239,7 @@
                         ]
                     },
                     {
-                        "description": "Ghost-W,E,B,0,4 move Horizontally (comma,d,n = dvorak w,e,b)",
+                        "description": "Ghost-W,B,0,4 move Horizontally (comma,n = dvorak w,b)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -239,24 +251,6 @@
                                 ],
                                 "description": "Ghost-W move to Next Word",
                                 "from": { "key_code": "comma" },
-                                "to": [
-                                    {
-                                        "key_code": "right_arrow",
-                                        "modifiers": ["option"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "ghost",
-                                        "type": "variable_if",
-                                        "value": true
-                                    }
-                                ],
-                                "description": "Ghost-E move to End of Word",
-                                "from": { "key_code": "d" },
                                 "to": [
                                     {
                                         "key_code": "right_arrow",
