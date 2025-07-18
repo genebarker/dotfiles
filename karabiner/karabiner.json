@@ -782,23 +782,6 @@
                         ]
                     },
                     {
-                        "description": "Warp-[-] for Leader Key F12 (' = dvorak -)",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "warp",
-                                        "type": "variable_if",
-                                        "value": true
-                                    }
-                                ],
-                                "from": { "key_code": "quote" },
-                                "to": [{ "key_code": "f12" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Warp-/ to Search Mac ([ = dvorak /)",
                         "manipulators": [
                             {
