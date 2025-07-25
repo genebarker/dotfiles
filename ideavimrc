@@ -59,5 +59,6 @@ nmap <leader>rr <action>(Run)
 " show file tree
 nnoremap <leader>nt :NERDTreeToggle<CR>
 
-" toggle whitespace
+" toggle inviso, whitespace
+map <leader>ti <Action>(ToggleDistractionFreeMode)
 map <leader>tw <Action>(EditorToggleShowWhitespaces)
