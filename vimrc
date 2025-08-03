@@ -258,7 +258,7 @@ set suffixesadd=.md
 set wildmenu
 
 " setup leader shortcuts
-let mapleader = " "
+let mapleader = "-"
 
 " clear current search highlighting
 nnoremap <CR> :noh<CR>

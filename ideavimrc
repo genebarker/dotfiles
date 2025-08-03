@@ -28,7 +28,7 @@ set smartcase
 set clipboard=unnamed
 
 " setup leader shortcuts
-let mapleader = " "
+let mapleader = "-"
 
 " clear current search highlighting
 nnoremap <CR> :noh<CR>
