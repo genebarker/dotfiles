@@ -90,6 +90,7 @@ let test#strategy = "vimterminal"
 " configure vim-ai plugin to:
 " - not delete the chat buffer (let me manage it)
 " - break lines automatically
+" - use markdown
 " - use my fav text width
 let g:vim_ai_chat = {
 \   'ui' : {
@@ -97,6 +98,7 @@ let g:vim_ai_chat = {
 \       'scratch_buffer_keep_open' : 1,
 \   },
 \}
+let g:vim_ai_chat_markdown = 1
 autocmd FileType aichat setlocal textwidth=76
 
 " no swap files, use undo files instead
