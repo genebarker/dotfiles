@@ -270,12 +270,6 @@ nnoremap <leader>b :ls<CR>:b<Space>
 " keep only the current buffer open
 command! BOnly execute '%bd|e#|bd#'
 
-" window shortcuts
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
-
 " reload VIM config
 nnoremap <leader>rc :source $MYVIMRC<CR>
 
