@@ -353,9 +353,12 @@ function! JournalSmartGotoFile()
     execute 'normal! gf'
 endfunction
 
-function! JournalJumpNextReference()
+function! JournalJumpNextReference(reverse)
     " match a Bible reference like: Exo 18:17 or wiki link
     let l:pattern = '\v((\d?[A-Z][a-zA-Z]{1,2}) \d+:\d+)|(\[\[[^]]+\]\])'
+
+    " set search direction
+    let l:flags = a:reverse ? 'b' : ''
 
     " search with wrap
     if search(l:pattern) == 0
@@ -378,7 +381,8 @@ function! JournalJumpNextReference()
 endfunction
 
 nnoremap gf :call JournalSmartGotoFile()<CR>
-nnoremap <leader>nr :call JournalJumpNextReference()<CR>
+nnoremap ]r :call JournalJumpNextReference(0)<CR>
+nnoremap [r :call JournalJumpNextReference(1)<CR>
 
 " close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1
