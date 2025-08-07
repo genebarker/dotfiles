@@ -104,12 +104,13 @@ ATTRIBUTE_BOLD='\[\e[1m\]'
 ATTRIBUTE_REVERSE='\[\e[7m\]'
 ATTRIBUTE_RESET='\[\e[0m\]'
 COLOR_DEFAULT='\[\e[39m\]'
-COLOR_RED='\[\e[31m\]'
+COLOR_RED='\[\e[91m\]'
 COLOR_GREEN='\[\e[32m\]'
 COLOR_YELLOW='\[\e[33m\]'
 COLOR_BLUE='\[\e[34m\]'
 COLOR_MAGENTA='\[\e[35m\]'
 COLOR_CYAN='\[\e[36m\]'
+COLOR_GRAY='\[\e[90m\]'
 
 machine_name() {
     if [[ -f $HOME/.name ]]; then
@@ -154,31 +155,36 @@ parse_git_branch() {
   count=$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')
 
   if [ "$count" -gt 0 ]; then
-    display=" ±${count}"
+    echo " • ${COLOR_YELLOW}${branch} ±${count}"
   else
-    display=""
+    echo " • ${branch}"
   fi
-
-  echo " (${branch}${display})"
 }
 
 update_prompt() {
     # highlight the user name when logged in as root.
     if [[ "$(whoami)" == "root" ]]; then
-        userStyle="${ATTRIBUTE_REVERSE}${COLOR_CYAN}";
+        userStyle="${ATTRIBUTE_REVERSE}${COLOR_CYAN}"
     else
-        userStyle="${COLOR_CYAN}";
+        userStyle="${COLOR_CYAN}"
     fi;
 
     # highlight the hostname when connected via SSH.
     if is_ssh_session; then
-        hostStyle="[ssh] ${ATTRIBUTE_BOLD}${COLOR_MAGENTA}";
+        hostStyle="[ssh] ${ATTRIBUTE_BOLD}${COLOR_MAGENTA}"
     else
-        hostStyle="${COLOR_MAGENTA}";
+        hostStyle="${COLOR_MAGENTA}"
     fi;
 
-    PS1="${COLOR_BLUE}#${COLOR_DEFAULT} ${userStyle}\u${COLOR_DEFAULT}${ATTRIBUTE_RESET} ${COLOR_GREEN}at${COLOR_DEFAULT} ${hostStyle}$(machine_name)${ATTRIBUTE_RESET}${COLOR_DEFAULT} ${COLOR_GREEN}in${COLOR_DEFAULT} ${COLOR_YELLOW}\w${COLOR_GREEN}$(parse_git_branch)${COLOR_DEFAULT}\n\$(if [ \$? -ne 0 ]; then echo \"${COLOR_RED}!${COLOR_DEFAULT} \"; fi)${COLOR_BLUE}>${COLOR_DEFAULT} ${ATTRIBUTE_RESET}"
-    PS2="${COLOR_BLUE}>${COLOR_DEFAULT} "
+    # display virual environment when active
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        venv=" • ${VIRTUAL_ENV##*/}"
+    else
+        venv=""
+    fi
+
+    PS1="${COLOR_BLUE}#${COLOR_DEFAULT} ${userStyle}\u${COLOR_DEFAULT}${ATTRIBUTE_RESET} ${COLOR_GREEN}at${COLOR_DEFAULT} ${hostStyle}$(machine_name)${ATTRIBUTE_RESET}${COLOR_DEFAULT} ${COLOR_GREEN}in${COLOR_DEFAULT} ${COLOR_GRAY}\w$(parse_git_branch)${COLOR_GRAY}${venv}${COLOR_DEFAULT}\n\$(if [ \$? -ne 0 ]; then echo \"${COLOR_RED}!${COLOR_DEFAULT} \"; fi)${COLOR_BLUE}>${COLOR_DEFAULT} ${ATTRIBUTE_RESET}"
+    PS2="${COLOR_BLUE}>>${COLOR_DEFAULT} "
 }
 
 PROMPT_DIRTRIM=3
