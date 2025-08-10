@@ -1,0 +1,10 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/snazzy.toml"
+]
+
+[window]
+dimensions = { columns = 85, lines = 32 }
+
+[font]
+size = 17
