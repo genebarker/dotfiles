@@ -210,7 +210,7 @@ function! DeepChangeScheme(scheme)
 endfunction
 
 " set initial colorscheme
-if $TERM ==# 'xterm-256color' || $TERM ==# 'tmux-256color'
+if $TERM ==# 'xterm-256color' || $TERM ==# 'tmux-256color' || $TERM ==# 'alacritty'
     if $TERM_PROGRAM !=# 'Apple_Terminal'
         set termguicolors
     endif
