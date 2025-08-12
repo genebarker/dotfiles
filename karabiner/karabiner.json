@@ -1052,6 +1052,28 @@
                         ]
                     },
                     {
+                        "description": "Warp-N to switch to Next window in same app (l = dvorak n)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "l" },
+                                "to": [
+                                    {
+                                        "key_code": "grave_accent_and_tilde",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Warp-P to Ping Messages (r = dvorak p)",
                         "manipulators": [
                             {
