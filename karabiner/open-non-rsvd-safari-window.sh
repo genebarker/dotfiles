@@ -3,7 +3,7 @@
 if ! pgrep -x "Safari" > /dev/null; then
     open -a "Safari"
     exit
-fi 
+fi
 
 osascript <<EOF
 set reservedHosts to {"github.com", "calendar.google.com", "voice.google.com", "youtube.com"}
