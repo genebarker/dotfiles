@@ -22,8 +22,8 @@ for file in ~/.{path,extra}; do
 done;
 unset file;
 
-# refresh dotfile links on Windows
-if [ "$MSYSTEM" == "MINGW64" ] ; then
+# refresh dotfile links on Windows (skip in Claude Code sessions)
+if [ "$MSYSTEM" == "MINGW64" ] && [ -z "$CLAUDECODE" ] ; then
     $HOME/dotfiles/bsdots -b
     cd ~
 fi
