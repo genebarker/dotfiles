@@ -735,12 +735,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "slash" },
-                                "to": [
-                                    {
-                                        "key_code": "y",
-                                        "modifiers": ["left_control", "left_command"]
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open -g rectangle://execute-action?name=maximize" }],
                                 "type": "basic"
                             }
                         ]
