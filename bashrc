@@ -189,3 +189,8 @@ update_prompt() {
 
 PROMPT_DIRTRIM=3
 PROMPT_COMMAND="update_prompt"
+
+# show sysinfo in interactive shells
+if [[ $- == *i* ]] && command -v fastfetch >/dev/null 2>&1; then
+    fastfetch
+fi
