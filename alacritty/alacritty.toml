@@ -1,6 +1,6 @@
 [general]
 import = [
-    "~/.config/alacritty/themes/snazzy.toml"
+    "~/.config/alacritty/themes/terminal_app.toml"
 ]
 
 [window]
