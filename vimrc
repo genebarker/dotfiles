@@ -354,30 +354,25 @@ function! JournalSmartGotoFile()
 endfunction
 
 function! JournalJumpNextReference(reverse)
-    " match a Bible reference like: Exo 18:17 or wiki link
     let l:pattern = '\v((\d?[A-Z][a-zA-Z]{1,2}) \d+:\d+)|(\[\[[^]]+\]\])'
+    let l:flags = a:reverse ? 'bWn' : 'Wn'
 
-    " set search direction
-    let l:flags = a:reverse ? 'b' : ''
+    " if currently inside a wiki link, skip it when going backwards
+    let l:line = getline('.')
+    let l:col = col('.')
+    if l:line =~ '\[\[[^]]\+\]\]' && l:col > match(l:line, '\[\[') && l:col <= matchend(l:line, '\]\]')
+        if a:reverse
+            let l:flags = 'bWn'
+        endif
+    endif
 
-    " search with wrap
-    if search(l:pattern) == 0
+    let [lnum, cnum] = searchpos(l:pattern, l:flags)
+    if lnum == 0
         echo "No Bible or wiki link reference found."
         return
     endif
 
-    " get current line and match position
-    let l:line = getline('.')
-    let l:col = col('.')
-
-    " check if this is a wiki link
-    if l:line[l:col - 1] == '[' && l:line[l:col] == '['
-        " advance cursor to 1st char of link
-        let l:pos = match(l:line, '\[\[[^]]\+\]\]', l:col - 1)
-        if l:pos >= 0
-            call cursor(line('.'), l:pos + 3)
-        endif
-    endif
+    call cursor(lnum, cnum)
 endfunction
 
 nnoremap gf :call JournalSmartGotoFile()<CR>
