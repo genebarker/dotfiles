@@ -760,7 +760,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-/ to Search Mac ([ = dvorak /)",
+                        "description": "Warp-/ to search MacOS ([ = dvorak /)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -826,7 +826,24 @@
                         ]
                     },
                     {
-                        "description": "Warp-0 to Close All Apps",
+                        "description": "Warp-= to solve with Calca",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "close_bracket" },
+                                "to": [{ "shell_command": "open -a Calca" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Warp-0 to close All Apps",
                         "manipulators": [
                             {
                                 "conditions": [
