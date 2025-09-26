@@ -71,6 +71,9 @@ augroup pencil
     autocmd FileType markdown,text call pencil#init()
 augroup END
 
+" recognize lists (avoid auto-wrapping to previous line)
+autocmd FileType markdown,text setlocal formatoptions-=t formatoptions+=n2
+
 " enable markdown folding and default to all open
 let g:markdown_folding = 1
 autocmd FileType markdown,text setlocal foldlevel=99
