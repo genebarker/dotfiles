@@ -62,9 +62,6 @@ endif
 
 call plug#end()
 
-" don't use gitgutter's key mappings
-let g:gitgutter_map_keys = 0
-
 " show vim-pencil mode in status line
 let g:airline_section_x = '%{PencilMode()}'
 
