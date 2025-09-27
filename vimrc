@@ -439,6 +439,7 @@ endfunction
 
 autocmd FileType markdown,text nnoremap <buffer> gd :call JournalJumpToDefinition()<CR>
 autocmd FileType markdown,text nnoremap <buffer> gf :call JournalSmartGotoFile()<CR>
+" mnemonic - next 'anchor' ('a' used bc 'r' too close to brackets on dvorak keyboard)
 autocmd FileType markdown,text nnoremap <buffer> ]a :call JournalJumpNextReference(0)<CR>
 autocmd FileType markdown,text nnoremap <buffer> [a :call JournalJumpNextReference(1)<CR>
 
