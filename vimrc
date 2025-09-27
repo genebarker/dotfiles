@@ -354,7 +354,12 @@ function! JournalSmartGotoFile()
 endfunction
 
 function! JournalJumpNextReference(reverse)
-    let l:pattern = '\v((\d?[A-Z][a-zA-Z]{1,2}) \d+:\d+)|(\[\[[^]]+\]\])'
+    " Reference Patterns
+    " - Bible: Joh 3:16
+    " - Wiki: [[some/path]]
+    " - MD Link: [Some Link Title][1]
+    " - MD Footnote: [^1] or [^note]
+    let l:pattern = '\v((\d?[A-Z][a-zA-Z]{1,2}) \d+:\d+)|(\[\[[^]]+\]\])|(\[[^]]+\]\[\d+\]|(\[\^[^]]+\]))'
     let l:flags = a:reverse ? 'bWn' : 'Wn'
 
     " if currently inside a wiki link, skip it when going backwards
@@ -368,7 +373,7 @@ function! JournalJumpNextReference(reverse)
 
     let [lnum, cnum] = searchpos(l:pattern, l:flags)
     if lnum == 0
-        echo "No Bible or wiki link reference found."
+        echo "No Bible, wiki, or markdown reference found."
         return
     endif
 
