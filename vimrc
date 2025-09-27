@@ -376,8 +376,8 @@ function! JournalJumpNextReference(reverse)
 endfunction
 
 nnoremap gf :call JournalSmartGotoFile()<CR>
-nnoremap ]r :call JournalJumpNextReference(0)<CR>
-nnoremap [r :call JournalJumpNextReference(1)<CR>
+nnoremap ]a :call JournalJumpNextReference(0)<CR>
+nnoremap [a :call JournalJumpNextReference(1)<CR>
 
 " close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1
