@@ -380,9 +380,67 @@ function! JournalJumpNextReference(reverse)
     call cursor(lnum, cnum)
 endfunction
 
-nnoremap gf :call JournalSmartGotoFile()<CR>
-nnoremap ]a :call JournalJumpNextReference(0)<CR>
-nnoremap [a :call JournalJumpNextReference(1)<CR>
+function! JournalJumpToDefinition()
+    " get current line and cursor position
+    let l:line = getline('.')
+    let l:col = col('.') - 1
+    let l:refid = ''
+
+    " find all markdown ref links [text][id] on the line
+    let l:start = 0
+    while 1
+        let l:match_start = match(l:line, '\[[^]]\+\]\[[^]]\+\]', l:start)
+        if l:match_start == -1
+            break
+        endif
+        let l:match_end = matchend(l:line, '\[[^]]\+\]\[[^]]\+\]', l:start)
+        if l:col >= l:match_start && l:col < l:match_end
+            let l:refid = matchstr(l:line, '\[[^]]\+\]\[\zs[^]]\+\ze\]', l:match_start)
+            break
+        endif
+        let l:start = l:match_end
+    endwhile
+
+    " if not found, look for footnote refs [^id]
+    if empty(l:refid)
+        let l:start = 0
+        while 1
+            let l:match_start = match(l:line, '\[\^[^]]\+\]', l:start)
+            if l:match_start == -1
+                break
+            endif
+            let l:match_end = matchend(l:line, '\[\^[^]]\+\]', l:start)
+            if l:col >= l:match_start && l:col < l:match_end
+                let l:refid = matchstr(l:line, '\[\^\zs[^]]\+\ze\]', l:match_start)
+                let l:refid = '^' . l:refid " restore caret for footnote defs
+                break
+            endif
+            let l:start = l:match_end
+        endwhile
+    endif
+
+    if empty(l:refid)
+        echo "Not on a markdown reference or footnote."
+        return
+    endif
+
+    " build search pattern for definition
+    let l:pattern = '^\s*\[' . escape(l:refid, '[]^$.*') . '\]:'
+    let [lnum, cnum] = searchpos(l:pattern, 'W')
+
+    if lnum == 0
+        echo "Definition not found for: " . l:refid
+        return
+    endif
+
+    call cursor(lnum, cnum)
+    normal! f:W
+endfunction
+
+autocmd FileType markdown,text nnoremap <buffer> gd :call JournalJumpToDefinition()<CR>
+autocmd FileType markdown,text nnoremap <buffer> gf :call JournalSmartGotoFile()<CR>
+autocmd FileType markdown,text nnoremap <buffer> ]a :call JournalJumpNextReference(0)<CR>
+autocmd FileType markdown,text nnoremap <buffer> [a :call JournalJumpNextReference(1)<CR>
 
 " close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1
