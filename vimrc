@@ -42,8 +42,12 @@ Plug 'christoomey/vim-tmux-navigator' " add smart pane switching VIM & tmux
 Plug 'tpope/vim-capslock'           " add software caps lock
 Plug 'tpope/vim-commentary'         " comment stuff out fast
 Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
-Plug 'godlygeek/tabular'            " align columns of text
-Plug 'genebarker/vim-tidytable'     " align markdown pipe tables fast
+Plug 'godlygeek/tabular'            " align columns of text (req by tidytable)
+if isdirectory(expand('~/workspace/vim-tidytable'))
+    Plug '~/workspace/vim-tidytable'    " align markdown pipe tables fast
+else
+    Plug 'genebarker/vim-tidytable'     " align markdown pipe tables fast
+endif
 Plug 'vim-scripts/argtextobj.vim'   " change & delete arguments fast
 Plug 'michaeljsmith/vim-indent-object' " change & delete indented text fast
 Plug 'tommcdo/vim-exchange'         " swap vim selections fast
