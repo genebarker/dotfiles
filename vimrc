@@ -43,10 +43,11 @@ Plug 'tpope/vim-capslock'           " add software caps lock
 Plug 'tpope/vim-commentary'         " comment stuff out fast
 Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
 Plug 'godlygeek/tabular'            " align columns of text (req by tidytable)
+" (align markdown pipe tables fast)
 if isdirectory(expand('~/workspace/vim-tidytable'))
-    Plug '~/workspace/vim-tidytable'    " align markdown pipe tables fast
+    Plug '~/workspace/vim-tidytable'
 else
-    Plug 'genebarker/vim-tidytable'     " align markdown pipe tables fast
+    Plug 'genebarker/vim-tidytable'
 endif
 Plug 'vim-scripts/argtextobj.vim'   " change & delete arguments fast
 Plug 'michaeljsmith/vim-indent-object' " change & delete indented text fast
@@ -54,6 +55,12 @@ Plug 'tommcdo/vim-exchange'         " swap vim selections fast
 Plug 'tpope/vim-repeat'             " add repeat support to extended moves
 " support writing
 Plug 'preservim/vim-pencil'         " better wrapping for writing
+" (add navigation for markdown journaling)
+if isdirectory(expand('~/workspace/vim-journal'))
+    Plug '~/workspace/vim-journal'
+else
+    Plug 'genebarker/vim-journal'
+endif
 " extend programming support
 if v:version >= 800
     Plug 'dense-analysis/ale'       " add linting and LSP support
@@ -87,6 +94,9 @@ let g:ale_linters = { 'python' : ['pylsp'] }
 let g:ale_fixers = { 'python': ['black'] }
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
+
+" configure Journal plugin
+let g:journal_ref_key = 'a'
 
 " use nice split window when running tests
 let test#strategy = "vimterminal"
@@ -313,139 +323,6 @@ function! ToggleBackground()
   endif
 endfunction
 nnoremap <Leader>tb :call ToggleBackground()<CR>
-
-" Zettelkasten shortcuts
-function! JournalJumpToVerse(ref)
-    let l:matches = matchlist(a:ref, '\v([A-Z][a-z]{2}) (\d+):(\d+)')
-    if len(l:matches) < 4
-        echo "Failed to parse reference: " . a:ref
-        return
-    endif
-
-    let l:book = l:matches[1]
-    let l:chapter = l:matches[2]
-    let l:verse = l:matches[3]
-
-    let l:book_lc = tolower(l:book)
-    let l:path = 'bible/kjv/' . l:book_lc . '/' . l:chapter . '.md'
-
-    if filereadable(l:path)
-        execute 'edit ' . fnameescape(l:path)
-        silent! execute '/' . '^\s*' . l:verse . '\.'
-        normal! zz
-    else
-        echo "File not found: " . l:path
-    endif
-endfunction
-
-function! JournalSmartGotoFile()
-    let l:line = getline('.')
-    let l:col = col('.') - 1
-
-    " slice the line from cursor to end
-    let l:tail = strpart(l:line, l:col)
-
-    " look for valid Bible reference at start of tail
-    let l:ref = matchstr(l:tail, '\v^([A-Z][a-z]{2}) (\d+):(\d+)')
-
-    if !empty(l:ref)
-        call JournalJumpToVerse(l:ref)
-        return
-    endif
-
-    " fallback
-    execute 'normal! gf'
-endfunction
-
-function! JournalJumpNextReference(reverse)
-    " Reference Patterns
-    " - Bible: Joh 3:16
-    " - Wiki: [[some/path]]
-    " - MD Link: [Some Link Title][1]
-    " - MD Footnote: [^1] or [^note]
-    let l:pattern = '\v((\d?[A-Z][a-zA-Z]{1,2}) \d+:\d+)|(\[\[[^]]+\]\])|(\[[^]]+\]\[\d+\]|(\[\^[^]]+\]))'
-    let l:flags = a:reverse ? 'bWn' : 'Wn'
-
-    " if currently inside a wiki link, skip it when going backwards
-    let l:line = getline('.')
-    let l:col = col('.')
-    if l:line =~ '\[\[[^]]\+\]\]' && l:col > match(l:line, '\[\[') && l:col <= matchend(l:line, '\]\]')
-        if a:reverse
-            let l:flags = 'bWn'
-        endif
-    endif
-
-    let [lnum, cnum] = searchpos(l:pattern, l:flags)
-    if lnum == 0
-        echo "No Bible, wiki, or markdown reference found."
-        return
-    endif
-
-    call cursor(lnum, cnum)
-endfunction
-
-function! JournalJumpToDefinition()
-    " get current line and cursor position
-    let l:line = getline('.')
-    let l:col = col('.') - 1
-    let l:refid = ''
-
-    " find all markdown ref links [text][id] on the line
-    let l:start = 0
-    while 1
-        let l:match_start = match(l:line, '\[[^]]\+\]\[[^]]\+\]', l:start)
-        if l:match_start == -1
-            break
-        endif
-        let l:match_end = matchend(l:line, '\[[^]]\+\]\[[^]]\+\]', l:start)
-        if l:col >= l:match_start && l:col < l:match_end
-            let l:refid = matchstr(l:line, '\[[^]]\+\]\[\zs[^]]\+\ze\]', l:match_start)
-            break
-        endif
-        let l:start = l:match_end
-    endwhile
-
-    " if not found, look for footnote refs [^id]
-    if empty(l:refid)
-        let l:start = 0
-        while 1
-            let l:match_start = match(l:line, '\[\^[^]]\+\]', l:start)
-            if l:match_start == -1
-                break
-            endif
-            let l:match_end = matchend(l:line, '\[\^[^]]\+\]', l:start)
-            if l:col >= l:match_start && l:col < l:match_end
-                let l:refid = matchstr(l:line, '\[\^\zs[^]]\+\ze\]', l:match_start)
-                let l:refid = '^' . l:refid " restore caret for footnote defs
-                break
-            endif
-            let l:start = l:match_end
-        endwhile
-    endif
-
-    if empty(l:refid)
-        echo "Not on a markdown reference or footnote."
-        return
-    endif
-
-    " build search pattern for definition
-    let l:pattern = '^\s*\[' . escape(l:refid, '[]^$.*') . '\]:'
-    let [lnum, cnum] = searchpos(l:pattern, 'W')
-
-    if lnum == 0
-        echo "Definition not found for: " . l:refid
-        return
-    endif
-
-    call cursor(lnum, cnum)
-    normal! f:W
-endfunction
-
-autocmd FileType markdown,text nnoremap <buffer> gd :call JournalJumpToDefinition()<CR>
-autocmd FileType markdown,text nnoremap <buffer> gf :call JournalSmartGotoFile()<CR>
-" mnemonic - next 'anchor' ('a' used bc 'r' too close to brackets on dvorak keyboard)
-autocmd FileType markdown,text nnoremap <buffer> ]a :call JournalJumpNextReference(0)<CR>
-autocmd FileType markdown,text nnoremap <buffer> [a :call JournalJumpNextReference(1)<CR>
 
 " close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1
