@@ -77,13 +77,13 @@ call plug#end()
 let g:airline_section_x = '%{PencilMode()}'
 
 " turn on vim-pencil for text files
+" - use hard wrapping
+" - keep auto-formatting but protect lists from being mangled
 augroup pencil
     autocmd!
-    autocmd FileType markdown,text call pencil#init()
+    autocmd FileType markdown,text call pencil#init({'wrap': 'hard'})
+    autocmd FileType markdown,text setlocal formatoptions+=t formatoptions+=a formatoptions+=n2l formatoptions-=c
 augroup END
-
-" recognize lists (avoid auto-wrapping to previous line)
-autocmd FileType markdown,text setlocal formatoptions-=t formatoptions+=n2
 
 " enable markdown folding and default to all open
 let g:markdown_folding = 1
