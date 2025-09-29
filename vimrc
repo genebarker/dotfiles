@@ -43,11 +43,11 @@ Plug 'tpope/vim-capslock'           " add software caps lock
 Plug 'tpope/vim-commentary'         " comment stuff out fast
 Plug 'tpope/vim-surround'           " wrangle surrounding parens & more
 Plug 'godlygeek/tabular'            " align columns of text (req by tidytable)
-" (align markdown pipe tables fast)
 if isdirectory(expand('~/workspace/vim-tidytable'))
+    " use dev version when present
     Plug '~/workspace/vim-tidytable'
 else
-    Plug 'genebarker/vim-tidytable'
+    Plug 'genebarker/vim-tidytable' " align markdown tables fast
 endif
 Plug 'vim-scripts/argtextobj.vim'   " change & delete arguments fast
 Plug 'michaeljsmith/vim-indent-object' " change & delete indented text fast
@@ -55,11 +55,11 @@ Plug 'tommcdo/vim-exchange'         " swap vim selections fast
 Plug 'tpope/vim-repeat'             " add repeat support to extended moves
 " support writing
 Plug 'preservim/vim-pencil'         " better wrapping for writing
-" (add navigation for markdown journaling)
 if isdirectory(expand('~/workspace/vim-journal'))
+    " use dev version when present
     Plug '~/workspace/vim-journal'
 else
-    Plug 'genebarker/vim-journal'
+    Plug 'genebarker/vim-journal'   " navigate markdown references fast
 endif
 " extend programming support
 if v:version >= 800
