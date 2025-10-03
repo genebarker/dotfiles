@@ -54,6 +54,7 @@ Plug 'michaeljsmith/vim-indent-object' " change & delete indented text fast
 Plug 'tommcdo/vim-exchange'         " swap vim selections fast
 Plug 'tpope/vim-repeat'             " add repeat support to extended moves
 " support writing
+Plug 'bullets-vim/bullets.vim'      " better bullet handling
 Plug 'preservim/vim-pencil'         " better wrapping for writing
 if isdirectory(expand('~/workspace/vim-journal'))
     " use dev version when present
@@ -77,12 +78,9 @@ call plug#end()
 let g:airline_section_x = '%{PencilMode()}'
 
 " turn on vim-pencil for text files
-" - use hard wrapping
-" - keep auto-formatting but protect lists from being mangled
 augroup pencil
     autocmd!
-    autocmd FileType markdown,text call pencil#init({'wrap': 'hard'})
-    autocmd FileType markdown,text setlocal formatoptions+=t formatoptions+=a formatoptions+=n2l formatoptions-=c
+    autocmd FileType markdown,text call pencil#init()
 augroup END
 
 " enable markdown folding and default to all open
@@ -158,19 +156,8 @@ set complete+=kspell
 " and the wrap for 'gq' command
 set colorcolumn=76
 
-" turn on hard wrapping for text files
-autocmd FileType text,markdown,mkd setlocal textwidth=76
-
-" function to toggle text width to enable / disable hard wrapping
-function! ToggleHardWrap()
-    if(&l:textwidth == 0)
-        setlocal textwidth=76
-        echom "setlocal textwidth=76 (hard wrap ON)"
-    else
-        setlocal textwidth=0
-        echom "setlocal textwidth=0 (hard wrap OFF)"
-    endif
-endfunc
+" set text width for auto-wrapping and manual formatting (gq)
+autocmd FileType markdown,text setlocal textwidth=76
 
 " use one space between sentences
 set nojoinspaces
@@ -290,12 +277,16 @@ nnoremap <leader>rc :source $MYVIMRC<CR>
 " plugin shortcuts
 nnoremap <leader>ac :AIChat<CR>
 nnoremap <leader>at :TidyMarkdownTable<CR>
-nnoremap <leader>th :call ToggleHardWrap()<CR>
 nnoremap <leader>tp :TogglePencil<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>ut :UndotreeToggle<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>tw :set list!<CR>
+
+" toggle auto-formatting on/off
+" - important when being deliberate with markdown hard wraps
+noremap <silent> <F7> :<C-u>PFormatToggle<cr>
+inoremap <silent> <F7> <C-o>:PFormatToggle<cr>
 
 " programming shortcuts
 nnoremap gd :ALEGoToDefinition<CR>
