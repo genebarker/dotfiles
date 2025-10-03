@@ -6,7 +6,7 @@ if ! pgrep -x "Safari" > /dev/null; then
 fi
 
 osascript <<EOF
-set reservedHosts to {"github.com", "calendar.google.com", "voice.google.com", "youtube.com"}
+set reservedHosts to {"github.com/genebarker", "calendar.google.com", "voice.google.com", "youtube.com"}
 
 tell application "Safari"
     set winList to every window
