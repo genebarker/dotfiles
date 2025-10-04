@@ -81,6 +81,8 @@ let g:airline_section_x = '%{PencilMode()}'
 augroup pencil
     autocmd!
     autocmd FileType markdown,text call pencil#init()
+    " set default formatoptions
+    autocmd FileType markdown,text setlocal formatoptions=jcqln1t
 augroup END
 
 " enable markdown folding and default to all open
