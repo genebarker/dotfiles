@@ -187,8 +187,9 @@ set showcmd
 syntax enable
 
 " select favorite colorschemes
-" (and their customizations)
-let g:my_themes = ['badwolf', 'jellybeans', 'PaperColor', 'seoul256']
+" - list twice if has light background mode
+" - set customizations
+let g:my_themes = ['badwolf', 'jellybeans', 'PaperColor', 'PaperColor', 'seoul256']
 let g:current_theme_index = 0
 let g:seoul256_background = 234
 
@@ -298,22 +299,17 @@ nnoremap <leader>ta :w \| :TestSuite<CR>
 
 " look & feel shortcuts
 function! GotoNextColorscheme()
+  let l:prev_theme = g:my_themes[g:current_theme_index]
   let g:current_theme_index = (g:current_theme_index + 1) % len(g:my_themes)
-  let l:theme = g:my_themes[g:current_theme_index]
-  call DeepChangeScheme(l:theme)
+  let l:next_theme = g:my_themes[g:current_theme_index]
+  call DeepChangeScheme(l:next_theme)
+  if l:prev_theme ==# l:next_theme
+    set background=light
+  endif
   redraw | echo ":colorscheme " . g:colors_name
 endfunction
 command! NextColorscheme call GotoNextColorscheme()
-nnoremap <Leader>nc :NextColorscheme<CR>
-
-function! ToggleBackground()
-  if &background ==# 'dark'
-    set background=light
-  else
-    set background=dark
-  endif
-endfunction
-nnoremap <Leader>tb :call ToggleBackground()<CR>
+nnoremap <Leader>cc :NextColorscheme<CR>
 
 " close NERDTree when opening a file
 let g:NERDTreeQuitOnOpen = 1
