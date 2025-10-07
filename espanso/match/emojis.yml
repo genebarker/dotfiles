@@ -27,3 +27,5 @@ matches:
     replace: "\U0001F60F" # 😏
   - trigger: ";ball"
     replace: "\U0001F3BE" # 🎾
+  - trigger: ";lock"
+    replace: "\U0001F512" # 🔒
