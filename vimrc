@@ -33,8 +33,13 @@ Plug 'airblade/vim-gitgutter'       " show changed lines
 Plug 'tpope/vim-fugitive'           " add direct git access
 Plug 'vim-airline/vim-airline'      " use enhanced status line
 Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree'          " add a file explorer
-Plug 'ctrlpvim/ctrlp.vim'           " add a fuzzy file finder
+if executable('fzf')
+    Plug 'junegunn/fzf'                 " add a great fuzzy file finder
+    Plug 'junegunn/fzf.vim'
+    nnoremap <C-p> :Files<CR>
+else
+    Plug 'ctrlpvim/ctrlp.vim'           " add a solid fuzzy file finder
+endif
 Plug 'mileszs/ack.vim'              " add better grep & quickfix
 Plug 'mbbill/undotree'              " see undo history & branches
 Plug 'christoomey/vim-tmux-navigator' " add smart pane switching VIM & tmux
@@ -274,6 +279,9 @@ nnoremap <leader>b :ls<CR>:b<Space>
 " keep only the current buffer open
 command! BOnly execute '%bd|e#|bd#'
 
+" filetree toggle
+nnoremap <F2> :Lexplore<CR>
+
 " reload VIM config
 nnoremap <leader>rc :source $MYVIMRC<CR>
 
@@ -282,9 +290,8 @@ nnoremap <leader>ac :AIChat<CR>
 nnoremap <leader>at :TidyMarkdownTable<CR>
 nnoremap <leader>tp :TogglePencil<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
-nnoremap <leader>ut :UndotreeToggle<CR>
-nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>tw :set list!<CR>
+nnoremap <leader>ut :UndotreeToggle<CR>
 
 " toggle auto-formatting on/off
 " - important when being deliberate with markdown hard wraps
@@ -312,9 +319,6 @@ function! GotoNextColorscheme()
 endfunction
 command! NextColorscheme call GotoNextColorscheme()
 nnoremap <Leader>cc :NextColorscheme<CR>
-
-" close NERDTree when opening a file
-let g:NERDTreeQuitOnOpen = 1
 
 " load all plugins then their helptags
 if has('packloadall')
