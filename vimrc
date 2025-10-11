@@ -1,6 +1,5 @@
 "--------------------------------------------------------------------------
 " VIM settings from these blogposts and examples
-" https://dougblack.io/words/a-good-vimrc.html
 " https://github.com/JJGO/dotfiles/blob/master/vim/.vimrc
 " https://github.com/changemewtf/no_plugins
 " https://thoughtbot.com/blog/opt-in-project-specific-vim-spell-checking-and-word-completion
