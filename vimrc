@@ -293,6 +293,9 @@ nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>tw :set list!<CR>
 nnoremap <leader>ut :UndotreeToggle<CR>
 
+" quickly reformat paragraph
+nnoremap <buffer> <silent> Q gqap
+
 " toggle auto-formatting on/off
 " - important when being deliberate with markdown hard wraps
 noremap <silent> <F7> :<C-u>PFormatToggle<cr>
