@@ -68,9 +68,7 @@ else
     Plug 'genebarker/vim-journal'   " navigate markdown references fast
 endif
 " extend programming support
-if v:version >= 800
-    Plug 'dense-analysis/ale'       " add linting and LSP support
-endif
+Plug 'dense-analysis/ale'           " add linting and LSP support
 Plug 'junegunn/vader.vim'           " add vimscript testing support
 Plug 'vim-test/vim-test'            " add fast testing support
 if has('python3')
