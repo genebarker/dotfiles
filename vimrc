@@ -92,8 +92,10 @@ let g:markdown_folding = 1
 autocmd FileType markdown,text setlocal foldlevel=99
 
 " configure ALE plugin
-let g:ale_linters = { 'python' : ['pylsp'] }
-let g:ale_fixers = { 'python': ['black'] }
+let g:ale_linters = { 'python' : ['pylsp', 'pylint'] }
+let g:ale_fixers = { 'python': ['black', 'isort'] }
+let g:ale_lint_on_text_changed = 'always'
+let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 
@@ -300,9 +302,11 @@ inoremap <silent> <F7> <C-o>:PFormatToggle<cr>
 
 " programming shortcuts
 nnoremap gd :ALEGoToDefinition<CR>
-nnoremap gR :ALERename<CR>
-nnoremap <leader>ne :ALENextWrap<CR>
-nnoremap <leader>fr :ALEFindReferences<CR>
+nnoremap gi :ALEHover<CR>
+nnoremap g/ :ALEFindReferences<CR>
+nnoremap gr :ALERename<CR>
+nnoremap ]e :ALENext<CR>
+nnoremap [e :ALEPrevious<CR>
 nnoremap <leader>tt :w \| :TestFile<CR>
 nnoremap <leader>ta :w \| :TestSuite<CR>
 
