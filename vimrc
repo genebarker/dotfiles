@@ -87,17 +87,39 @@ augroup pencil
     autocmd FileType markdown,text setlocal formatoptions=jcqln1t
 augroup END
 
-" enable markdown folding and default to all open
+" enable folding and default to all open
 let g:markdown_folding = 1
 autocmd FileType markdown,text setlocal foldlevel=99
+autocmd FileType java setlocal foldmethod=syntax
+autocmd FileType java setlocal foldlevel=99
+autocmd FileType python setlocal foldmethod=indent
+autocmd FileType python setlocal foldlevel=99
+
+" flip-on highlight Java class-like names in vimrc
+let g:java_highlight_java_lang_ids = 1
+let g:java_highlight_functions = "style"
+let g:java_highlight_signature = 1
+let g:java_highlight_generics = 1
+let g:java_space_errors = 1
 
 " configure ALE plugin
-let g:ale_linters = { 'python' : ['pylsp', 'pylint'] }
-let g:ale_fixers = { 'python': ['black', 'isort'] }
+let g:ale_linters = {
+\   'python' : ['pylsp', 'pylint'],
+\   'java' : ['eclipselsp', 'checkstyle'],
+\}
+let g:ale_fixers = {
+\   'python' : ['black', 'isort'],
+\   'java' : ['google_java_format'],
+\}
 let g:ale_lint_on_text_changed = 'always'
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
+
+let g:ale_java_eclipselsp_path = expand('~/bin/jdt-language-server')
+let g:ale_java_eclipselsp_config_path = expand('~/bin/jdt-language-server/config')
+let g:ale_java_checkstyle_executable = expand('~/bin/checkstyle')
+let g:ale_java_google_java_format_executable = expand('~/bin/google-java-format')
 
 " configure Journal plugin
 let g:journal_ref_key = 'a'
