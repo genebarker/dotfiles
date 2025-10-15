@@ -87,9 +87,6 @@ augroup pencil
     autocmd FileType markdown,text setlocal formatoptions=jcqln1t
 augroup END
 
-" enable folding and default to all open
-let g:markdown_folding = 1
-autocmd FileType markdown,text setlocal foldlevel=99
 autocmd FileType java setlocal foldmethod=syntax
 autocmd FileType java setlocal foldlevel=99
 autocmd FileType python setlocal foldmethod=indent
@@ -119,6 +116,7 @@ let g:ale_completion_enabled = 1
 let g:ale_java_eclipselsp_path = expand('~/bin/jdt-language-server')
 let g:ale_java_eclipselsp_config_path = expand('~/bin/jdt-language-server/config')
 let g:ale_java_checkstyle_executable = expand('~/bin/checkstyle')
+let g:ale_java_checkstyle_config = 'google_checks.xml'
 let g:ale_java_google_java_format_executable = expand('~/bin/google-java-format')
 
 " configure Journal plugin
