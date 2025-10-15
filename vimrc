@@ -123,7 +123,15 @@ let g:ale_java_google_java_format_executable = expand('~/bin/google-java-format'
 let g:journal_ref_key = 'a'
 
 " use nice split window when running tests
-let test#strategy = "vimterminal"
+let g:test#strategy = "vimterminal"
+
+" force use of maven for testing java files
+function! EnableOnlyMavenTest()
+    if &filetype == 'java'
+        let g:test#enabled_runners = ['java#maventest']
+    endif
+endfunction
+autocmd FileType java call EnableOnlyMavenTest()
 
 " configure vim-ai plugin to:
 " - not delete the chat buffer (let me manage it)
