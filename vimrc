@@ -321,7 +321,7 @@ nnoremap <leader>tw :set list!<CR>
 nnoremap <leader>ut :UndotreeToggle<CR>
 
 " quickly reformat paragraph
-nnoremap <buffer> <silent> Q gqap
+nnoremap Q gqap
 
 " toggle auto-formatting on/off
 " - important when being deliberate with markdown hard wraps
