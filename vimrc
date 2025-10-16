@@ -312,6 +312,10 @@ nnoremap <F2> :Lexplore<CR>
 " reload VIM config
 nnoremap <leader>rc :source $MYVIMRC<CR>
 
+" quickfix shortcuts
+nnoremap ]q :cnext<CR>
+nnoremap [q :cprev<CR>
+
 " plugin shortcuts
 nnoremap <leader>ac :AIChat<CR>
 nnoremap <leader>at :TidyMarkdownTable<CR>
