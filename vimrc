@@ -302,7 +302,7 @@ nnoremap <CR> :noh<CR>
 " buffer shortcuts
 nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
-nnoremap <leader>b :ls<CR>:b<Space>
+nnoremap <leader><Tab> :ls<CR>:b<Space>
 " keep only the current buffer open
 command! BOnly execute '%bd|e#|bd#'
 
