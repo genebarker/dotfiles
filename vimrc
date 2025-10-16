@@ -331,7 +331,7 @@ inoremap <silent> <F7> <C-o>:PFormatToggle<cr>
 " programming shortcuts
 nnoremap gd :ALEGoToDefinition<CR>
 nnoremap gi :ALEHover<CR>
-nnoremap gu :ALEFindReferences<CR>
+nnoremap gu :ALEFindReferences -quickfix\| copen<CR>
 nnoremap gr :ALERename<CR>
 nnoremap ]e :ALENext<CR>
 nnoremap [e :ALEPrevious<CR>
