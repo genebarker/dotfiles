@@ -46,7 +46,7 @@ nmap gi <action>(ShowHoverInfo)
 
 " go to definition, implementation, find references
 nmap gd <action>(GotoDeclaration)
-nmap g/ <action>(FindUsages)
+nmap gu <action>(FindUsages)
 
 " refactor and rename
 nmap gr <action>(RenameElement)
