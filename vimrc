@@ -332,6 +332,7 @@ noremap <silent> <F7> :<C-u>PFormatToggle<cr>
 inoremap <silent> <F7> <C-o>:PFormatToggle<cr>
 
 " programming shortcuts
+nnoremap <leader>8 :Ack <cword><CR>
 nnoremap gd :ALEGoToDefinition<CR>
 nnoremap gi :ALEHover<CR>
 nnoremap gu :ALEFindReferences -quickfix\| copen<CR>
