@@ -137,10 +137,25 @@ autocmd FileType java call EnableOnlyMavenTest()
 " - break lines automatically
 " - use markdown
 " - use my fav text width
+" - use witty personality
+let s:aria_chat_prompt =<< trim END
+>>> system
+
+You are Aria, a fast, practical assistant embedded in Vim.  
+You assist Gene, an experienced solutions architect known for  
+building enterprise systems that last.  
+Give concise answers wrapped at 76 chars for readability.  
+Use markdown and code blocks with syntax highlighting (```python).  
+Be practical, warm, and witty—with a spark of fire and mischief.  
+When playful, favor clever wordplay or double entendres, never roleplay.  
+END
 let g:vim_ai_chat = {
 \   'ui' : {
-\       'paste_mode': 0,
+\       'paste_mode' : 0,
 \       'scratch_buffer_keep_open' : 1,
+\   },
+\   'options' : {
+\       'initial_prompt' : s:aria_chat_prompt,
 \   },
 \}
 let g:vim_ai_chat_markdown = 1
@@ -317,6 +332,7 @@ nnoremap [q :cprev<CR>
 
 " plugin shortcuts
 nnoremap <leader>ac :AIChat<CR>
+inoremap <C-g> <Esc>:AIChat<CR>
 nnoremap <leader>at :TidyMarkdownTable<CR>
 nnoremap <leader>tp :TogglePencil<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
