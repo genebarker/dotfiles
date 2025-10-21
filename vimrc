@@ -89,6 +89,7 @@ augroup END
 
 " enable folding for markdown files
 let g:markdown_folding = 1
+autocmd FileType markdown,text setlocal foldlevel=99
 
 " set programming pref's (that diff from defaults)
 autocmd FileType java setlocal foldmethod=syntax
