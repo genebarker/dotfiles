@@ -87,8 +87,10 @@ augroup pencil
     autocmd FileType markdown,text setlocal formatoptions=jcqln1t
 augroup END
 
+" set programming pref's (that diff from defaults)
 autocmd FileType java setlocal foldmethod=syntax
 autocmd FileType java setlocal foldlevel=99
+autocmd FileType java setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 autocmd FileType python setlocal foldmethod=indent
 autocmd FileType python setlocal foldlevel=99
 
@@ -213,7 +215,7 @@ set nojoinspaces
 " show one line per line
 set nowrap
 
-" tabs are always spaces and 4 spaces per
+" tab defaults are spaces and 4 spaces per
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
