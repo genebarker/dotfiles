@@ -87,6 +87,9 @@ augroup pencil
     autocmd FileType markdown,text setlocal formatoptions=jcqln1t
 augroup END
 
+" enable folding for markdown files
+let g:markdown_folding = 1
+
 " set programming pref's (that diff from defaults)
 autocmd FileType java setlocal foldmethod=syntax
 autocmd FileType java setlocal foldlevel=99
