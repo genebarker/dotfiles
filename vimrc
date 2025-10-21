@@ -171,6 +171,9 @@ if !isdirectory(&undodir)
 endif
 set undofile
 
+" persist theme selection across sessions
+let g:theme_state_file = expand('~/.vim/theme_state')
+
 " use system clipboard for copy & paste
 set clipboard=unnamed
 
@@ -240,8 +243,14 @@ syntax enable
 " - list twice if has light background mode
 " - set customizations
 let g:my_themes = ['badwolf', 'jellybeans', 'PaperColor', 'PaperColor', 'seoul256']
-let g:current_theme_index = 0
 let g:seoul256_background = 234
+
+" restore theme index from previous session
+if filereadable(g:theme_state_file)
+    let g:current_theme_index = str2nr(readfile(g:theme_state_file)[0])
+else
+    let g:current_theme_index = 0
+endif
 
 " apply customization on scheme change
 function! CustomizeScheme()
@@ -256,8 +265,20 @@ autocmd ColorScheme * call CustomizeScheme()
 " make sure syntax highlighting reset
 " on scheme change
 function! DeepChangeScheme(scheme)
+    let l:save_bg = &background
+
+    " reset to vim defaults
     hi clear
-    syntax reset
+    if exists('syntax_on')
+        syntax reset
+    endif
+
+    " clear any lingering colorscheme name
+    if exists('g:colors_name')
+        unlet g:colors_name
+    endif
+
+    let &background = l:save_bg
     execute 'colorscheme ' . a:scheme
 endfunction
 
@@ -267,7 +288,16 @@ if $TERM ==# 'xterm-256color' || $TERM ==# 'tmux-256color' || $TERM ==# 'alacrit
         set termguicolors
     endif
     set background=dark
-    colorscheme badwolf
+    " apply saved theme if available
+    if g:current_theme_index > 0
+        call DeepChangeScheme(g:my_themes[g:current_theme_index])
+        " handle light background for duplicate themes
+        if g:my_themes[g:current_theme_index] ==# g:my_themes[g:current_theme_index - 1]
+            set background=light
+        endif
+    else
+        colorscheme badwolf
+    endif
 else
     " for limited terminals
     colorscheme desert
@@ -369,6 +399,8 @@ function! GotoNextColorscheme()
   if l:prev_theme ==# l:next_theme
     set background=light
   endif
+  " persist theme selection
+  call writefile([g:current_theme_index], g:theme_state_file)
   redraw | echo ":colorscheme " . g:colors_name
 endfunction
 command! NextColorscheme call GotoNextColorscheme()
