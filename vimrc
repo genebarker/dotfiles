@@ -27,7 +27,7 @@ Plug 'tpope/vim-sensible'           " initialize VIM with better defaults
 Plug 'sjl/badwolf'                  " use favorite colorschemes
 Plug 'nanotech/jellybeans.vim'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'junegunn/seoul256.vim'
+Plug 'morhetz/gruvbox'
 Plug 'airblade/vim-gitgutter'       " show changed lines
 Plug 'tpope/vim-fugitive'           " add direct git access
 Plug 'vim-airline/vim-airline'      " use enhanced status line
@@ -244,9 +244,9 @@ set showcmd
 syntax enable
 
 " select favorite colorschemes
-" - list twice if has light background mode
+" - suffix with ! for light background mode
 " - set customizations
-let g:my_themes = ['badwolf', 'jellybeans', 'PaperColor', 'PaperColor', 'seoul256']
+let g:my_themes = ['badwolf', 'jellybeans', 'PaperColor', 'PaperColor!', 'gruvbox', 'gruvbox!']
 let g:seoul256_background = 234
 
 " restore theme index from previous session
@@ -269,7 +269,14 @@ autocmd ColorScheme * call CustomizeScheme()
 " make sure syntax highlighting reset
 " on scheme change
 function! DeepChangeScheme(scheme)
-    let l:save_bg = &background
+    " check for light background marker
+    if a:scheme =~# '!$'
+        set background=light
+        let l:theme_name = substitute(a:scheme, '!$', '', '')
+    else
+        set background=dark
+        let l:theme_name = a:scheme
+    endif
 
     " reset to vim defaults
     hi clear
@@ -282,8 +289,7 @@ function! DeepChangeScheme(scheme)
         unlet g:colors_name
     endif
 
-    let &background = l:save_bg
-    execute 'colorscheme ' . a:scheme
+    execute 'colorscheme ' . l:theme_name
 endfunction
 
 " set initial colorscheme
@@ -291,15 +297,11 @@ if $TERM ==# 'xterm-256color' || $TERM ==# 'tmux-256color' || $TERM ==# 'alacrit
     if $TERM_PROGRAM !=# 'Apple_Terminal'
         set termguicolors
     endif
-    set background=dark
     " apply saved theme if available
     if g:current_theme_index > 0
         call DeepChangeScheme(g:my_themes[g:current_theme_index])
-        " handle light background for duplicate themes
-        if g:my_themes[g:current_theme_index] ==# g:my_themes[g:current_theme_index - 1]
-            set background=light
-        endif
     else
+        set background=dark
         colorscheme badwolf
     endif
 else
@@ -396,13 +398,8 @@ nnoremap <leader>ta :w \| :TestSuite<CR>
 
 " look & feel shortcuts
 function! GotoNextColorscheme()
-  let l:prev_theme = g:my_themes[g:current_theme_index]
   let g:current_theme_index = (g:current_theme_index + 1) % len(g:my_themes)
-  let l:next_theme = g:my_themes[g:current_theme_index]
-  call DeepChangeScheme(l:next_theme)
-  if l:prev_theme ==# l:next_theme
-    set background=light
-  endif
+  call DeepChangeScheme(g:my_themes[g:current_theme_index])
   " persist theme selection
   call writefile([g:current_theme_index], g:theme_state_file)
   redraw | echo ":colorscheme " . g:colors_name
