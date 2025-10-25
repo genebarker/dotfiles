@@ -826,7 +826,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-[return] to open Alacritty Terminal",
+                        "description": "Warp-[return] to toggle Alacritty and notive Terminal",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -837,7 +837,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "return_or_enter" },
-                                "to": [{ "shell_command": "open -a Alacritty" }],
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/toggle-terminal.sh" }],
                                 "type": "basic"
                             }
                         ]
@@ -1239,7 +1239,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-Z to open ZK Terminal (/ = dvorak z)",
+                        "description": "Warp-Y to open YouTube (t = dvorak y)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1249,8 +1249,8 @@
                                         "value": true
                                     }
                                 ],
-                                "from": { "key_code": "slash" },
-                                "to": [{ "shell_command": "open -a Terminal" }],
+                                "from": { "key_code": "t" },
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/open-rsvd-safari-window.sh youtube.com" }],
                                 "type": "basic"
                             }
                         ]
