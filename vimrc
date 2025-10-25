@@ -260,8 +260,13 @@ endif
 function! CustomizeScheme()
     if g:colors_name ==# 'badwolf'
         hi! link SpellBad ErrorMsg
-        hi! link SpellRare WarningMsg
         hi! link SpellLocal SignColumn
+        hi! link SpellRare WarningMsg
+    elseif g:colors_name ==# 'gruvbox'
+        hi! link SpellBad GruvboxRed
+        hi! link SpellCap GruvboxPurple
+        hi! link SpellRare GruvboxBlue
+        hi! link SpellLocal GruvboxAqua
     endif
 endfunction
 autocmd ColorScheme * call CustomizeScheme()
