@@ -1064,6 +1064,23 @@
                         ]
                     },
                     {
+                        "description": "Warp-L to open Bitwarden Lockbox (p = dvorak l)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "p" },
+                                "to": [{ "shell_command": "open -a Bitwarden" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Warp-M to open Google Mail",
                         "manipulators": [
                             {
