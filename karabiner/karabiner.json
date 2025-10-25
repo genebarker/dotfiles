@@ -1222,7 +1222,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-Y to open YouTube (t = dvorak y)",
+                        "description": "Warp-X to open X (b = dvorak x)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1232,8 +1232,8 @@
                                         "value": true
                                     }
                                 ],
-                                "from": { "key_code": "t" },
-                                "to": [{ "shell_command": "~/dotfiles/karabiner/open-rsvd-safari-window.sh youtube.com" }],
+                                "from": { "key_code": "b" },
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/open-rsvd-safari-window.sh x.com" }],
                                 "type": "basic"
                             }
                         ]
