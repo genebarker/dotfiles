@@ -175,9 +175,6 @@ if !isdirectory(&undodir)
 endif
 set undofile
 
-" persist theme selection across sessions
-let g:theme_state_file = expand('~/.vim/theme_state')
-
 " use system clipboard for copy & paste
 set clipboard=unnamed
 
@@ -245,11 +242,14 @@ syntax enable
 
 " select favorite colorschemes
 " - suffix with ! for light background mode
-" - set customizations
+" - set their customizations
 let g:my_themes = ['badwolf', 'jellybeans', 'PaperColor', 'PaperColor!', 'gruvbox', 'gruvbox!']
 let g:seoul256_background = 234
+let g:jellybeans_use_term_italics = 1
+let g:gruvbox_italic = 1
 
 " restore theme index from previous session
+let g:theme_state_file = expand('~/.vim/theme_state')
 if filereadable(g:theme_state_file)
     let g:current_theme_index = str2nr(readfile(g:theme_state_file)[0])
 else
