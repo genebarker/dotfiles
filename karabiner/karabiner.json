@@ -826,7 +826,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-[return] to toggle Alacritty and notive Terminal",
+                        "description": "Warp-[return] to toggle Alacritty and native Terminal",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -911,7 +911,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-8 to open Music, to take Flow State to Warp Factor 8",
+                        "description": "Warp-8 to open Music, go to Warp Factor 8",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -962,7 +962,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-C to open ChatGPT (i = dvorak c)",
+                        "description": "Warp-C to open last / next AI Chat tool (i = dvorak c)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -973,7 +973,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "i" },
-                                "to": [{ "shell_command": "open -a ChatGPT" }],
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/cycle-chat.sh" }],
                                 "type": "basic"
                             }
                         ]
@@ -1030,7 +1030,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-H to open next Cheatsheet (j = dvorak h)",
+                        "description": "Warp-H to open last / next Cheatsheet (j = dvorak h)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1120,7 +1120,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-P to Ping Messages (r = dvorak p)",
+                        "description": "Warp-P to open last / next messaging app, to Ping (r = dvorak p)",
                         "manipulators": [
                             {
                                 "conditions": [
