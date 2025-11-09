@@ -36,6 +36,9 @@ nnoremap <CR> :noh<CR>
 " file navigation
 nmap <C-p> <action>(GotoFile)
 
+" filetree toggle
+nnoremap <F2> :NERDTreeToggle<CR>
+
 " jump to next problem
 nmap ]e <action>(GotoNextError)
 nmap [e <action>(GotoPreviousError)
@@ -55,9 +58,6 @@ nmap gR <action>(Refactorings.QuickListPopupAction)
 " run stuff
 nmap <leader>rc <action>(RunClass)
 nmap <leader>rr <action>(Run)
-
-" show file tree
-nnoremap <leader>nt :NERDTreeToggle<CR>
 
 " hide helper windows
 map <leader>hh <Action>(HideAllWindows)
