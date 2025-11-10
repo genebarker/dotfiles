@@ -77,6 +77,10 @@
                                         "name": "super",
                                         "type": "variable_unless",
                                         "value": true
+                                    },
+                                    {
+                                        "file_paths": ["vice-arm64"],
+                                        "type": "frontmost_application_unless"
                                     }
                                 ],
                                 "from": {
@@ -112,6 +116,10 @@
                                         "name": "super",
                                         "type": "variable_unless",
                                         "value": true
+                                    },
+                                    {
+                                        "file_paths": ["vice-arm64"],
+                                        "type": "frontmost_application_unless"
                                     }
                                 ],
                                 "from": {
@@ -506,6 +514,12 @@
                         "description": "Tab to Tab when tapped, Super when held",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "file_paths": ["vice-arm64"],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": { "key_code": "tab" },
                                 "to": [
                                     {
@@ -744,6 +758,12 @@
                         "description": "Caps Lock to Esc when tapped, Warp when held",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "file_paths": ["vice-arm64"],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": { "key_code": "caps_lock" },
                                 "to": [
                                     {
@@ -1259,6 +1279,12 @@
                         "description": "GASC Home Row Mods",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "file_paths": ["vice-arm64"],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "a",
                                     "modifiers": { "optional": ["any"] }
@@ -1279,6 +1305,12 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "file_paths": ["vice-arm64"],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "s",
                                     "modifiers": { "optional": ["any"] }
@@ -1294,6 +1326,12 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "file_paths": ["vice-arm64"],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": { "optional": ["any"] }
@@ -1309,6 +1347,12 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "file_paths": ["vice-arm64"],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": { "optional": ["any"] }
@@ -1324,6 +1368,12 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "file_paths": ["vice-arm64"],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "semicolon",
                                     "modifiers": { "optional": ["any"] }
@@ -1344,6 +1394,12 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "file_paths": ["vice-arm64"],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": { "optional": ["any"] }
@@ -1359,6 +1415,12 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "file_paths": ["vice-arm64"],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": { "optional": ["any"] }
@@ -1374,6 +1436,12 @@
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "file_paths": ["vice-arm64"],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": { "optional": ["any"] }
