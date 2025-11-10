@@ -1171,7 +1171,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-T to open Things (k = dvorak t)",
+                        "description": "Warp-T to toggle Things and Just Press Record (k = dvorak t)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1182,7 +1182,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "k" },
-                                "to": [{ "shell_command": "open -a Things3" }],
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/toggle-todo.sh" }],
                                 "type": "basic"
                             }
                         ]
