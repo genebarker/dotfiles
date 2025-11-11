@@ -514,12 +514,6 @@
                         "description": "Tab to Tab when tapped, Super when held",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "file_paths": ["vice-arm64"],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
                                 "from": { "key_code": "tab" },
                                 "to": [
                                     {
@@ -758,12 +752,6 @@
                         "description": "Caps Lock to Esc when tapped, Warp when held",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "file_paths": ["vice-arm64"],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
                                 "from": { "key_code": "caps_lock" },
                                 "to": [
                                     {
@@ -1225,7 +1213,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-V to open VSCode (. = dvorak v)",
+                        "description": "Warp-V to open VICE 64 emulator (. = dvorak v)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1236,6 +1224,23 @@
                                     }
                                 ],
                                 "from": { "key_code": "period" },
+                                "to": [{ "shell_command": "open -a /Applications/vice-*/VICE.app/Contents/Resources/bin/x64sc" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Warp-W to Work with VSCode (. = dvorak v)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "comma" },
                                 "to": [{ "shell_command": "open -a 'Visual Studio Code'" }],
                                 "type": "basic"
                             }
