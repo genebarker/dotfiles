@@ -97,6 +97,7 @@ autocmd FileType java setlocal foldlevel=99
 autocmd FileType java setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 autocmd FileType python setlocal foldmethod=indent
 autocmd FileType python setlocal foldlevel=99
+autocmd FileType xml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " flip-on highlight Java class-like names in vimrc
 let g:java_highlight_java_lang_ids = 1
@@ -109,11 +110,13 @@ let g:java_space_errors = 1
 let g:ale_linters = {
 \   'python' : ['pylsp', 'pylint'],
 \   'java' : ['eclipselsp', 'checkstyle'],
+\   'xml': ['xmllint'],
 \}
 let g:ale_fixers = {
 \   'python' : ['black', 'isort'],
 \   'java' : ['google_java_format'],
 \}
+
 let g:ale_lint_on_text_changed = 'always'
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
