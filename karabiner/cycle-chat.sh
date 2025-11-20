@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # List of messaging apps
-apps=("ChatGPT" "Claude")
+apps=("ChatGPT" "Claude" "Gemini")
 state_file="$HOME/.config/chat.app"
 
-# Get the frontmost app
-FRONTAPP=$(osascript -e 'tell application "System Events" to get name of first process whose frontmost is true')
+# Get title of frontmost app
+FRONTTITLE=$(osascript -e 'tell application "System Events" to tell (first process whose frontmost is true) to get title of front window')
 
 # Find index of frontmost app in the list
 index=-1
 for i in "${!apps[@]}"; do
-  if [ "${apps[$i]}" = "$FRONTAPP" ]; then
+  if [[ "$FRONTTITLE" =~ "${apps[$i]}" ]]; then
     index=$i
     break
   fi
