@@ -8,6 +8,12 @@
 " no need to support legacy vi nuances
 set nocompatible
 
+" just set color scheme when on limited host
+if !executable('curl')
+    colorscheme desert
+    finish
+endif
+
 " install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
