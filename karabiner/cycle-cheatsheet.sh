@@ -45,14 +45,13 @@ end try
 EOF
 )
 
-# If Preview is already frontmost and showing the current target, advance
 if [[ "$IS_CURRENT_FRONTMOST" == "true" ]]; then
-  INDEX=$(( (INDEX + 1) % TOTAL ))
-  TARGET_FILE="${CHEAT_FILES[$INDEX]}"
+    # if current cheatsheet is frontmost, switch to the next one
+    INDEX=$(( (INDEX + 1) % TOTAL ))
+    TARGET_FILE="${CHEAT_FILES[$INDEX]}"
+    echo "$INDEX" > "$INDEX_FILE"
+    open -a Preview "$TARGET_FILE"
+else
+    # otherwise, open the current cheatsheet
+    open -a Preview "$TARGET_FILE"
 fi
-
-# Open target (new or current)
-open -a Preview "$TARGET_FILE"
-
-# Save current index for next time
-echo "$INDEX" > "$INDEX_FILE"
