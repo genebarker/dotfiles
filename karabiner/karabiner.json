@@ -79,7 +79,7 @@
                                         "value": true
                                     },
                                     {
-                                        "file_paths": ["vice-arm64"],
+                                        "file_paths": ["VirtualC64"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
@@ -118,7 +118,7 @@
                                         "value": true
                                     },
                                     {
-                                        "file_paths": ["vice-arm64"],
+                                        "file_paths": ["VirtualC64"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
@@ -1213,7 +1213,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-V to open VICE 64 emulator (. = dvorak v)",
+                        "description": "Warp-V to open VirtualC64 (. = dvorak v)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1224,7 +1224,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "period" },
-                                "to": [{ "shell_command": "open -a /Applications/vice-*/VICE.app/Contents/Resources/bin/x64sc" }],
+                                "to": [{ "shell_command": "open -a VirtualC64" }],
                                 "type": "basic"
                             }
                         ]
@@ -1286,7 +1286,7 @@
                             {
                                 "conditions": [
                                     {
-                                        "file_paths": ["vice-arm64"],
+                                        "file_paths": ["VirtualC64"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
@@ -1312,7 +1312,7 @@
                             {
                                 "conditions": [
                                     {
-                                        "file_paths": ["vice-arm64"],
+                                        "file_paths": ["VirtualC64"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
@@ -1333,7 +1333,7 @@
                             {
                                 "conditions": [
                                     {
-                                        "file_paths": ["vice-arm64"],
+                                        "file_paths": ["VirtualC64"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
@@ -1354,7 +1354,7 @@
                             {
                                 "conditions": [
                                     {
-                                        "file_paths": ["vice-arm64"],
+                                        "file_paths": ["VirtualC64"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
@@ -1375,7 +1375,7 @@
                             {
                                 "conditions": [
                                     {
-                                        "file_paths": ["vice-arm64"],
+                                        "file_paths": ["VirtualC64"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
@@ -1401,7 +1401,7 @@
                             {
                                 "conditions": [
                                     {
-                                        "file_paths": ["vice-arm64"],
+                                        "file_paths": ["VirtualC64"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
@@ -1422,7 +1422,7 @@
                             {
                                 "conditions": [
                                     {
-                                        "file_paths": ["vice-arm64"],
+                                        "file_paths": ["VirtualC64"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
@@ -1443,7 +1443,7 @@
                             {
                                 "conditions": [
                                     {
-                                        "file_paths": ["vice-arm64"],
+                                        "file_paths": ["VirtualC64"],
                                         "type": "frontmost_application_unless"
                                     }
                                 ],
