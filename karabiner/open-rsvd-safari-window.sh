@@ -17,6 +17,7 @@ tell application "Safari"
         set firstTabURL to get URL of tab 1 of theWin
         if firstTabURL contains targetHost then
             set foundWin to true
+            set miniaturized of theWin to false
             set index of theWin to 1
             exit repeat
         end if

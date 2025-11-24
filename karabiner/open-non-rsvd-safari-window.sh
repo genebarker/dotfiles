@@ -22,6 +22,7 @@ tell application "Safari"
         end repeat
         if not reservedWin then
             set foundWin to true
+            set miniaturized of theWin to false
             set index of theWin to 1
             exit repeat
         end if
