@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # List of messaging apps
-apps=("ChatGPT" "Claude" "Gemini")
+apps=("Grok" "ChatGPT")
+# Commenting out for now - using Claude via Claude Code instead
+# apps=("Grok" "ChatGPT" "Gemini" "Claude")
 state_file="$HOME/.config/chat.app"
 
 # Get title of frontmost app
