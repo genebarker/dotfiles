@@ -1145,23 +1145,6 @@
                         ]
                     },
                     {
-                        "description": "Warp-R to open Remote Desktop (o = dvorak r)",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "warp",
-                                        "type": "variable_if",
-                                        "value": true
-                                    }
-                                ],
-                                "from": { "key_code": "o" },
-                                "to": [{ "shell_command": "open -a 'Windows App'" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Warp-S to open Safari (semicolon = dvorak s)",
                         "manipulators": [
                             {
@@ -1213,7 +1196,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-V to open VirtualC64 (. = dvorak v)",
+                        "description": "Warp-V to open VSCode (. = dvorak v)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1224,13 +1207,13 @@
                                     }
                                 ],
                                 "from": { "key_code": "period" },
-                                "to": [{ "shell_command": "open -a VirtualC64" }],
+                                "to": [{ "shell_command": "open -a 'Visual Studio Code'" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Warp-W to Work with VSCode (. = dvorak v)",
+                        "description": "Warp-W to open Windows App (, = dvorak w)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1241,7 +1224,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "comma" },
-                                "to": [{ "shell_command": "open -a 'Visual Studio Code'" }],
+                                "to": [{ "shell_command": "open -a 'Windows App'" }],
                                 "type": "basic"
                             }
                         ]
@@ -1276,6 +1259,23 @@
                                 ],
                                 "from": { "key_code": "t" },
                                 "to": [{ "shell_command": "~/dotfiles/karabiner/open-rsvd-safari-window.sh youtube.com" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Warp-Z Zap to the C64 (/ = dvorak z)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "slash" },
+                                "to": [{ "shell_command": "open -a VirtualC64" }],
                                 "type": "basic"
                             }
                         ]
