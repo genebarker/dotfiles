@@ -51,13 +51,18 @@ alias ....="cd ../../.."
 
 # ls shortcuts
 if [[ "$OSTYPE" == "darwin"* ]]; then # macOS
-    ls_colorflag="-G"
+    ls_options='-G -D "%Y-%m-%d %H:%M"'
 else # linux
-    ls_colorflag="--color"
+    ls_options='--color --time-style=long-iso'
 fi
-alias ls="ls ${ls_colorflag}"
-alias ll="ls -l ${ls_colorflag}"
-alias l="ls -la ${ls_colorflag}"
+alias ls="ls ${ls_options}"
+alias ll="ls -l ${ls_options}"
+alias l="ls -la ${ls_options}"
+
+# cd / ls combo
+cdd() {
+    cd "${1:-$HOME}" && l
+}
 
 # git shortcuts
 alias g="git"
