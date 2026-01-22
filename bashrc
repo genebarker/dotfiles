@@ -71,7 +71,7 @@ alias gl="git log -10 --oneline"
 alias gd="git diff"
 alias gds="git diff --stat"
 alias gc="git commit"
-alias gca="git commit -a"
+alias gca="git commit --all"
 alias ga="git commit --amend"
 gps() {
   git push origin "$(git symbolic-ref --short HEAD)"
