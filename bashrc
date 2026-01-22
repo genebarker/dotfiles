@@ -130,20 +130,32 @@ is_ssh_session() {
   [[ -n "$SSH_CONNECTION" ]] && return 0
 
   if [[ $(uname) == MINGW* ]]; then
-      # no further checks needed in git bash
       return 1
   fi
 
-  local parent
-  parent=$(ps -o ppid= -p "$$")
-  parent=${parent//[!0-9]/}  # Strip anything that's not a digit
+  # walk up the process tree looking for sshd
+  local pid=$$
+  while [[ $pid -gt 1 ]]; do
+    local parent comm
+    parent=$(ps -o ppid= -p "$pid" 2>/dev/null)
+    parent=${parent//[!0-9]/}
+    [[ -z "$parent" ]] && break
 
-  if [ -n "$parent" ] && ps -o comm= -p "$parent" 2>/dev/null | grep -q 'sshd'; then
-    return 0
-  fi
+    comm=$(ps -o comm= -p "$parent" 2>/dev/null)
+    [[ "$comm" == "sshd" ]] && return 0
+
+    pid=$parent
+  done
 
   return 1
 }
+
+# cache SSH session status (doesn't change mid-session)
+if is_ssh_session; then
+    _IS_SSH_SESSION=1
+else
+    _IS_SSH_SESSION=0
+fi
 
 parse_git_branch() {
   if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -154,7 +166,7 @@ parse_git_branch() {
 
   branch=$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --exact-match 2>/dev/null)
 
-  # Count all changes: staged, modified, deleted, untracked
+  # count all changes: staged, modified, deleted, untracked
   count=$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')
 
   if [ "$count" -gt 0 ]; then
@@ -173,7 +185,7 @@ update_prompt() {
     fi;
 
     # highlight the hostname when connected via SSH.
-    if is_ssh_session; then
+    if [[ "$_IS_SSH_SESSION" -eq 1 ]]; then
         hostStyle="[ssh] ${ATTRIBUTE_BOLD}${COLOR_MAGENTA}"
     else
         hostStyle="${COLOR_MAGENTA}"
