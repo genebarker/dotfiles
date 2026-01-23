@@ -177,11 +177,13 @@ parse_git_branch() {
 }
 
 update_prompt() {
-    # highlight the user name when logged in as root.
-    if [[ "$(whoami)" == "root" ]]; then
+    # highlight the user name when logged in as root, use # prompt
+    if [[ "$EUID" -eq 0 ]]; then
         userStyle="${ATTRIBUTE_REVERSE}${COLOR_CYAN}"
+        promptChar="#"
     else
         userStyle="${COLOR_CYAN}"
+        promptChar="\$"
     fi;
 
     # highlight the hostname when connected via SSH.
@@ -198,7 +200,7 @@ update_prompt() {
         venv=""
     fi
 
-    PS1="${COLOR_BLUE}#${COLOR_DEFAULT} ${userStyle}\u${COLOR_DEFAULT}${ATTRIBUTE_RESET} ${COLOR_GREEN}at${COLOR_DEFAULT} ${hostStyle}$(machine_name)${ATTRIBUTE_RESET}${COLOR_DEFAULT} ${COLOR_GREEN}in${COLOR_DEFAULT} ${COLOR_GRAY}\w$(parse_git_branch)${COLOR_GRAY}${venv}${COLOR_DEFAULT}\n\$(if [ \$? -ne 0 ]; then echo \"${COLOR_RED}!${COLOR_DEFAULT} \"; fi)${COLOR_BLUE}>${COLOR_DEFAULT} ${ATTRIBUTE_RESET}"
+    PS1="${COLOR_BLUE}:${COLOR_DEFAULT} ${userStyle}\u${COLOR_DEFAULT}${ATTRIBUTE_RESET} ${COLOR_GREEN}at${COLOR_DEFAULT} ${hostStyle}$(machine_name)${ATTRIBUTE_RESET}${COLOR_DEFAULT} ${COLOR_GREEN}in${COLOR_DEFAULT} ${COLOR_GRAY}\w$(parse_git_branch)${COLOR_GRAY}${venv}${COLOR_DEFAULT}\n\$(if [ \$? -ne 0 ]; then echo \"${COLOR_RED}!${COLOR_DEFAULT} \"; fi)${COLOR_BLUE}${promptChar}${COLOR_DEFAULT} ${ATTRIBUTE_RESET}"
     PS2="${COLOR_BLUE}>>${COLOR_DEFAULT} "
 }
 
