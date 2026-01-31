@@ -1230,7 +1230,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-X to open X (b = dvorak x)",
+                        "description": "Warp-X to open Excel (b = dvorak x)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1241,7 +1241,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "b" },
-                                "to": [{ "shell_command": "~/dotfiles/karabiner/open-rsvd-safari-window.sh x.com" }],
+                                "to": [{ "shell_command": "open -a 'Microsoft Excel'" }],
                                 "type": "basic"
                             }
                         ]
