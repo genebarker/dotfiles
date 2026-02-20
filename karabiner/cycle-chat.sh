@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # List of chat apps
-apps=("ChatGPT" "Gemini")
+apps=("ChatGPT" "Gemini" "Grok")
 state_file="$HOME/.config/chat.app"
 
 # Get title of frontmost app
