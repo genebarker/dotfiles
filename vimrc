@@ -10,6 +10,7 @@ set nocompatible
 
 " just set color scheme when on limited host
 if !executable('curl')
+    " for limited terminals
     colorscheme desert
     finish
 endif
