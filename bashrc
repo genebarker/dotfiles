@@ -193,7 +193,7 @@ update_prompt() {
         hostStyle="${COLOR_MAGENTA}"
     fi;
 
-    # display virual environment when active
+    # display virtual environment when active
     if [[ -n "$VIRTUAL_ENV" ]]; then
         venv=" • ${VIRTUAL_ENV##*/}"
     else
