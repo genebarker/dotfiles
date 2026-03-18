@@ -970,7 +970,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-C to open last / next AI Chat tool (i = dvorak c)",
+                        "description": "Warp-C to open Gemini Chat (i = dvorak c)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -981,7 +981,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "i" },
-                                "to": [{ "shell_command": "~/dotfiles/karabiner/cycle-chat.sh" }],
+                                "to": [{ "shell_command": "open ~/Applications/Gemini.app" }],
                                 "type": "basic"
                             }
                         ]
