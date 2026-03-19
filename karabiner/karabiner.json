@@ -868,23 +868,6 @@
                         ]
                     },
                     {
-                        "description": "Warp-0 to close All Apps",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "warp",
-                                        "type": "variable_if",
-                                        "value": true
-                                    }
-                                ],
-                                "from": { "key_code": "0" },
-                                "to": [{ "shell_command": "~/dotfiles/karabiner/close-all-apps.sh" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Warp-6 (^) to toggle Karabiner Elements and its Event Viewer",
                         "manipulators": [
                             {
