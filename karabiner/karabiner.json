@@ -147,6 +147,16 @@
                         ]
                     },
                     {
+                        "description": "F6 to toggle MiniPlayer",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "f6" },
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/toggle-miniplayer.sh" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Ghost-8,3 (*,#) move Next / Prev Match",
                         "manipulators": [
                             {
