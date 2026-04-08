@@ -913,7 +913,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "8" },
-                                "to": [{ "shell_command": "osascript -e 'tell application \"Music\" to activate' -e 'tell application \"Music\" to set visible of window \"Music\" to true'" }],
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/open-music.sh" }],
                                 "type": "basic"
                             }
                         ]
