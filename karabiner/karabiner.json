@@ -693,23 +693,6 @@
                         ]
                     },
                     {
-                        "description": "Super-R to Restore Window size (o = dvorak r)",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "super",
-                                        "type": "variable_if",
-                                        "value": true
-                                    }
-                                ],
-                                "from": { "key_code": "o" },
-                                "to": [{ "shell_command": "open -g rectangle://execute-action?name=restore" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Super-S to Silence (minimize) other Windows (; = dvorak s)",
                         "manipulators": [
                             {
@@ -727,6 +710,40 @@
                                         "modifiers": ["left_command", "left_option"]
                                     }
                                 ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Super-U to Un-snap Window / Restore to prev size (f = dvorak u)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "f" },
+                                "to": [{ "shell_command": "open -g rectangle://execute-action?name=restore" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Super-[space] to Reverse all Windows",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "spacebar" },
+                                "to": [{ "shell_command": "open -g rectangle://execute-action?name=reverse-all" }],
                                 "type": "basic"
                             }
                         ]
