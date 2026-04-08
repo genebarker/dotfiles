@@ -564,6 +564,23 @@
                         ]
                     },
                     {
+                        "description": "Super-[space] to Reverse all Windows",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "spacebar" },
+                                "to": [{ "shell_command": "open -g rectangle://execute-action?name=reverse-all" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Super-B to go Back to prev Desktop (n = dvorak b)",
                         "manipulators": [
                             {
@@ -727,23 +744,6 @@
                                 ],
                                 "from": { "key_code": "f" },
                                 "to": [{ "shell_command": "open -g rectangle://execute-action?name=restore" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Super-[space] to Reverse all Windows",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "super",
-                                        "type": "variable_if",
-                                        "value": true
-                                    }
-                                ],
-                                "from": { "key_code": "spacebar" },
-                                "to": [{ "shell_command": "open -g rectangle://execute-action?name=reverse-all" }],
                                 "type": "basic"
                             }
                         ]
