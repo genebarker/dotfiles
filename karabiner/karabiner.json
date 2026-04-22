@@ -981,7 +981,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "i" },
-                                "to": [{ "shell_command": "open ~/Applications/Gemini.app" }],
+                                "to": [{ "shell_command": "open -a Gemini" }],
                                 "type": "basic"
                             }
                         ]
