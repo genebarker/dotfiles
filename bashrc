@@ -64,6 +64,23 @@ cdd() {
     cd "${1:-$HOME}" && l
 }
 
+# dirs / pushd shortcuts
+d() {
+    if [[ -z "$1" ]]; then
+        # on no arg, just dirs
+        printf "\033[90mexec: dirs -v\033[0m\n"
+        dirs -v
+    elif [[ "$1" =~ ^[0-9]+$ ]]; then
+        # given a number arg, pushd + to it!
+        printf "\033[90mexec: pushd +%s\033[0m\n" "$1"
+        pushd +"$1" > /dev/null
+        l
+    else
+        # give a path, fallback to standard cd and list
+        cd "$1" && l
+    fi
+}
+
 # git shortcuts
 alias g="git"
 alias gs="git status"
