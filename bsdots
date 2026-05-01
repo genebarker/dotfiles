@@ -3,12 +3,25 @@
 # exit script immediately on non-zero status
 set -e
 
-VERSION="1.0.0-SNAPSHOT"
+VERSION="1.1.0"
 
 DOTFILE_FOLDER="$HOME/dotfiles"
 BASE_DOTFILES=( vimrc ideavimrc vrapperrc tmux.conf )
 MACOS_DOTFILES=( bash_profile )
 LINUX_DOTFILES=( bashrc )
+
+# Dir mappings: "source_dir:target_dir" (source relative to DOTFILE_FOLDER)
+MACOS_DIR_MAPPINGS=(
+    "alacritty:$HOME/.config/alacritty"
+    "espanso:$HOME/.config/espanso"
+    "karabiner:$HOME/.config/karabiner"
+)
+LINUX_DIR_MAPPINGS=()
+
+# Explicit source:target file mappings (source relative to DOTFILE_FOLDER, target is full path)
+BASE_DOTFILE_MAPPINGS=( "claude/CLAUDE.md:$HOME/.claude/CLAUDE.md" )
+MACOS_DOTFILE_MAPPINGS=()
+LINUX_DOTFILE_MAPPINGS=()
 
 SCRIPT_FILENAME="$(basename ${BASH_SOURCE})"
 
@@ -45,6 +58,8 @@ run_main() {
     verify_bootstrap_selected
 
     link_dotfiles
+    link_dotfile_mappings
+    link_dir_mappings
 }
 
 display_script_header() {
@@ -156,6 +171,68 @@ process_dotfile_list() {
         target_file="$HOME/.$file"
         link_file $source_file $target_file
     done;
+}
+
+link_dotfile_mappings() {
+    echo ".. linking dotfile mappings"
+    process_dotfile_mapping_list "${BASE_DOTFILE_MAPPINGS[@]}"
+    if [ "$(uname)" == "Darwin" ]
+    then
+        process_dotfile_mapping_list "${MACOS_DOTFILE_MAPPINGS[@]}"
+    else
+        process_dotfile_mapping_list "${LINUX_DOTFILE_MAPPINGS[@]}"
+    fi
+    echo ".. dotfile mappings linked"
+}
+
+process_dotfile_mapping_list() {
+    local MAPPING_LIST=( "$@" )
+    for entry in "${MAPPING_LIST[@]}" ; do
+        source_file="$DOTFILE_FOLDER/${entry%%:*}"
+        target_file="${entry##*:}"
+        mkdir -p "$(dirname "$target_file")"
+        link_file "$source_file" "$target_file"
+    done
+}
+
+link_dir_mappings() {
+    echo ".. linking dir mappings"
+    if [ "$(uname)" == "Darwin" ]
+    then
+        process_dir_mapping_list "${MACOS_DIR_MAPPINGS[@]}"
+    else
+        process_dir_mapping_list "${LINUX_DIR_MAPPINGS[@]}"
+    fi
+    echo ".. dir mappings linked"
+}
+
+process_dir_mapping_list() {
+    local DIR_LIST=( "$@" )
+    for entry in "${DIR_LIST[@]}" ; do
+        source_dir="$DOTFILE_FOLDER/${entry%%:*}"
+        target_dir="${entry##*:}"
+        if [ -L "$target_dir" ] && [ "$(readlink "$target_dir")" = "$source_dir" ]; then
+            echo ".. skipping $target_dir (already linked to $source_dir)"
+            continue
+        fi
+        if [ -d "$target_dir" ] && [ ! -L "$target_dir" ]; then
+            show_error "Target $target_dir is a real directory. Remove it manually first."
+            continue
+        fi
+        link_item "$source_dir" "$target_dir"
+    done
+}
+
+link_item() {
+    local source_item=$1
+    local target_item=$2
+    if [ "$MSYSTEM" == "MINGW64" ] ; then
+        cp -r "$source_item" "$target_item"
+        echo ".. copied $source_item to $target_item"
+        return
+    fi
+    ln -sfn "$source_item" "$target_item"
+    echo ".. created link $target_item -> $source_item"
 }
 
 link_file() {
