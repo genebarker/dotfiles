@@ -1162,6 +1162,23 @@
                         ]
                     },
                     {
+                        "description": "Warp-R to RDP to Windows box (o = dvorak r)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "warp",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "o" },
+                                "to": [{ "shell_command": "open -a 'Windows App'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Warp-S to open Safari (semicolon = dvorak s)",
                         "manipulators": [
                             {
@@ -1230,7 +1247,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-W to open Windows App (, = dvorak w)",
+                        "description": "Warp-W to open Word (, = dvorak w)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1241,7 +1258,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "comma" },
-                                "to": [{ "shell_command": "open -a 'Windows App'" }],
+                                "to": [{ "shell_command": "open -a 'Microsoft Word'" }],
                                 "type": "basic"
                             }
                         ]
