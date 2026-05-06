@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # List of messaging apps
-apps=("Messages" "Signal" "WhatsApp")
+apps=("Messages" "Signal")
 state_file="$HOME/.config/messages.app"
 
 # Get the frontmost app
