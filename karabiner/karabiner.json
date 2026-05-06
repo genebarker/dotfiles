@@ -851,7 +851,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-[return] to toggle Alacritty and native Terminal",
+                        "description": "Warp-[return] to Return to Terminal (Alacritty / MacOS)",
                         "manipulators": [
                             {
                                 "conditions": [
