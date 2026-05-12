@@ -116,8 +116,18 @@ else # linux
     alias GR="grep -rE --color"
 fi
 
-# Zettelkasten shortcuts
-alias z="cd ~/zk && vim index.md"
+# Smart Zettelkasten Controller (via ~/zk symlink)
+z() {
+    local ZK_LINK="$HOME/zk"
+    local ZK_BIN="$ZK_LINK/zz"
+    if [ $# -eq 0 ]; then
+        # No arguments: Jump to the symlinked dir and open index
+        cd "$ZK_LINK" && vim index.md
+    else
+        # Arguments provided: Run the 'zz' controller
+        "$ZK_BIN" "$@"
+    fi
+}
 
 # set prompt - from anishathalye/dotfiles/bash/prompt.bash
 ATTRIBUTE_BOLD='\[\e[1m\]'
