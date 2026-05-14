@@ -116,6 +116,11 @@ else # linux
     alias GR="grep -rE --color"
 fi
 
+# fzf - use rg so .gitignore exclusions (e.g. filed/) are respected
+if command -v rg &>/dev/null; then
+    export FZF_DEFAULT_COMMAND='rg --files'
+fi
+
 # Smart Zettelkasten Controller (via ~/zk symlink)
 z() {
     local ZK_LINK="$HOME/zk"
