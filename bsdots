@@ -20,7 +20,7 @@ LINUX_DIR_MAPPINGS=()
 
 # Explicit source:target file mappings (source relative to DOTFILE_FOLDER, target is full path)
 BASE_DOTFILE_MAPPINGS=( "claude/CLAUDE.md:$HOME/.claude/CLAUDE.md" )
-MACOS_DOTFILE_MAPPINGS=()
+MACOS_DOTFILE_MAPPINGS=( "tridactylrc:$HOME/.config/tridactyl/tridactylrc" )
 LINUX_DOTFILE_MAPPINGS=()
 
 SCRIPT_FILENAME="$(basename ${BASH_SOURCE})"

@@ -1,0 +1,6 @@
+" Tridactyl config
+" https://github.com/tridactyl/tridactyl
+
+" launch vim in alacritty for in-browser text editing (<C-i>)
+" full path required — native messenger doesn't inherit shell PATH
+set editorcmd /Applications/Alacritty.app/Contents/MacOS/alacritty -e vim
