@@ -73,6 +73,12 @@ if isdirectory(expand('~/workspace/vim-journal'))
 else
     Plug 'genebarker/vim-journal'   " navigate markdown references fast
 endif
+if isdirectory(expand('~/workspace/vim-zk'))
+    " use dev version when present
+    Plug '~/workspace/vim-zk'
+else
+    Plug 'genebarker/vim-zk'        " add zettelkasten tag & search support
+endif
 " extend programming support
 Plug 'dense-analysis/ale'           " add linting and LSP support
 Plug 'junegunn/vader.vim'           " add vimscript testing support
