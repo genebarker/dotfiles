@@ -80,6 +80,7 @@ d() {
         cd "$1" && l
     fi
 }
+for i in {1..9}; do alias "d$i"="d $i"; done
 
 # git shortcuts
 alias g="git"
