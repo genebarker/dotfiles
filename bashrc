@@ -45,9 +45,15 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 # cd shortcuts
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
+dots="."
+target=""
+for i in {1..5}; do
+    dots="${dots}."
+    target="${target}../"
+    alias "$dots"="cd $target"
+done
+unset dots target
+
 
 # ls shortcuts
 if [[ "$OSTYPE" == "darwin"* ]]; then # macOS
