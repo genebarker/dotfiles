@@ -43,6 +43,16 @@ if executable('fzf')
     Plug 'junegunn/fzf'                 " add a great fuzzy file finder
     Plug 'junegunn/fzf.vim'
     nnoremap <C-p> :Files<CR>
+
+    " Search all files (including gitignored ones), excluding the .git directory
+    let g:fzf_files_all_source = 'find . -path "*/.git" -prune -o -type f -print'
+    if executable('rg')
+        let g:fzf_files_all_source = 'rg --files --hidden --no-ignore --glob "!.git/*"'
+    endif
+
+    command! -bang -nargs=? -complete=dir FilesAll
+        \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': g:fzf_files_all_source}), <bang>0)
+    nnoremap <C-n> :FilesAll<CR>
 else
     Plug 'ctrlpvim/ctrlp.vim'           " add a solid fuzzy file finder
 endif
