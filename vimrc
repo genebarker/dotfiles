@@ -55,6 +55,9 @@ if executable('fzf')
     nnoremap <C-n> :FilesAll<CR>
 else
     Plug 'ctrlpvim/ctrlp.vim'           " add a solid fuzzy file finder
+    " git-aware file search; skip cache for fresh results
+    let g:ctrlp_use_caching = 0
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard', 'find %s -type f']
 endif
 Plug 'mileszs/ack.vim'              " add better grep & quickfix
 Plug 'mbbill/undotree'              " see undo history & branches
