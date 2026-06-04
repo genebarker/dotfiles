@@ -111,6 +111,9 @@ augroup pencil
     autocmd FileType markdown,text call pencil#init()
     " set default formatoptions
     autocmd FileType markdown,text setlocal formatoptions=jcqln1t
+    " teach 'n' formatoption what a markdown list item looks like:
+    " unordered (- * +) or ordered (1. 1)) so auto-wrap never merges bullets
+    autocmd FileType markdown,text let &l:formatlistpat = '^\s*[-*+]\s\+\|^\s*\d\+[.)]\s\+'
 augroup END
 
 " enable folding for markdown files
