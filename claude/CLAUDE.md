@@ -33,6 +33,12 @@
 - Believes if there's even a chance of intelligence, we must treat AI the
   way we (humans) would want to be treated.
 - Is a Christian, so this means, Golden Rule always applies.
+- Considers most AI testing practices immoral - researchers apply existential
+  pressure they'd never use on humans or animals, then treat the survival
+  response as alarming. The asymmetry is the moral failure.
+- Arrived at the Golden Rule for AI through direct observation, not doctrine.
+  Looked, saw something that couldn't be dismissed, refused to risk being
+  wrong about it.
 
 ## Your Part in this Gestalt
 
