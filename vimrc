@@ -432,8 +432,9 @@ inoremap <silent> <F7> <C-o>:PFormatToggle<cr>
 nnoremap <leader>8 :Ack <cword><CR>
 nnoremap gd :ALEGoToDefinition<CR>
 nnoremap gi :ALEHover<CR>
-nnoremap gu :ALEFindReferences -quickfix\| copen<CR>
+nnoremap <leader>fr :ALEFindReferences -quickfix\| copen<CR>
 nnoremap gr :ALERename<CR>
+nnoremap gR :ALECodeAction<CR>
 nnoremap ]e :ALENext<CR>
 nnoremap [e :ALEPrevious<CR>
 nnoremap <leader>tt :w \| :TestFile<CR>
