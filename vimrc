@@ -415,7 +415,6 @@ nnoremap [q :cprev<CR>
 nnoremap <leader>ac :AIChat<CR>
 inoremap <C-g> <Esc>:AIChat<CR>
 nnoremap <leader>at :TidyMarkdownTable<CR>
-nnoremap <leader>tp :TogglePencil<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>tw :set list!<CR>
 nnoremap <leader>ut :UndotreeToggle<CR>
