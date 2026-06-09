@@ -64,6 +64,19 @@
                         ]
                     },
                     {
+                        "description": "F12 to Toggle eqMac (display / dismiss)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "f12",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/toggle-eqmac.sh" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Z,/ to Z,/ when tapped, Ghost when held",
                         "manipulators": [
                             {
