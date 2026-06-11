@@ -1,2 +1,2 @@
-filter_exec: Microsoft Remote Desktop
+filter_exec: Windows App
 enable: false
