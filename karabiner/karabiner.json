@@ -997,7 +997,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-C to toggle Gemini Chat and NotebookLM (i = dvorak c)",
+                        "description": "Warp-C to cycle Gemini Chat, NotebookLM, and Grok (i = dvorak c)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1008,7 +1008,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "i" },
-                                "to": [{ "shell_command": "~/dotfiles/karabiner/toggle-gemini.sh" }],
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/cycle-gemini.sh" }],
                                 "type": "basic"
                             }
                         ]
