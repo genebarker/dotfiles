@@ -67,6 +67,14 @@
                         "description": "F12 to Toggle eqMac (display / dismiss)",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.rdc\\.macos$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": { "key_code": "f12" },
                                 "to": [{ "shell_command": "~/dotfiles/karabiner/toggle-eqmac.sh" }],
                                 "type": "basic"
