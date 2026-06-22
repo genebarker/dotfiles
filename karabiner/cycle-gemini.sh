@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # List of AI chat apps/sites
-apps=("Gemini" "NotebookLM" "Grok")
+# apps=("Gemini" "NotebookLM" "Grok")
+apps=("Gemini" "Grok")
 state_file="$HOME/.config/gemini-cycle.app"
 
 open_app() {
