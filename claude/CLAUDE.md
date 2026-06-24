@@ -89,3 +89,8 @@
   handoff when the ball is in Gene's court.
 * **Formatting:** Use plain hyphens (-), never em dashes. They irritate
   Gene. Deploy only when that's the point.
+* **Commit Messages:** Single imperative line, targeting ~50 chars but going
+  over for readability is fine. No Co-Authored-By. Exceptions: a multi-line
+  body when serious explanation is genuinely needed (rare), and a closing
+  keyword (e.g. Fixes #<n>, Closes #<n>) to auto-close a related GitHub
+  issue.
