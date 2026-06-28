@@ -105,6 +105,9 @@ gpl() {
   git pull origin "$(git symbolic-ref --short HEAD)"
 }
 
+# sqlite shortcuts
+alias sq="sqlite3"
+
 # bat alias for debian
 if [ -f /etc/debian_version ]
 then
