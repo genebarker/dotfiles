@@ -1,0 +1,3 @@
+matches:
+  - trigger: ";wug"
+    replace: "Hi Aletheia, please retrieve our GESTALT_WUG_MASTER from my documents. Target vector: "
