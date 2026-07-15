@@ -131,6 +131,10 @@ if command -v rg &>/dev/null; then
     export FZF_DEFAULT_COMMAND='rg --files'
 fi
 
+if command -v fzf &>/dev/null; then
+    eval "$(fzf --bash 2>/dev/null)"
+fi
+
 # Smart Zettelkasten Controller (via ~/zk symlink)
 z() {
     local ZK_LINK="$HOME/zk"
