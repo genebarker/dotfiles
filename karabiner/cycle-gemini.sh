@@ -5,9 +5,31 @@
 apps=("Gemini" "Grok")
 state_file="$HOME/.config/gemini-cycle.app"
 
+# Un-minimize a running app's windows via Accessibility, bypassing its own
+# (possibly missing) applicationShouldHandleReopen handling.
+restore_app_window() {
+  local app_name="$1"
+  osascript -e "
+    tell application \"System Events\"
+      if exists process \"$app_name\" then
+        tell process \"$app_name\"
+          set frontmost to true
+          repeat with w in windows
+            if value of attribute \"AXMinimized\" of w is true then
+              set value of attribute \"AXMinimized\" of w to false
+            end if
+          end repeat
+        end tell
+      end if
+    end tell"
+}
+
 open_app() {
   case "$1" in
-    Gemini) open -a Gemini ;;
+    Gemini)
+      open -a Gemini
+      restore_app_window "Gemini"
+      ;;
     NotebookLM) ~/dotfiles/karabiner/open-rsvd-safari-window.sh notebooklm.google.com ;;
     Grok) ~/dotfiles/karabiner/open-rsvd-safari-window.sh grok.com ;;
   esac
