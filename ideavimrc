@@ -39,6 +39,10 @@ nmap <C-p> <action>(GotoFile)
 " filetree toggle
 nnoremap <F2> :NERDTreeToggle<CR>
 
+" jump to next/previous VCS (Git) change marker, like vim-gitgutter
+nmap ]c <Action>(VcsShowNextChangeMarker)
+nmap [c <Action>(VcsShowPrevChangeMarker)
+
 " jump to next problem
 nmap ]e <action>(GotoNextError)
 nmap [e <action>(GotoPreviousError)
