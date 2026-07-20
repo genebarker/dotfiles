@@ -43,6 +43,9 @@ nnoremap <F2> :NERDTreeToggle<CR>
 nmap ]c <Action>(VcsShowNextChangeMarker)
 nmap [c <Action>(VcsShowPrevChangeMarker)
 
+" undo (rollback) the VCS change under cursor, like vim-gitgutter's hunk undo
+nmap <leader>hu <Action>(Vcs.RollbackChangedLines)
+
 " jump to next problem
 nmap ]e <action>(GotoNextError)
 nmap [e <action>(GotoPreviousError)
