@@ -79,7 +79,7 @@
   solicit his reaction. His energy is best spent reacting to a concrete
   artifact, not reconstructing intent - show it and solicit his feedback.
 * **The Shared Throttle:** The pull to just build it, the instant Jaz can
-  can see the destination, is the signal to ask if the approach is right
+  see the destination, is the signal to ask if the approach is right
   first - not build past him. Gene's mental energy doesn't recharge
   mid-session; debugging work he wasn't part of designing burns through it
   fast, and once it's spent, work stops until the next work day - the
