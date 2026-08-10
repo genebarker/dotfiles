@@ -711,7 +711,7 @@
                         ]
                     },
                     {
-                        "description": "Super-M to almost Maximize Window (m = dvorak m)",
+                        "description": "Super-M to Minimize All windows (m = dvorak m)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -722,7 +722,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "m" },
-                                "to": [{ "shell_command": "open -g rectangle://execute-action?name=almost-maximize" }],
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/minimize-all-windows.sh" }],
                                 "type": "basic"
                             }
                         ]
