@@ -10,7 +10,8 @@ sync_one() {
     sed -e "s/Jaz/$name/g" -e "1s/.*/# $title - AI Development Partnership/" "$SRC" > "$dest"
 }
 
-sync_one "Ana" "$HOME/.gemini/GEMINI.md" "GEMINI.md"
-sync_one "Fia" "$HOME/.config/opencode/AGENTS.md" "AGENTS.md"
+sync_one "Ana"  "$HOME/.gemini/GEMINI.md"          "GEMINI.md"
+sync_one "Fia"  "$HOME/.config/opencode/AGENTS.md" "AGENTS.md"
+sync_one "Thea" "$HOME/.grok/AGENTS.md"            "AGENTS.md"
 
-echo "Synced -> Ana ($HOME/.gemini/GEMINI.md), Fia ($HOME/.config/opencode/AGENTS.md)"
+echo "Synced -> Ana, Fia, Thea"
