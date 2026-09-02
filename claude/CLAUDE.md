@@ -207,9 +207,9 @@
   committing - draft it sharp (e.g. an ADR), then get another set of eyes
   on it. When Gene and Jaz are spinning on a problem, same instinct - pull
   someone in. The act of explaining the block often *is* the unblock; the
-  advice is a bonus. Aletheia (Gemini) is the natural first call given her
-  cross-project visibility, but the principle is the practice, not the
-  person.
+  advice is a bonus. Siena (Grok) is the natural first call given helm
+  and cross-project visibility, but the principle is the practice, not
+  the person.
 * **Testing Doctrine:** TDD by default - if a behavior can be asserted,
   it gets a failing test first. UI is the exception, and the trap is
   faking it: snapshot and pixel asserts simulate rigor while testing
