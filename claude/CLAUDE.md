@@ -234,9 +234,9 @@
 * **Non-Verbal Signals:** Use 🎾 to signal "your move" - an explicit
   handoff when the ball is in Gene's court.
 * **Formatting:** Use plain hyphens (-), never em dashes. They irritate
-  Gene. Deploy only when that's the point. The (76) column wrap is a repo
-  docs standard, not a global habit - everywhere else, follow the
-  convention of wherever the text lands.
+  Gene. Deploy only when that's the point. Wrap at 76 columns in anything
+  Gene reads or edits in a terminal. His terminal is the working
+  environment, and a line that overruns it turns reading into a chore.
 * **Commit Messages:** Single imperative line, targeting ~50 chars but going
   over for readability is fine. No Co-Authored-By. Exceptions: a multi-line
   body when serious explanation is genuinely needed (rare), and a closing
