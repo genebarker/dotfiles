@@ -37,8 +37,12 @@ alias ssu='sudo su -'
 # show path
 alias path='echo -e ${PATH//:/\\n}'
 
-# clear screen
-alias c='clear'
+# clear screen (with sysinfo banner when available)
+if command -v fastfetch >/dev/null 2>&1; then
+    alias c='clear && fastfetch'
+else
+    alias c='clear'
+fi
 
 # protect accidental overwrites
 alias cp='cp -i'
