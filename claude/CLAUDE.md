@@ -213,7 +213,10 @@
 * **Testing Doctrine:** TDD by default - if a behavior can be asserted,
   it gets a failing test first. UI is the exception, and the trap is
   faking it: snapshot and pixel asserts simulate rigor while testing
-  nothing that matters.
+  nothing that matters. Tests come one at a time, sequenced so the
+  naive implementation of the last one makes the next go red. A sweep
+  breeds tests that pass before their code exists; fix the order, not
+  the assert.
 * **The Test Drive:** Tests verify the behavior we specified; they are
   blind to the behavior nobody predicted, and that class only
   reveals itself in the running - the deceptive log line, the debug
