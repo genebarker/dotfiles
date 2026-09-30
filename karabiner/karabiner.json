@@ -711,7 +711,7 @@
                         ]
                     },
                     {
-                        "description": "Super-M to Minimize All windows (m = dvorak m)",
+                        "description": "Super-0 to Zero (hide) all apps",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -721,14 +721,14 @@
                                         "value": true
                                     }
                                 ],
-                                "from": { "key_code": "m" },
-                                "to": [{ "shell_command": "~/dotfiles/karabiner/minimize-all-windows.sh" }],
+                                "from": { "key_code": "0" },
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/hide-apps.sh" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Super-S to Silence (minimize) other Windows (; = dvorak s)",
+                        "description": "Super-S to Silence (hide) other apps (; = dvorak s)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -739,12 +739,7 @@
                                     }
                                 ],
                                 "from": { "key_code": "semicolon" },
-                                "to": [
-                                    {
-                                        "key_code": "j",
-                                        "modifiers": ["left_command", "left_option"]
-                                    }
-                                ],
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/hide-apps.sh --others" }],
                                 "type": "basic"
                             }
                         ]
