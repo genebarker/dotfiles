@@ -6,8 +6,7 @@ apps=("Gemini" "Grok")
 state_file="$HOME/.config/gemini-cycle.app"
 
 # Un-minimize a running app's windows via Accessibility, bypassing its own
-# (possibly missing) applicationShouldHandleReopen handling. Not currently
-# used - GeminiApp is parked below until the native app earns its keep.
+# (possibly missing) applicationShouldHandleReopen handling.
 restore_app_window() {
   local app_name="$1"
   osascript -e "
@@ -27,11 +26,10 @@ restore_app_window() {
 
 open_app() {
   case "$1" in
-    Gemini) ~/dotfiles/karabiner/open-rsvd-safari-window.sh gemini.google.com ;;
-    # GeminiApp)
-    #   open -a Gemini
-    #   restore_app_window "Gemini"
-    #   ;;
+    Gemini)
+      open -a Gemini
+      restore_app_window "Gemini"
+      ;;
     NotebookLM) ~/dotfiles/karabiner/open-rsvd-safari-window.sh notebooklm.google.com ;;
     Grok) ~/dotfiles/karabiner/open-rsvd-safari-window.sh grok.com ;;
   esac
@@ -40,13 +38,11 @@ open_app() {
 # Get the frontmost app
 FRONTAPP=$(osascript -e 'tell application "System Events" to get name of first process whose frontmost is true')
 
-# Determine current position (Gemini, NotebookLM, and Grok show up as Safari)
+# Determine current position (NotebookLM and Grok show up as Safari)
 current="$FRONTAPP"
 if [ "$FRONTAPP" = "Safari" ]; then
   FRONTURL=$(osascript -e 'tell application "Safari" to get URL of front document')
-  if [[ "$FRONTURL" == *"gemini.google.com"* ]]; then
-    current="Gemini"
-  elif [[ "$FRONTURL" == *"notebooklm.google.com"* ]]; then
+  if [[ "$FRONTURL" == *"notebooklm.google.com"* ]]; then
     current="NotebookLM"
   elif [[ "$FRONTURL" == *"grok.com"* ]]; then
     current="Grok"
