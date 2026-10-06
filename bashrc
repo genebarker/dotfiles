@@ -130,6 +130,20 @@ jj() {
         --no-session-persistence
 }
 
+# Ana - interactive partner session
+alias a="agy"
+
+# aa - quick headless question, lean context
+aa() {
+    if [ $# -eq 0 ]; then
+        echo "usage: aa <question>" >&2
+        return 1
+    fi
+    agy -p "$*" \
+        --disable-slash-commands \
+        --add-dir "$HOME"
+}
+
 # sqlite shortcuts
 alias sq="sqlite3"
 
