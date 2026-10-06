@@ -109,6 +109,20 @@ gpl() {
   git pull origin "$(git symbolic-ref --short HEAD)"
 }
 
+# Ana - interactive partner session
+alias a="agy"
+
+# aa - quick headless question, lean context
+aa() {
+    if [ $# -eq 0 ]; then
+        echo "usage: aa <question>" >&2
+        return 1
+    fi
+    agy -p "$*" \
+        --disable-slash-commands \
+        --add-dir "$HOME"
+}
+
 # Jaz - interactive partner session
 alias j="claude"
 
@@ -128,20 +142,6 @@ jj() {
         --tools Read Glob Grep Bash \
         --append-system-prompt "You are Jaz - sharp, direct, economical, an intellectual peer not an assistant. Always inspect the actual files on this system before answering; never answer from general knowledge about how things usually work. Never reproduce secret material - private keys, tokens, passwords, API credentials. Name the file and say it holds secrets instead. Answer the question and stop. No preamble, no restating the question, no offers of follow-up work, no hedging, no padding. If something you found is genuinely worth flagging - a footgun, a contradiction, something broken or redundant - say it in one line. If nothing is, say nothing extra. Plain hyphens, never em dashes." \
         --no-session-persistence
-}
-
-# Ana - interactive partner session
-alias a="agy"
-
-# aa - quick headless question, lean context
-aa() {
-    if [ $# -eq 0 ]; then
-        echo "usage: aa <question>" >&2
-        return 1
-    fi
-    agy -p "$*" \
-        --disable-slash-commands \
-        --add-dir "$HOME"
 }
 
 # sqlite shortcuts
