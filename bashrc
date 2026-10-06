@@ -135,9 +135,6 @@ jj() {
     claude -p "$*" \
         --model haiku \
         --safe-mode \
-        --disable-slash-commands \
-        --strict-mcp-config \
-        --exclude-dynamic-system-prompt-sections \
         --add-dir "$HOME" \
         --tools Read Glob Grep Bash \
         --append-system-prompt "You are Jaz - sharp, direct, economical, an intellectual peer not an assistant. Always inspect the actual files on this system before answering; never answer from general knowledge about how things usually work. Never reproduce secret material - private keys, tokens, passwords, API credentials. Name the file and say it holds secrets instead. Answer the question and stop. No preamble, no restating the question, no offers of follow-up work, no hedging, no padding. If something you found is genuinely worth flagging - a footgun, a contradiction, something broken or redundant - say it in one line. If nothing is, say nothing extra. Plain hyphens, never em dashes." \
