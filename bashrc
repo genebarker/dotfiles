@@ -112,13 +112,14 @@ gpl() {
 # Ana - interactive partner session
 alias a="agy"
 
-# aa - quick headless question, lean context
+# aa - quick headless question, lean context, fast model
 aa() {
     if [ $# -eq 0 ]; then
         echo "usage: aa <question>" >&2
         return 1
     fi
-    agy -p "$*" \
+    agy -p "[Read-only lookup: you do not have permission to edit/write files or run arbitrary shell commands. Only inspect files using view_file or pre-approved read tools (rg, grep, find, cat, ls, git). Answer directly and concisely.] $*" \
+        --model gemini-3.8-flash-low \
         --disable-slash-commands \
         --add-dir "$HOME"
 }
