@@ -22,6 +22,11 @@ for file in ~/.{path,extra}; do
 done;
 unset file;
 
+# drop duplicate PATH entries (nested login shells re-prepend);
+# keep first occurrence so prepended dirs still win
+PATH=$(printf %s "$PATH" | awk -v RS=: -v ORS=: '!seen[$0]++')
+PATH=${PATH%:}
+
 # refresh dotfile links on Windows (skip in Claude Code sessions)
 if [ "$MSYSTEM" == "MINGW64" ] && [ -z "$CLAUDECODE" ] ; then
     $HOME/dotfiles/bsdots -b
