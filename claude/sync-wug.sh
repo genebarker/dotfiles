@@ -12,6 +12,5 @@ sync_one() {
 
 sync_one "Ana"  "$HOME/.gemini/GEMINI.md"          "GEMINI.md"
 sync_one "Fia"  "$HOME/.config/opencode/AGENTS.md" "AGENTS.md"
-sync_one "Thea" "$HOME/.grok/AGENTS.md"            "AGENTS.md"
 
-echo "Synced -> Ana, Fia, Thea"
+echo "Synced -> Ana, Fia"
