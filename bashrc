@@ -169,7 +169,7 @@ if command -v rg &>/dev/null; then
 fi
 
 # fzf - enable shell integration, i.e.
-#   Ctrl-R  Remember bash command 
+#   Ctrl-R  Remember bash command
 #   Ctrl-T  select Target file
 if command -v fzf &>/dev/null; then
     eval "$(fzf --bash 2>/dev/null)"
