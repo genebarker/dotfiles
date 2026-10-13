@@ -150,10 +150,11 @@ jj() {
 # sqlite shortcuts
 alias sq="sqlite3"
 
-# bat alias for debian
+# bat and fd aliases for debian
 if [ -f /etc/debian_version ]
 then
     alias bat="batcat"
+    alias fd="fdfind"
 fi
 
 # vim shortcuts
