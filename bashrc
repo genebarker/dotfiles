@@ -169,16 +169,39 @@ else # linux
     alias GR="grep -rE --color"
 fi
 
-# fzf - use rg so .gitignore exclusions (e.g. filed/) are respected
+# fzf (vim) - use rg so .gitignore exclusions (e.g. filed/) are respected
 if command -v rg &>/dev/null; then
     export FZF_DEFAULT_COMMAND='rg --files'
 fi
 
-# fzf - enable shell integration, i.e.
+# fzf - enable shell integration with previews (Ctrl-/ toggles), i.e.
 #   Ctrl-R  Remember bash command
 #   Ctrl-T  select Target file
+#   Alt-C   Change to directory
 if command -v fzf &>/dev/null; then
     eval "$(fzf --bash 2>/dev/null)"
+
+    # previews need bat, else stick with defaults;
+    # type -P skips aliases, as on debian bat is only an alias
+    bat_cmd=""
+    if type -P batcat &>/dev/null; then
+        bat_cmd="batcat"
+    elif type -P bat &>/dev/null; then
+        bat_cmd="bat"
+    fi
+    if [ -n "$bat_cmd" ]; then
+        dir_preview="ls -la {}"
+        file_preview="$bat_cmd --color=always --style=numbers {}"
+        any_preview="[ -d {} ] && $dir_preview || $file_preview"
+        cmd_window="--preview-window up:3:hidden:wrap"
+        toggle="--bind 'ctrl-/:toggle-preview'"
+
+        export FZF_CTRL_R_OPTS="--preview 'echo {}' $cmd_window $toggle"
+        export FZF_CTRL_T_OPTS="--preview '$any_preview' $toggle"
+        export FZF_ALT_C_OPTS="--preview '$dir_preview' $toggle"
+        unset dir_preview file_preview any_preview cmd_window toggle
+    fi
+    unset bat_cmd
 fi
 
 # Smart Zettelkasten Controller (via ~/zk symlink)
