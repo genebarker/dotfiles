@@ -44,6 +44,11 @@ if executable('fzf')
     Plug 'junegunn/fzf.vim'
     nnoremap <C-p> :Files<CR>
 
+    " Search project files, respecting .gitignore
+    if executable('rg')
+        let $FZF_DEFAULT_COMMAND = 'rg --files'
+    endif
+
     " Search all files (including gitignored ones), excluding the .git directory
     let g:fzf_files_all_source = 'find . -path "*/.git" -prune -o -type f -print'
     if executable('rg')

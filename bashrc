@@ -169,11 +169,6 @@ else # linux
     alias GR="grep -rE --color"
 fi
 
-# fzf (vim) - use rg so .gitignore exclusions (e.g. filed/) are respected
-if command -v rg &>/dev/null; then
-    export FZF_DEFAULT_COMMAND='rg --files'
-fi
-
 # fzf - enable shell integration with previews (Ctrl-/ toggles), i.e.
 #   Ctrl-R  Remember bash command
 #   Ctrl-T  select Target file
