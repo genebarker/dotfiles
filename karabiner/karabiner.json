@@ -826,7 +826,27 @@
                                         }
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "escape" }],
+                                "to_if_alone": [
+                                    {
+                                        "set_variable": {
+                                            "name": "ghost",
+                                            "value": false
+                                        }
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "warp",
+                                            "value": false
+                                        }
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "super",
+                                            "value": false
+                                        }
+                                    },
+                                    { "key_code": "escape" }
+                                ],
                                 "type": "basic"
                             }
                         ]
