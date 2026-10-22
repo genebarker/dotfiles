@@ -728,6 +728,23 @@
                         ]
                     },
                     {
+                        "description": "Super-R to toggle Reference mode (o = dvorak r)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "o" },
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/ref-mode.sh" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Super-S to Silence (hide) other apps (; = dvorak s)",
                         "manipulators": [
                             {
