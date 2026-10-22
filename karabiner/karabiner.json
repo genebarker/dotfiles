@@ -728,6 +728,23 @@
                         ]
                     },
                     {
+                        "description": "Super-N to cycle Next reference doc (l = dvorak n)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "super",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "from": { "key_code": "l" },
+                                "to": [{ "shell_command": "~/dotfiles/karabiner/cycle-ref.sh" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Super-R to toggle Reference mode (o = dvorak r)",
                         "manipulators": [
                             {
