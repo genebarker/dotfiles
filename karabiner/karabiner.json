@@ -398,7 +398,7 @@
                         ]
                     },
                     {
-                        "description": "Ghost-H,J,K,L move Down (j,c,v,p dvorak h,j,k,l)",
+                        "description": "Ghost-H,J,K,L move Left / Down / Up / Right (j,c,v,p = dvorak h,j,k,l)",
                         "manipulators": [
                             {
                                 "conditions": [
