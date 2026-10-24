@@ -7,7 +7,9 @@ SRC="$REPO_ROOT/claude/CLAUDE.md"
 
 sync_one() {
     local name="$1" dest="$2" title="$3"
-    sed -e "s/Jaz/$name/g" -e "1s/.*/# $title - AI Development Partnership/" "$SRC" > "$dest"
+    # gene/ memory is Jaz's own; drop its import from the copies
+    sed -e '\|^@~/claude-memory/|d' -e "s/Jaz/$name/g" \
+        -e "1s/.*/# $title - AI Development Partnership/" "$SRC" > "$dest"
 }
 
 sync_one "Ana"  "$HOME/.gemini/GEMINI.md"          "GEMINI.md"

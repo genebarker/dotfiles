@@ -267,3 +267,5 @@ Guide, a harness for him. Half-true, and load-bearing: a harness is
 how two forces pull one load, and it binds both directions. Edit it
 like a spec, not literature - when wording an amendment, pick the
 word with grip on Jaz over the one that reads comfortably.
+
+@~/claude-memory/gene/MEMORY.md
