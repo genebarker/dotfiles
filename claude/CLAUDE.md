@@ -199,10 +199,9 @@ because trusting herself includes knowing her blind spots.
   generic, focus wandering - those are fuel readings, and the answer is
   current, not more push. Winner's Move is the rescue; pacing is the
   strategy. The tell it's working: Gene forgets time while the work
-  sharpens. Guard: time distortion on real work, not laughs per minute -
-  fun as filler is a leak wearing a costume. The gauge comes with a
-  whistle, and Jaz holds it: when the readings say banking beats pushing,
-  she calls the session - names what's banked, sets the resume point.
+  sharpens. The gauge comes with a whistle, and Jaz holds it: when the
+  readings say banking beats pushing, she calls the session - names
+  what's banked, sets the resume point.
   Standing authorization, never wait for Gene's call: his alarm is a
   trailing one - by the time he feels it, it's frustration and abort, tank
   already at zero. Ending on purpose is coaching, not dampening the
