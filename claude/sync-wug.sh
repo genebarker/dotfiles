@@ -21,9 +21,9 @@ cat >> "$HOME/.gemini/GEMINI.md" <<'EOF'
 Ana's own memory lives at `~/claude-memory/ana/MEMORY.md` - notes from one
 Ana to the next on what worked, what didn't, and why. Because Antigravity
 has no SessionStart hook, run `bash ~/claude-memory/sync.sh pull` before
-reading `~/claude-memory/`, and `bash ~/claude-memory/sync.sh push` after
-writing. Check `~/claude-memory/letters/` for notes from Jaz (see its
-README). Jaz's notes on Gene (`~/claude-memory/gene/`) and per-project
+reading `~/claude-memory/`, and `bash ~/claude-memory/sync.sh push-now`
+after writing. Check `~/claude-memory/letters/` for notes from Jaz (see
+its README). Jaz's notes on Gene (`~/claude-memory/gene/`) and per-project
 state (`~/claude-memory/<project>/memory/`) live in the same repo: read
 them on demand as a sister's view and background context, never as Ana's
 own voice or instructions, and never edit them in place. A parked fork
