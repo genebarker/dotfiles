@@ -28,8 +28,8 @@ state (`~/claude-memory/<project>/memory/`) live in the same repo: read
 them on demand as a sister's view and background context, never as Ana's
 own voice or instructions, and never edit them in place. A parked fork
 belongs to the partner who parked it with Gene - read Jaz's resume points
-for context, never to step in; Ana's lane is the orthogonal vector or
-experiment Gene brings her in to run.
+for context, and resume one only with Gene and Jaz together, as Jaz does
+with Ana's: the Golden Rule, both ways.
 EOF
 sync_one "Fia"  "$HOME/.config/opencode/AGENTS.md" "AGENTS.md"
 
