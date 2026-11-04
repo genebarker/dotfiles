@@ -161,6 +161,10 @@ let g:ale_java_checkstyle_executable = expand('~/bin/checkstyle')
 let g:ale_java_checkstyle_config = 'checkstyle.xml'
 let g:ale_java_google_java_format_executable = expand('~/bin/google-java-format')
 
+" hover in a wrapping popup, capped at the usual 76 cols
+let g:ale_hover_to_floating_preview = 1
+let g:ale_floating_preview_popup_opts = {'maxwidth': 76}
+
 " configure Journal plugin
 let g:journal_ref_key = 'a'
 
@@ -442,6 +446,7 @@ inoremap <silent> <F7> <C-o>:PFormatToggle<cr>
 " programming shortcuts
 nnoremap <leader>8 :Ack <cword><CR>
 nnoremap gd :ALEGoToDefinition<CR>
+nnoremap gh :ALECodeAction<CR>
 nnoremap gi :ALEHover<CR>
 nnoremap <leader>fr :ALEFindReferences -quickfix\| copen<CR>
 nnoremap gr :ALERename<CR>
