@@ -9,6 +9,11 @@ dimensions = { columns = 85, lines = 32 }
 [font]
 size = 17
 
+# blink at the classic Windows caret rate and never stop
+[cursor]
+blink_interval = 530
+blink_timeout = 0
+
 [env]
 LANG = "en_US.UTF-8"
 LC_ALL = "en_US.UTF-8"

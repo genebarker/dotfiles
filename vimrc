@@ -274,6 +274,13 @@ set smartindent
 " highlight current line
 set cursorline
 
+" show mode as cursor shape: bar = insert, underline = replace,
+" block = normal (start in block, bash prompt restores bar on exit)
+let &t_SI = "\e[5 q"
+let &t_SR = "\e[4 q"
+let &t_EI = "\e[2 q"
+let &t_ti .= "\e[2 q"
+
 " always show status line at the bottom
 set laststatus=2
 

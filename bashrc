@@ -3,6 +3,11 @@
 # enable VIM key bindings
 set -o vi
 
+# show vi mode as cursor shape: bar = insert, block = normal
+bind 'set show-mode-in-prompt on'
+bind 'set vi-ins-mode-string "\1\e[5 q\2"'
+bind 'set vi-cmd-mode-string "\1\e[2 q\2"'
+
 # set VIM as editor of choice
 export EDITOR=vim
 
