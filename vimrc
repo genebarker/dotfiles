@@ -42,6 +42,9 @@ Plug 'vim-airline/vim-airline-themes'
 if executable('fzf')
     Plug 'junegunn/fzf'                 " add a great fuzzy file finder
     Plug 'junegunn/fzf.vim'
+
+    " == fuzzy find ==
+    " find project file (respects .gitignore)
     nnoremap <C-p> :Files<CR>
 
     " Search project files, respecting .gitignore
@@ -57,6 +60,7 @@ if executable('fzf')
 
     command! -bang -nargs=? -complete=dir FilesAll
         \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': g:fzf_files_all_source}), <bang>0)
+    " find any file (includes gitignored)
     nnoremap <C-n> :FilesAll<CR>
 else
     Plug 'ctrlpvim/ctrlp.vim'           " add a solid fuzzy file finder
@@ -372,55 +376,76 @@ set wildmenu
 " setup leader shortcuts
 let mapleader = "-"
 
-" clear current search highlighting
+" == search ==
+" clear search highlight
 nnoremap <CR> :noh<CR>
+" Ack search word under cursor
+nnoremap <leader>8 :Ack <cword><CR>
 
-" buffer shortcuts
+" == buffers ==
+" next buffer
 nnoremap <Tab> :bn<CR>
+" previous buffer
 nnoremap <S-Tab> :bp<CR>
+" pick a buffer from the list
 nnoremap <leader><Tab> :ls<CR>:b<Space>
 " keep only the current buffer open
 command! BOnly execute '%bd|e#|bd#'
 
-" filetree toggle
-nnoremap <F2> :Lexplore<CR>
-
-" reload VIM config
-nnoremap <leader>rc :source $MYVIMRC<CR>
-
-" quickfix shortcuts
+" == quickfix ==
+" next quickfix entry
 nnoremap ]q :cnext<CR>
+" previous quickfix entry
 nnoremap [q :cprev<CR>
 
-" plugin shortcuts
-nnoremap <leader>at :TidyMarkdownTable<CR>
-nnoremap <leader>ts :setlocal spell!<CR>
-nnoremap <leader>tw :set list!<CR>
-nnoremap <leader>ut :UndotreeToggle<CR>
-
-" quickly reformat paragraph
-nnoremap Q gqap
-
-" toggle auto-formatting on/off
-" - important when being deliberate with markdown hard wraps
+" == modes ==
+" file tree
+nnoremap <F2> :Lexplore<CR>
+" pencil auto-format (off when hand-wrapping markdown)
 noremap <silent> <F7> :<C-u>PFormatToggle<cr>
 inoremap <silent> <F7> <C-o>:PFormatToggle<cr>
-
-" toggle read-only mode (lock buffer against fat-thumb edits)
+" read-only lock against fat-thumb edits
 nnoremap <silent> <F8> :setlocal modifiable!<CR>
 
-" programming shortcuts
-nnoremap <leader>8 :Ack <cword><CR>
+" == toggles ==
+" toggle spell check
+nnoremap <leader>ts :setlocal spell!<CR>
+" toggle whitespace
+nnoremap <leader>tw :set list!<CR>
+" undo tree
+nnoremap <leader>ut :UndotreeToggle<CR>
+
+" == writing ==
+" reformat paragraph
+nnoremap Q gqap
+" align table (markdown)
+nnoremap <leader>at :TidyMarkdownTable<CR>
+
+" == code ==
+" go to definition
 nnoremap gd :ALEGoToDefinition<CR>
-nnoremap gh :ALECodeAction<CR>
+" show hover info
 nnoremap gi :ALEHover<CR>
-nnoremap <leader>fr :ALEFindReferences -quickfix\| copen<CR>
+" rename symbol
 nnoremap gr :ALERename<CR>
-nnoremap gR :ALECodeAction<CR>
+" show hover actions
+nnoremap gh :ALECodeAction<CR>
+" find references
+nnoremap <leader>fr :ALEFindReferences -quickfix\| copen<CR>
+" next lint error
 nnoremap ]e :ALENext<CR>
+" previous lint error
 nnoremap [e :ALEPrevious<CR>
+
+" == tests ==
+" save and test this
 nnoremap <leader>tt :w \| :TestFile<CR>
+" save and test all
 nnoremap <leader>ta :w \| :TestSuite<CR>
+
+" == config ==
+" reload vim config
+nnoremap <leader>rc :source $MYVIMRC<CR>
 
 " look & feel shortcuts
 function! GotoNextColorscheme()
@@ -431,6 +456,7 @@ function! GotoNextColorscheme()
   redraw | echo ":colorscheme " . g:colors_name
 endfunction
 command! NextColorscheme call GotoNextColorscheme()
+" change colorscheme
 nnoremap <Leader>cc :NextColorscheme<CR>
 
 " load all plugins then their helptags
