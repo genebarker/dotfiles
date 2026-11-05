@@ -36,6 +36,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'morhetz/gruvbox'
 Plug 'airblade/vim-gitgutter'       " show changed lines
+Plug 'kshenoy/vim-signature'        " show marks in the sign column
 Plug 'tpope/vim-fugitive'           " add direct git access
 Plug 'vim-airline/vim-airline'      " use enhanced status line
 Plug 'vim-airline/vim-airline-themes'
