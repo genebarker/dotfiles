@@ -222,6 +222,9 @@ if !isdirectory(&undodir)
 endif
 set undofile
 
+" reload buffers changed outside vim (e.g. by Jaz) on return
+autocmd FocusGained,BufEnter,CursorHold * silent! checktime
+
 " use system clipboard for copy & paste
 set clipboard=unnamed
 
