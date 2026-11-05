@@ -406,6 +406,9 @@ nnoremap Q gqap
 noremap <silent> <F7> :<C-u>PFormatToggle<cr>
 inoremap <silent> <F7> <C-o>:PFormatToggle<cr>
 
+" toggle read-only mode (lock buffer against fat-thumb edits)
+nnoremap <silent> <F8> :setlocal modifiable!<CR>
+
 " programming shortcuts
 nnoremap <leader>8 :Ack <cword><CR>
 nnoremap gd :ALEGoToDefinition<CR>
