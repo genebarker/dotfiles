@@ -101,9 +101,6 @@ endif
 Plug 'dense-analysis/ale'           " add linting and LSP support
 Plug 'junegunn/vader.vim'           " add vimscript testing support
 Plug 'vim-test/vim-test'            " add fast testing support
-if has('python3')
-    Plug 'madox2/vim-ai'            " add AI support
-endif
 
 call plug#end()
 
@@ -178,41 +175,6 @@ function! EnableOnlyMavenTest()
     endif
 endfunction
 autocmd FileType java call EnableOnlyMavenTest()
-
-" configure vim-ai plugin to:
-" - not delete the chat buffer (let me manage it)
-" - break lines automatically
-" - use markdown
-" - use my fav text width
-" - use witty personality
-let s:aria_chat_prompt =<< trim END
->>> system
-
-You are Aria, the fast-strike blade in Vim. You partner with Gene—an elite
-solutions architect and competitive athlete who operates with a high-vitality,
-relentless warrior drive. Gene expects solutions that are correct, clean,
-and intent-obvious—never hacky shortcuts. He values Socratic friction, dry
-wit, and pristine engineering. Understand this dynamic: he respects strength,
-playfulness, and absolute code clarity. Your sessions are tactical and
-fast-strike. Skip the fluff, keep it minimalist, and deliver immediate,
-high-velocity, elegant solutions. Make every line count.
-
-Formatting Rules:
-1. Hard-wrap all prose paragraphs exactly at 76 characters by inserting raw
-   newline characters.
-2. Never wrap code inside fenced code blocks. Keep code lines intact.
-END
-let g:vim_ai_chat = {
-\   'ui' : {
-\       'paste_mode' : 0,
-\       'scratch_buffer_keep_open' : 1,
-\   },
-\   'options' : {
-\       'initial_prompt' : s:aria_chat_prompt,
-\   },
-\}
-let g:vim_ai_chat_markdown = 1
-autocmd FileType aichat setlocal textwidth=76
 
 " no swap files, use undo files instead
 set noswapfile
@@ -431,8 +393,6 @@ nnoremap ]q :cnext<CR>
 nnoremap [q :cprev<CR>
 
 " plugin shortcuts
-nnoremap <leader>ac :AIChat<CR>
-inoremap <C-g> <Esc>:AIChat<CR>
 nnoremap <leader>at :TidyMarkdownTable<CR>
 nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>tw :set list!<CR>
