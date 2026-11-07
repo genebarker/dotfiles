@@ -17,6 +17,14 @@
 " Enter   clear search highlight
 " -8      Ack search word under cursor
 
+" == marks ==
+" mx      toggle mark x
+" dmx     delete mark x
+" :delm!  delete all marks
+" :marks  show marks
+" ]'      next mark
+" ['      prev mark
+
 " == buffers ==
 " Tab     next buffer
 " S-Tab   prev buffer
@@ -38,8 +46,20 @@
 " -ut     undo tree
 
 " == writing ==
+" [a      prev wiki link
+" ]a      next wiki link
+" gf      open wiki link / bible ref
+" gd      jump wiki / footnote def
+" gx      open URL
+" gC      caps lock (normal)
+" ^Gc     caps lock (insert)
 " Q       reformat paragraph
 " -at     align table (markdown)
+
+" == zettelkasten ==
+" -zt     open tags list
+" -zh     hub notes in quickfix
+" -zn     create new note
 
 " == code ==
 " gd      go to definition
@@ -53,6 +73,14 @@
 " == tests ==
 " -tt     save and test this
 " -ta     save and test all
+
+" == git ==
+" ]c      next hunk
+" [c      prev hunk
+" -hp     preview hunk
+" -hs     stage hunk
+" -hu     undo hunk
+" :Git    status (gq closes)
 
 " == config ==
 " -rc     reload vim config
@@ -98,15 +126,14 @@ if executable('fzf')
     Plug 'junegunn/fzf'                 " add a great fuzzy file finder
     Plug 'junegunn/fzf.vim'
 
-    " == fuzzy find ==
     nnoremap <C-p> :Files<CR>
 
-    " Search project files, respecting .gitignore
+    " search project files, respecting .gitignore
     if executable('rg')
         let $FZF_DEFAULT_COMMAND = 'rg --files'
     endif
 
-    " Search all files (including gitignored ones), excluding the .git directory
+    " search all files (including gitignored ones), excluding the .git directory
     let g:fzf_files_all_source = 'find . -path "*/.git" -prune -o -type f -print'
     if executable('rg')
         let g:fzf_files_all_source = 'rg --files --hidden --no-ignore --glob "!.git/*"'
