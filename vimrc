@@ -10,8 +10,7 @@
 "--------------------------------------------------------------------------
 
 " == fuzzy find ==
-" ^p      find project file
-" ^n      find any file
+" ^p      find file (^p again: all)
 
 " == search ==
 " Enter   clear search highlight
@@ -126,8 +125,6 @@ if executable('fzf')
     Plug 'junegunn/fzf'                 " add a great fuzzy file finder
     Plug 'junegunn/fzf.vim'
 
-    nnoremap <C-p> :Files<CR>
-
     " search project files, respecting .gitignore
     if executable('rg')
         let $FZF_DEFAULT_COMMAND = 'rg --files'
@@ -139,9 +136,11 @@ if executable('fzf')
         let g:fzf_files_all_source = 'rg --files --hidden --no-ignore --glob "!.git/*"'
     endif
 
-    command! -bang -nargs=? -complete=dir FilesAll
-        \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': g:fzf_files_all_source}), <bang>0)
-    nnoremap <C-n> :FilesAll<CR>
+    " find project files; ^p again in the picker widens to all files
+    nnoremap <C-p> :call fzf#vim#files('', fzf#vim#with_preview({'options': [
+        \ '--prompt', 'Project> ',
+        \ '--bind', 'ctrl-p:change-prompt(All> )+reload('
+        \     . g:fzf_files_all_source . ')']}))<CR>
 else
     Plug 'ctrlpvim/ctrlp.vim'           " add a solid fuzzy file finder
     " git-aware file search; skip cache for fresh results
