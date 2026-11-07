@@ -5,6 +5,60 @@
 " https://thoughtbot.com/blog/opt-in-project-specific-vim-spell-checking-and-word-completion
 "--------------------------------------------------------------------------
 
+"--------------------------------------------------------------------------
+" CHEATSHEET - rows for vim/gen-cheatsheet.sh, rerun it after edits
+"--------------------------------------------------------------------------
+
+" == fuzzy find ==
+" ^p      find project file
+" ^n      find any file
+
+" == search ==
+" Enter   clear search highlight
+" -8      Ack search word under cursor
+
+" == buffers ==
+" Tab     next buffer
+" S-Tab   prev buffer
+" -Tab    list & select buffer
+" :BOnly  close all but curr buffer
+
+" == quickfix ==
+" ]q      next quickfix entry
+" [q      prev quickfix entry
+
+" == modes ==
+" F2      file tree
+" F7      pencil auto-format
+" F8      read-only lock
+
+" == toggles ==
+" -ts     spell check
+" -tw     whitespace
+" -ut     undo tree
+
+" == writing ==
+" Q       reformat paragraph
+" -at     align table (markdown)
+
+" == code ==
+" gd      go to definition
+" gi      show hover info
+" gr      rename symbol
+" gh      show hover actions
+" -fr     find references
+" ]e      next lint error
+" [e      prev lint error
+
+" == tests ==
+" -tt     save and test this
+" -ta     save and test all
+
+" == config ==
+" -rc     reload vim config
+" -cc     change colorscheme
+"--------------------------------------------------------------------------
+
 " no need to support legacy vi nuances
 set nocompatible
 
@@ -45,7 +99,6 @@ if executable('fzf')
     Plug 'junegunn/fzf.vim'
 
     " == fuzzy find ==
-    " find project file (respects .gitignore)
     nnoremap <C-p> :Files<CR>
 
     " Search project files, respecting .gitignore
@@ -61,7 +114,6 @@ if executable('fzf')
 
     command! -bang -nargs=? -complete=dir FilesAll
         \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': g:fzf_files_all_source}), <bang>0)
-    " find any file (includes gitignored)
     nnoremap <C-n> :FilesAll<CR>
 else
     Plug 'ctrlpvim/ctrlp.vim'           " add a solid fuzzy file finder
@@ -378,74 +430,48 @@ set wildmenu
 let mapleader = "-"
 
 " == search ==
-" clear search highlight
 nnoremap <CR> :noh<CR>
-" Ack search word under cursor
 nnoremap <leader>8 :Ack <cword><CR>
 
 " == buffers ==
-" next buffer
 nnoremap <Tab> :bn<CR>
-" previous buffer
 nnoremap <S-Tab> :bp<CR>
-" pick a buffer from the list
 nnoremap <leader><Tab> :ls<CR>:b<Space>
-" keep only the current buffer open
 command! BOnly execute '%bd|e#|bd#'
 
 " == quickfix ==
-" next quickfix entry
 nnoremap ]q :cnext<CR>
-" previous quickfix entry
 nnoremap [q :cprev<CR>
 
 " == modes ==
-" file tree
 nnoremap <F2> :Lexplore<CR>
-" pencil auto-format (off when hand-wrapping markdown)
 noremap <silent> <F7> :<C-u>PFormatToggle<cr>
 inoremap <silent> <F7> <C-o>:PFormatToggle<cr>
-" read-only lock against fat-thumb edits
 nnoremap <silent> <F8> :setlocal modifiable!<CR>
 
 " == toggles ==
-" toggle spell check
 nnoremap <leader>ts :setlocal spell!<CR>
-" toggle whitespace
 nnoremap <leader>tw :set list!<CR>
-" undo tree
 nnoremap <leader>ut :UndotreeToggle<CR>
 
 " == writing ==
-" reformat paragraph
 nnoremap Q gqap
-" align table (markdown)
 nnoremap <leader>at :TidyMarkdownTable<CR>
 
 " == code ==
-" go to definition
 nnoremap gd :ALEGoToDefinition<CR>
-" show hover info
 nnoremap gi :ALEHover<CR>
-" rename symbol
 nnoremap gr :ALERename<CR>
-" show hover actions
 nnoremap gh :ALECodeAction<CR>
-" find references
 nnoremap <leader>fr :ALEFindReferences -quickfix\| copen<CR>
-" next lint error
 nnoremap ]e :ALENext<CR>
-" previous lint error
 nnoremap [e :ALEPrevious<CR>
 
 " == tests ==
-" save and test this
 nnoremap <leader>tt :w \| :TestFile<CR>
-" save and test all
 nnoremap <leader>ta :w \| :TestSuite<CR>
 
 " == config ==
-" reload vim config
 nnoremap <leader>rc :source $MYVIMRC<CR>
 
 " look & feel shortcuts
@@ -457,7 +483,6 @@ function! GotoNextColorscheme()
   redraw | echo ":colorscheme " . g:colors_name
 endfunction
 command! NextColorscheme call GotoNextColorscheme()
-" change colorscheme
 nnoremap <Leader>cc :NextColorscheme<CR>
 
 " load all plugins then their helptags

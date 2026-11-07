@@ -1,57 +1,40 @@
 #!/bin/bash
 
 # Generate the vim cheatsheet: the vimcheatsheet.com poster plus a
-# sidebar of custom bindings read from vimrc, so it can't drift from
-# the real mappings. Output keeps its slot in the Warp-H rotation.
-# Rerun after any vimrc mapping change.
+# sidebar from the CHEATSHEET block in vimrc. Output keeps its slot
+# in the Warp-H rotation. Rerun after editing the block.
 #
-# vimrc convention: a '" == name ==' line starts a section, and a
-# plain '"' comment directly above a map or command! line is its
-# label. Unlabeled lines (like a mode twin) and <Nop> maps are skipped.
+# vimrc convention: the CHEATSHEET block at the top of vimrc is the
+# sheet. It runs from its banner to the next '"---' line; inside, a
+# '" == name ==' line starts a section and a '" <key> <label>' line
+# is one row, key written as it should display. Curation, not
+# scraping: no row in the block, nothing on the sheet.
 
 SRC="$HOME/dotfiles/vimrc"
 POSTER="$HOME/fileboxes/filed/cheatsheets-src/vim-poster.png"
 OUT="$HOME/fileboxes/filed/cheatsheets/1-vim-cheatsheet.png"
 RENDER="$(dirname "$0")/render-sidebar.swift"
 
-# one "Section<TAB>Key<TAB>Label" line per labeled mapping
-labeled_mappings() {
+# one "Section<TAB>Key<TAB>Label" line per row in the block
+cheatsheet_rows() {
     awk '
-        function pretty(k) {
-            gsub(/<[Ll]eader>/, "-", k)
-            gsub(/<CR>/, "Enter", k)
-            gsub(/<S-Tab>/, "S-Tab", k)
-            gsub(/<Tab>/, "Tab", k)
-            while (match(k, /<C-.>/))
-                k = substr(k, 1, RSTART - 1) "^" substr(k, RSTART + 3, 1) \
-                    substr(k, RSTART + RLENGTH)
-            gsub(/[<>]/, "", k)
-            return k
+        /^" CHEATSHEET/ { state = 1; next }
+        state == 0 || /^[ \t]*$/ { next }
+        /^"-+$/ { if (state == 2) exit; state = 2; next }
+        /^" == .* ==$/ {
+            section = $0; gsub(/^" == | ==$/, "", section); next
         }
-        { line = $0; sub(/^[ \t]+/, "", line) }
-        line ~ /^" == .* ==$/ {
-            section = line; gsub(/^" == | ==$/, "", section)
-            label = ""; next
+        {
+            line = $0; sub(/^" +/, "", line)
+            key = line; sub(/[ \t].*/, "", key)
+            label = line; sub(/^[^ \t]+[ \t]+/, "", label)
+            print section "\t" key "\t" label
         }
-        line ~ /^"/ { label = line; sub(/^" */, "", label); next }
-        line ~ /^[nvixsoc]?(nore)?map[ \t]/ && label != "" && section != "" {
-            if (line !~ /<Nop>/) {
-                split(line, f, /[ \t]+/); i = 2
-                while (f[i] ~ /^<(silent|buffer|expr|nowait|unique)>$/) i++
-                print section "\t" pretty(f[i]) "\t" label
-            }
-        }
-        line ~ /^command!?[ \t]/ && label != "" && section != "" {
-            split(line, f, /[ \t]+/); i = 2
-            while (f[i] ~ /^-/) i++
-            print section "\t:" f[i] "\t" label
-        }
-        { label = "" }
     ' "$SRC"
 }
 
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
-labeled_mappings > "$TMP/keys.tsv"
+cheatsheet_rows > "$TMP/keys.tsv"
 swift "$RENDER" "$TMP/keys.tsv" "$POSTER" "$OUT"
