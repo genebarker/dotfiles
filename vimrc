@@ -33,6 +33,7 @@
 " == quickfix ==
 " ]q      next quickfix entry
 " [q      prev quickfix entry
+" :ccl    close quickfix list
 
 " == modes ==
 " F2      file tree
