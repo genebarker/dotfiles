@@ -54,40 +54,71 @@ func text(_ s: String, _ top: CGFloat, _ h: CGFloat, x: CGFloat, font: NSFont, c
     a.draw(at: NSPoint(x: x, y: CGFloat(baseH) - top - h + (h - sz.height) / 2))
 }
 
-// size one unit so title + headers + rows fill the poster height
-let rowCount = sections.reduce(0) { $0 + $1.1.count }
+let keyFontAt = { (u: CGFloat) in NSFont(name: "Menlo-Bold", size: u * 0.62)! }
+let labelFontAt = { (u: CGFloat) in NSFont(name: "Helvetica", size: u * 0.40)! }
+let headFontAt = { (u: CGFloat) in NSFont(name: "Helvetica-Bold", size: u * 0.52)! }
+
+// widest key and label per unit of u, measured at u = 100
+func widest(_ strs: [String], _ font: NSFont) -> CGFloat {
+    strs.map { NSAttributedString(string: $0, attributes: [.font: font]).size().width }.max() ?? 0
+}
+let allRows = sections.flatMap { $0.1 }
+let keyW = widest(allRows.map { $0.0 }, keyFontAt(100)) / 100
+let labelW = widest(allRows.map { $0.1 }, labelFontAt(100)) / 100
+
+// split whole sections into two columns, balancing their height in units
+func colUnits(_ s: ArraySlice<(String, [(String, String)])>) -> Double {
+    s.reduce(0) { $0 + 1.75 + Double($1.1.count) }
+}
+let split = (0...sections.count).min { a, b in
+    max(colUnits(sections[..<a]), colUnits(sections[a...])) <
+        max(colUnits(sections[..<b]), colUnits(sections[b...]))
+}!
+let columns = [Array(sections[..<split]), Array(sections[split...])]
+
+// one unit u: as big as possible while the taller column fits the
+// poster height and the widest key + label fits a column's width
 let margin: CGFloat = 70
-let units = 3.2 + Double(sections.count) * 1.75 + Double(rowCount) * 1.0 + 0.9
-let u = (CGFloat(baseH) - 2 * margin) / CGFloat(units)
+let colGapU: CGFloat = 0.6, keyPadU: CGFloat = 0.5, labelPadU: CGFloat = 0.6
+let tallest = max(colUnits(sections[..<split]), colUnits(sections[split...]))
+let uHeight = (CGFloat(baseH) - 2 * margin) / CGFloat(3.2 + tallest + 0.9)
+let uWidth = width / (2 * (keyW + keyPadU + labelW + labelPadU) + colGapU)
+let u = min(uHeight, uWidth)
 let gap = u * 0.12
 
-let keyFont = NSFont(name: "Menlo-Bold", size: u * 0.62)!
-let labelFont = NSFont(name: "Helvetica", size: u * 0.40)!
-let headFont = NSFont(name: "Helvetica-Bold", size: u * 0.52)!
+let keyFont = keyFontAt(u), labelFont = labelFontAt(u), headFont = headFontAt(u)
 
 var y = margin
 
-// title banner in the vim-logo red
+// title banner in the vim-logo red, across both columns
 box(y, u * 2.6, red)
 text("my vim", y, u * 1.7, x: left + u * 0.5, font: NSFont(name: "Georgia-Bold", size: u * 1.25)!, color: white)
 text("custom bindings  ·  leader = -", y + u * 1.55, u * 0.9, x: left + u * 0.55,
      font: NSFont(name: "Helvetica", size: u * 0.46)!, color: white)
-y += u * 3.2
+let top = y + u * 3.2
 
-let keyCol = u * 4.0
-for (name, rows) in sections {
-    y += u * 0.35
-    box(y, u * 1.0, barGrey)
-    text(name.uppercased(), y, u * 1.0, x: left + u * 0.3, font: headFont, color: ink)
-    y += u * 1.0 + u * 0.4
-    for (key, label) in rows {
-        box(y, u - gap, rowGrey, w: keyCol - gap)
-        box(y, u - gap, rowGrey, x: left + keyCol, w: width - keyCol)
-        text(key, y, u - gap, x: left + u * 0.25, font: keyFont, color: ink)
-        text(label, y, u - gap, x: left + keyCol + u * 0.3, font: labelFont, color: ink)
-        y += u
+let colW = (width - colGapU * u) / 2
+let keyCol = (keyW + keyPadU) * u
+var bottom = top
+for (c, secs) in columns.enumerated() {
+    let x = left + CGFloat(c) * (colW + colGapU * u)
+    y = top
+    for (name, rows) in secs {
+        y += u * 0.35
+        box(y, u * 1.0, barGrey, x: x, w: colW)
+        text(name.uppercased(), y, u * 1.0, x: x + u * 0.3, font: headFont, color: ink)
+        y += u * 1.0 + u * 0.4
+        for (key, label) in rows {
+            box(y, u - gap, rowGrey, x: x, w: keyCol - gap)
+            box(y, u - gap, rowGrey, x: x + keyCol, w: colW - keyCol)
+            text(key, y, u - gap, x: x + u * 0.25, font: keyFont, color: ink)
+            text(label, y, u - gap, x: x + keyCol + u * 0.3, font: labelFont, color: ink)
+            y += u
+        }
     }
+    bottom = max(bottom, y)
 }
+y = bottom
 
 let stamp = DateFormatter(); stamp.dateFormat = "yyyy-MM-dd"
 text("generated \(stamp.string(from: Date())) from vimrc", y + u * 0.2, u * 0.6,
