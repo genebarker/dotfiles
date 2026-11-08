@@ -104,8 +104,13 @@ if empty(glob('~/.vim/autoload/plug.vim'))
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
+" clear this file's autocmds so a reload (-rc) won't stack copies
+augroup vimrc
+    autocmd!
+augroup END
+
 " run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+autocmd vimrc VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source ~/.vimrc
 \| endif
 
@@ -205,15 +210,15 @@ augroup END
 
 " enable folding for markdown files
 let g:markdown_folding = 1
-autocmd FileType markdown,text setlocal foldlevel=99
+autocmd vimrc FileType markdown,text setlocal foldlevel=99
 
 " set programming pref's (that diff from defaults)
-autocmd FileType java setlocal foldmethod=syntax
-autocmd FileType java setlocal foldlevel=99
-autocmd FileType java setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-autocmd FileType python setlocal foldmethod=indent
-autocmd FileType python setlocal foldlevel=99
-autocmd FileType xml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd vimrc FileType java setlocal foldmethod=syntax
+autocmd vimrc FileType java setlocal foldlevel=99
+autocmd vimrc FileType java setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd vimrc FileType python setlocal foldmethod=indent
+autocmd vimrc FileType python setlocal foldlevel=99
+autocmd vimrc FileType xml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " flip-on highlight Java class-like names in vimrc
 let g:java_highlight_java_lang_ids = 1
@@ -259,7 +264,7 @@ function! EnableOnlyMavenTest()
         let g:test#enabled_runners = ['java#maventest']
     endif
 endfunction
-autocmd FileType java call EnableOnlyMavenTest()
+autocmd vimrc FileType java call EnableOnlyMavenTest()
 
 " no swap files, use undo files instead
 set noswapfile
@@ -270,7 +275,7 @@ endif
 set undofile
 
 " reload buffers changed outside vim (e.g. by Jaz) on return
-autocmd FocusGained,BufEnter,CursorHold * silent! checktime
+autocmd vimrc FocusGained,BufEnter,CursorHold * silent! checktime
 
 " use system clipboard for copy & paste
 set clipboard=unnamed
@@ -282,11 +287,11 @@ set number relativenumber
 set listchars=tab:>-,trail:~,eol:$
 
 " turn spell check on for text files and git messages
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.txt set filetype=text
-autocmd FileType markdown setlocal spell
-autocmd FileType gitcommit setlocal spell
-autocmd FileType text setlocal spell
+autocmd vimrc BufRead,BufNewFile *.md set filetype=markdown
+autocmd vimrc BufRead,BufNewFile *.txt set filetype=text
+autocmd vimrc FileType markdown setlocal spell
+autocmd vimrc FileType gitcommit setlocal spell
+autocmd vimrc FileType text setlocal spell
 
 " use US english dictionary
 set spelllang=en_us
@@ -308,7 +313,7 @@ set complete+=kspell
 set colorcolumn=76
 
 " set text width for auto-wrapping and manual formatting (gq)
-autocmd FileType markdown,text setlocal textwidth=76
+autocmd vimrc FileType markdown,text setlocal textwidth=76
 
 " use one space between sentences
 set nojoinspaces
@@ -373,7 +378,7 @@ function! CustomizeScheme()
         hi! link SpellLocal GruvboxAqua
     endif
 endfunction
-autocmd ColorScheme * call CustomizeScheme()
+autocmd vimrc ColorScheme * call CustomizeScheme()
 
 " make sure syntax highlighting reset
 " on scheme change
@@ -426,9 +431,6 @@ set splitbelow
 " make sure can backspace behaves more reasonably
 " (i.e. allow before insertion point set with 'i')
 set backspace=indent,eol,start
-
-" don't enter Ex mode on 'Q'
-nmap Q <Nop>
 
 " enable mouse support
 set mouse+=a
