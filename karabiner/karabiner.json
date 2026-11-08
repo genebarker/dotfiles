@@ -902,7 +902,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-[ to switch to previous app",
+                        "description": "Warp-[ to switch to previous app (- = dvorak [)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -924,7 +924,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-] to switch to next app",
+                        "description": "Warp-] to switch to next app (equal = dvorak ])",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -980,7 +980,7 @@
                         ]
                     },
                     {
-                        "description": "Warp-= to solve with Calca",
+                        "description": "Warp-= to solve with Calca (] = dvorak =)",
                         "manipulators": [
                             {
                                 "conditions": [
