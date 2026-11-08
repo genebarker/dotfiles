@@ -287,8 +287,6 @@ set number relativenumber
 set listchars=tab:>-,trail:~,eol:$
 
 " turn spell check on for text files and git messages
-autocmd vimrc BufRead,BufNewFile *.md set filetype=markdown
-autocmd vimrc BufRead,BufNewFile *.txt set filetype=text
 autocmd vimrc FileType markdown setlocal spell
 autocmd vimrc FileType gitcommit setlocal spell
 autocmd vimrc FileType text setlocal spell
