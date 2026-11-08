@@ -69,10 +69,11 @@
 " -fr     find references
 " ]e      next lint error
 " [e      prev lint error
+" :w      save & refresh LSP
 
 " == tests ==
-" -tt     save and test this
-" -ta     save and test all
+" -tt     save & test this
+" -ta     save & test all
 
 " == git ==
 " ]c      next hunk
