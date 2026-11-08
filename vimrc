@@ -139,7 +139,7 @@ if executable('fzf')
     endif
 
     " find project files; ^p again in the picker widens to all files
-    nnoremap <C-p> :call fzf#vim#files('', fzf#vim#with_preview({'options': [
+    nnoremap <silent> <C-p> :call fzf#vim#files('', fzf#vim#with_preview({'options': [
         \ '--prompt', 'Project> ',
         \ '--bind', 'ctrl-p:change-prompt(All> )+reload('
         \     . g:fzf_files_all_source . ')']}))<CR>
