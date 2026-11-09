@@ -296,6 +296,10 @@ set clipboard=unnamed
 " show line numbering
 set number relativenumber
 
+" keep the sign column open so text doesn't shift as git, mark and
+" lint signs come and go
+set signcolumn=yes
+
 " show tabs and non-breakable spaces
 set listchars=tab:>-,trail:~,eol:$
 
