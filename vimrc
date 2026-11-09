@@ -277,6 +277,10 @@ set undofile
 " reload buffers changed outside vim (e.g. by Jaz) on return
 autocmd vimrc FocusGained,BufEnter,CursorHold * silent! checktime
 
+" fire CursorHold quickly (default 4s) so git signs and outside
+" edits show up almost at once
+set updatetime=100
+
 " use system clipboard for copy & paste
 set clipboard=unnamed
 
@@ -458,7 +462,8 @@ set wildmenu
 let mapleader = "-"
 
 " == search ==
-nnoremap <CR> :noh<CR>
+" (but let Enter still jump to the entry in a quickfix list)
+nnoremap <expr> <CR> &buftype ==# 'quickfix' ? "\<CR>" : ":noh\<CR>"
 nnoremap <leader>8 :Ack <cword><CR>
 
 " == buffers ==
