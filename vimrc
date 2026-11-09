@@ -274,6 +274,15 @@ if !isdirectory(&undodir)
 endif
 set undofile
 
+" tmux passes focus events (focus-events on), but vim only asks for
+" them under xterm TERMs - ask under tmux-256color too
+if !empty($TMUX) && empty(&t_fe)
+    let &t_fe = "\<Esc>[?1004h"
+    let &t_fd = "\<Esc>[?1004l"
+    execute "set <FocusGained>=\<Esc>[I"
+    execute "set <FocusLost>=\<Esc>[O"
+endif
+
 " reload buffers changed outside vim (e.g. by Jaz) on return
 autocmd vimrc FocusGained,BufEnter,CursorHold * silent! checktime
 
