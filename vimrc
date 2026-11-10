@@ -531,8 +531,6 @@ endfunction
 command! NextColorscheme call GotoNextColorscheme()
 nnoremap <Leader>cc :NextColorscheme<CR>
 
-" load all plugins then their helptags
-if has('packloadall')
-    packloadall
-endif
+" rebuild help tags each launch so docs in local dev plugins
+" (~/workspace/vim-*, tags gitignored) stay current
 silent! helptags ALL
