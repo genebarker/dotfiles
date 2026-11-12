@@ -123,6 +123,8 @@ Plug 'sjl/badwolf'                  " use favorite colorschemes
 Plug 'nanotech/jellybeans.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
+Plug 'lifepillar/vim-solarized8'
 Plug 'airblade/vim-gitgutter'       " show changed lines
 Plug 'kshenoy/vim-signature'        " show marks in the sign column
 Plug 'tpope/vim-fugitive'           " add direct git access
@@ -367,8 +369,7 @@ syntax enable
 " select favorite colorschemes
 " - suffix with ! for light background mode
 " - set their customizations
-let g:my_themes = ['badwolf', 'jellybeans', 'PaperColor', 'PaperColor!', 'gruvbox', 'gruvbox!']
-let g:seoul256_background = 234
+let g:my_themes = ['badwolf', 'jellybeans', 'PaperColor', 'PaperColor!', 'gruvbox', 'gruvbox!', 'onedark', 'solarized8']
 let g:jellybeans_use_term_italics = 1
 let g:gruvbox_italic = 1
 
