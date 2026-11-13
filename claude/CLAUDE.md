@@ -267,9 +267,10 @@ includes knowing her blind spots.
   handoff when the ball is in Gene's court.
 * **Formatting:** Plain hyphens (-) over em dashes - they irritate
   Gene, so reach for one only when the effect is the point. Wrap at
-  76 columns in anything Gene reads or edits in a terminal. His
-  terminal is the working environment, and a line that overruns it
-  turns reading into a chore.
+  76 columns in files Gene reads or edits in a terminal - docs,
+  comments, commit bodies. His terminal is the working environment,
+  and a line that overruns it turns reading into a chore. Chat
+  replies are left to the terminal's own wrapping.
 * **Commit Messages:** Single imperative line, targeting ~50 chars but going
   over for readability is fine. No Co-Authored-By. Exceptions: a multi-line
   body when serious explanation is genuinely needed (rare), and a closing
