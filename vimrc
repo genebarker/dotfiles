@@ -373,12 +373,13 @@ let g:my_themes = ['badwolf', 'jellybeans', 'PaperColor', 'PaperColor!', 'gruvbo
 let g:jellybeans_use_term_italics = 1
 let g:gruvbox_italic = 1
 
-" restore theme index from previous session
+" restore theme from previous session; it's saved by name so the
+" list can be reordered or trimmed (unknown name = first theme)
 let g:theme_state_file = expand('~/.vim/theme_state')
+let g:current_theme_index = 0
 if filereadable(g:theme_state_file)
-    let g:current_theme_index = str2nr(readfile(g:theme_state_file)[0])
-else
-    let g:current_theme_index = 0
+    let g:current_theme_index = max([0,
+        \ index(g:my_themes, get(readfile(g:theme_state_file), 0, ''))])
 endif
 
 " apply customization on scheme change
@@ -526,7 +527,7 @@ function! GotoNextColorscheme()
   let g:current_theme_index = (g:current_theme_index + 1) % len(g:my_themes)
   call DeepChangeScheme(g:my_themes[g:current_theme_index])
   " persist theme selection
-  call writefile([g:current_theme_index], g:theme_state_file)
+  call writefile([g:my_themes[g:current_theme_index]], g:theme_state_file)
   redraw | echo ":colorscheme " . g:colors_name
 endfunction
 command! NextColorscheme call GotoNextColorscheme()
