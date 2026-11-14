@@ -1486,6 +1486,26 @@
                         ]
                     },
                     {
+                        "description": "Fn-F7,F8,F9 (media keys) to cmus Prev / Play-Pause / Next track",
+                        "manipulators": [
+                            {
+                                "from": { "consumer_key_code": "scan_previous_track" },
+                                "to": [{ "shell_command": "/opt/homebrew/bin/cmus-remote --prev" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "consumer_key_code": "play_or_pause" },
+                                "to": [{ "shell_command": "/opt/homebrew/bin/cmus-remote --pause" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "consumer_key_code": "scan_next_track" },
+                                "to": [{ "shell_command": "/opt/homebrew/bin/cmus-remote --next" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "GASC Home Row Mods",
                         "manipulators": [
                             {
