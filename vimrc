@@ -25,9 +25,10 @@
 " ['      prev mark
 
 " == buffers ==
-" Tab     next buffer
-" S-Tab   prev buffer
-" -Tab    list & select buffer
+" ]b      next buffer
+" [b      prev buffer
+" --      alternate buffer
+" -b      pick buffer
 " :BOnly  close all but curr buffer
 
 " == quickfix ==
@@ -482,9 +483,14 @@ nnoremap <expr> <CR> &buftype ==# 'quickfix' ? "\<CR>" : ":noh\<CR>"
 nnoremap <leader>8 :Ack <cword><CR>
 
 " == buffers ==
-nnoremap <Tab> :bn<CR>
-nnoremap <S-Tab> :bp<CR>
-nnoremap <leader><Tab> :ls<CR>:b<Space>
+nnoremap ]b :bnext<CR>
+nnoremap [b :bprevious<CR>
+nnoremap <leader>- <C-^>
+if executable('fzf')
+    nnoremap <leader>b :Buffers<CR>
+else
+    nnoremap <leader>b :ls<CR>:b<Space>
+endif
 command! BOnly execute '%bd|e#|bd#'
 
 " == quickfix ==
