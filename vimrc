@@ -255,6 +255,14 @@ let g:ale_java_google_java_format_executable = expand('~/bin/google-java-format'
 let g:ale_hover_to_floating_preview = 1
 let g:ale_floating_preview_popup_opts = {'maxwidth': 76}
 
+" configure Ack plugin
+" search with rg: fast, respects .gitignore, one tool for fzf and Ack
+if executable('rg')
+    let g:ackprg = 'rg --vimgrep --smart-case'
+    set grepprg=rg\ --vimgrep\ --smart-case
+    set grepformat=%f:%l:%c:%m
+endif
+
 " configure Journal plugin
 let g:journal_ref_key = 'a'
 
