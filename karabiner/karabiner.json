@@ -1486,19 +1486,22 @@
                         ]
                     },
                     {
-                        "description": "Fn-F7,F8,F9 (media keys) to cmus Prev / Play-Pause / Next track",
+                        "description": "Fn-F7,F8,F9 (media keys) to cmus while it leads, else macOS",
                         "manipulators": [
                             {
+                                "conditions": [{ "type": "variable_if", "name": "cmus_lead", "value": 1 }],
                                 "from": { "consumer_key_code": "scan_previous_track" },
                                 "to": [{ "shell_command": "/opt/homebrew/bin/cmus-remote --prev" }],
                                 "type": "basic"
                             },
                             {
+                                "conditions": [{ "type": "variable_if", "name": "cmus_lead", "value": 1 }],
                                 "from": { "consumer_key_code": "play_or_pause" },
                                 "to": [{ "shell_command": "/opt/homebrew/bin/cmus-remote --pause" }],
                                 "type": "basic"
                             },
                             {
+                                "conditions": [{ "type": "variable_if", "name": "cmus_lead", "value": 1 }],
                                 "from": { "consumer_key_code": "scan_next_track" },
                                 "to": [{ "shell_command": "/opt/homebrew/bin/cmus-remote --next" }],
                                 "type": "basic"
