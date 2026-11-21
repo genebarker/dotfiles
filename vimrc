@@ -34,7 +34,6 @@
 " == quickfix ==
 " ]q      next quickfix entry
 " [q      prev quickfix entry
-" :ccl    close quickfix list
 
 " == modes ==
 " F2      file tree
@@ -44,7 +43,8 @@
 " == toggles ==
 " -ts     spell check
 " -tw     whitespace
-" -ut     undo tree
+" -tu     undo tree
+" -tq     quickfix list
 
 " == writing ==
 " [a      prev wiki link
@@ -514,7 +514,9 @@ nnoremap <silent> <F8> :setlocal modifiable!<CR>
 " == toggles ==
 nnoremap <leader>ts :setlocal spell!<CR>
 nnoremap <leader>tw :set list!<CR>
-nnoremap <leader>ut :UndotreeToggle<CR>
+nnoremap <leader>tu :UndotreeToggle<CR>
+nnoremap <expr> <leader>tq empty(filter(getwininfo(),
+    \ 'v:val.quickfix && !v:val.loclist')) ? ":copen\<CR>" : ":cclose\<CR>"
 
 " == writing ==
 nnoremap Q gqap
