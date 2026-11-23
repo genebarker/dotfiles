@@ -235,6 +235,7 @@ let g:ale_linters = {
 \   'python' : ['pylsp', 'pylint'],
 \   'java' : ['eclipselsp', 'checkstyle'],
 \   'xml': ['xmllint'],
+\   'markdown': ['rumdl'],
 \}
 let g:ale_fixers = {
 \   'python' : ['black', 'isort'],

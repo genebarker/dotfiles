@@ -1,0 +1,25 @@
+# Gene's markdown standards (~/workspace/standards/docs/README.md)
+# check-only: no fixer is wired in vim; see vimrc ale_fixers
+
+# elegant plain text for an 80 col terminal; tables exempt,
+# their widths are deliberate
+[MD013]
+line-length = 76
+
+# spacing varies deliberately by use (e.g. two blanks before
+# refs); the eye guards it, not the linter
+[MD012]
+enabled = false
+
+# reference links only: no [text](url) inline
+[MD054]
+inline = false
+url-inline = false
+
+# tables: outer pipes, kept aligned (tidytable output passes)
+[MD055]
+style = "leading_and_trailing"
+
+[MD060]
+enabled = true
+style = "aligned"
