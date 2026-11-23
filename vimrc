@@ -271,14 +271,6 @@ let g:journal_ref_key = 'a'
 " use nice split window when running tests
 let g:test#strategy = "vimterminal"
 
-" force use of maven for testing java files
-function! EnableOnlyMavenTest()
-    if &filetype == 'java'
-        let g:test#enabled_runners = ['java#maventest']
-    endif
-endfunction
-autocmd vimrc FileType java call EnableOnlyMavenTest()
-
 " no swap files, use undo files instead
 set noswapfile
 set undodir=~/.vim/undodir
