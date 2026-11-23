@@ -370,6 +370,7 @@ set showcmd
 syntax enable
 
 " select favorite colorschemes
+" - first is the default, keep it 256-color safe (for Apple Terminal)
 " - suffix with ! for light background mode
 " - set their customizations
 let g:my_themes = ['badwolf', 'jellybeans', 'PaperColor', 'PaperColor!', 'gruvbox', 'gruvbox!', 'onedark', 'solarized8']
@@ -431,13 +432,8 @@ if $TERM ==# 'xterm-256color' || $TERM ==# 'tmux-256color' || $TERM ==# 'alacrit
     if $TERM_PROGRAM !=# 'Apple_Terminal'
         set termguicolors
     endif
-    " apply saved theme if available
-    if g:current_theme_index > 0
-        call DeepChangeScheme(g:my_themes[g:current_theme_index])
-    else
-        set background=dark
-        colorscheme badwolf
-    endif
+    " apply saved theme (first theme if none saved)
+    call DeepChangeScheme(g:my_themes[g:current_theme_index])
 else
     " for limited terminals
     colorscheme desert
