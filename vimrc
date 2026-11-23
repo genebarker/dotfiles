@@ -56,6 +56,7 @@
 " ^Gc     caps lock (insert)
 " Q       reformat paragraph
 " -at     align table (markdown)
+" -af     align & flip outer pipes
 
 " == zettelkasten ==
 " -zt     open tags list
@@ -522,6 +523,7 @@ nnoremap <expr> <leader>tq empty(filter(getwininfo(),
 " == writing ==
 nnoremap Q gqap
 nnoremap <leader>at :TidyMarkdownTable<CR>
+nnoremap <leader>af :TidyMarkdownTable!<CR>
 
 " == code ==
 nnoremap gd :ALEGoToDefinition<CR>
