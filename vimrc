@@ -224,7 +224,7 @@ autocmd vimrc FileType python setlocal foldmethod=indent
 autocmd vimrc FileType python setlocal foldlevel=99
 autocmd vimrc FileType xml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
-" flip-on highlight Java class-like names in vimrc
+" flip-on highlight Java class-like names in Java files
 let g:java_highlight_java_lang_ids = 1
 let g:java_highlight_functions = "style"
 let g:java_highlight_signature = 1
@@ -306,7 +306,7 @@ set number relativenumber
 set signcolumn=yes
 
 " show tabs and non-breakable spaces
-set listchars=tab:>-,trail:~,eol:$
+set listchars=tab:>-,trail:~,nbsp:+,eol:$
 
 " turn spell check on for text files and git messages
 autocmd vimrc FileType markdown setlocal spell
