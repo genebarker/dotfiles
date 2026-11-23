@@ -136,15 +136,13 @@ if executable('fzf')
     Plug 'junegunn/fzf'                 " add a great fuzzy file finder
     Plug 'junegunn/fzf.vim'
 
-    " search project files, respecting .gitignore
+    " project files respect .gitignore; all files add the
+    " gitignored ones, skipping .git
     if executable('rg')
         let $FZF_DEFAULT_COMMAND = 'rg --files'
-    endif
-
-    " search all files (including gitignored ones), excluding the .git directory
-    let g:fzf_files_all_source = 'find . -path "*/.git" -prune -o -type f -print'
-    if executable('rg')
         let g:fzf_files_all_source = 'rg --files --hidden --no-ignore --glob "!.git/*"'
+    else
+        let g:fzf_files_all_source = 'find . -path "*/.git" -prune -o -type f -print'
     endif
 
     " find project files; ^p again in the picker widens to all files
