@@ -224,7 +224,9 @@ autocmd vimrc FileType python setlocal foldmethod=indent
 autocmd vimrc FileType python setlocal foldlevel=99
 autocmd vimrc FileType xml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
-" flip-on highlight Java class-like names in Java files
+" turn on extra Java syntax highlighting (off by default):
+" java.lang names, method decls & signatures, generics, and
+" whitespace errors
 let g:java_highlight_java_lang_ids = 1
 let g:java_highlight_functions = "style"
 let g:java_highlight_signature = 1
