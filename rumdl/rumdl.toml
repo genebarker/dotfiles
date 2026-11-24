@@ -11,10 +11,15 @@ line-length = 76
 [MD012]
 enabled = false
 
-# reference links only: no [text](url) inline
+# link style is taste: the standards README asks for reference
+# links, the eye judges when a tiny inline one reads fine
 [MD054]
-inline = false
-url-inline = false
+enabled = false
+
+# blank lines between list items group them on purpose (e.g. zk
+# index hubs); the eye judges the grouping
+[MD076]
+enabled = false
 
 # tables: outer pipes, kept aligned (tidytable output passes)
 [MD055]
