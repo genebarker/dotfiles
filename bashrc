@@ -236,7 +236,7 @@ COLOR_GRAY='\[\e[90m\]'
 machine_name() {
     if [[ -f $HOME/.name ]]; then
         cat $HOME/.name
-    elif [[ $(uname) == MINGW* ]]; then
+    elif [[ $MSYSTEM == MINGW64 ]]; then
         hostname
     else
         hostname -f
@@ -247,7 +247,7 @@ is_ssh_session() {
   [[ -n "$SSH_TTY" ]] && return 0
   [[ -n "$SSH_CONNECTION" ]] && return 0
 
-  if [[ $(uname) == MINGW* ]]; then
+  if [[ $MSYSTEM == MINGW64 ]]; then
       return 1
   fi
 
