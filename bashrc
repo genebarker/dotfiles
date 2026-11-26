@@ -320,7 +320,9 @@ update_prompt() {
 }
 
 PROMPT_DIRTRIM=3
-PROMPT_COMMAND="update_prompt"
+
+# save history on each command, so new panes see every pane's history
+PROMPT_COMMAND="history -a; update_prompt"
 
 # show sysinfo in interactive shells
 if [[ $- == *i* ]] && command -v fastfetch >/dev/null 2>&1; then
