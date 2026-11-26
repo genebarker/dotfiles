@@ -19,6 +19,9 @@ HISTFILE="$HOME/.bash_history"
 SAVEHIST=$HISTSIZE
 shopt -s histappend
 
+# let ** match across directories, like vim's path+=**
+shopt -s globstar 2>/dev/null
+
 # load shell dotfiles, use:
 # ~/.path to set $PATH for host
 # ~/.extra to customize for host
