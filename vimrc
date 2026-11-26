@@ -248,6 +248,13 @@ let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 
+" ALE treats Git Bash vim (win32unix) as Windows and wraps jobs in
+" cmd.exe, but still quotes for bash - every linter dies; force bash
+if has('win32unix')
+    let g:ale_shell = '/usr/bin/bash'
+    let g:ale_shell_arguments = '-c'
+endif
+
 let g:ale_java_eclipselsp_path = expand('~/bin/jdt-language-server')
 let g:ale_java_checkstyle_executable = expand('~/bin/checkstyle')
 let g:ale_java_checkstyle_config = 'checkstyle.xml'
